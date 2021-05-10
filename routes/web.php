@@ -49,6 +49,13 @@ Route::get('/home', function () {
         return view('home')->with('user', $usuario)->with('mineros', $minero)->with('recaudado', $recaudado)->with('mensaje', $mensajes)->with('cant_msj', $cant_msj)->with('educacion', $educacion)->with('cant_ed', $cant_ed)->with('cob', $aCobrar)->with('des', $desbloq)->with('id', $user_id);
 
 
+    }elseif($user_role == 'educacion'){
+
+        $educacion = DB::table('educacions')->get();
+        
+        return view('home')->with('user', $usuario)->with('educacion', $educacion);
+
+
     }else{
 
         /* Datos dela Alianza */

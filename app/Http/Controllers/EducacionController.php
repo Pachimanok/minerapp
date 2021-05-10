@@ -35,7 +35,13 @@ class EducacionController extends Controller
      */
     public function create()
     {
-        //
+        $usuario = Auth::user();
+        $user = $usuario->name;
+        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+        $minero = $min[0];
+
+        return view('formularios.createTema')->with('user', $usuario)->with('mineros', $minero);
+        
     }
 
     /**
@@ -46,7 +52,31 @@ class EducacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        foreach($request->get('estado') as $estado )
+        
+        $usuario = Auth::user();
+        $user = $usuario->name;
+
+        $educacions = new Educacion();        
+        $educacions->estado = $estado;
+        $educacions->titulo = $request->get('titulo');
+        $educacions->descripcion = $request->get('descripcion');
+        $educacions->tema = $request->get('tema');
+        $educacions->premio = 'puntos';
+        $educacions->link = $request->get('link');
+        $educacions->user = $user;
+        $educacions->save();
+
+        
+/* 
+        session()->flash('mensaje','Se envió con éxito');
+        session()->flash('tipo','primary'); */
+
+        
+
+        $educacion = DB::table('educacions')->get();
+        return view('home')->with('user', $usuario)->with('educacion', $educacion);
     }
 
     /**
@@ -70,7 +100,14 @@ class EducacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = Auth::user();
+        $user = $usuario->name;
+        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+        $minero = $min[0];
+
+        $educacion = DB::table('educacions')->where('id','=',$id)->get();
+
+        return view('formularios.editTema')->with('user', $usuario)->with('mineros', $minero)->with('educacion', $educacion);
     }
 
     /**
@@ -82,7 +119,27 @@ class EducacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        foreach($request->get('estado') as $estado )
+        
+        $usuario = Auth::user();
+        $user = $usuario->name;
+
+        $educacions = Educacion::find($id);    
+        $educacions->estado = $estado;
+        $educacions->titulo = $request->get('titulo');
+        $educacions->descripcion = $request->get('descripcion');
+        $educacions->tema = $request->get('tema');
+        $educacions->premio = 'puntos';
+        $educacions->link = $request->get('link');
+        $educacions->user = $user;
+        $educacions->save();
+        
+
+        $educacion = DB::table('educacions')->get();
+        
+        return redirect('/home');
+    
     }
 
     /**

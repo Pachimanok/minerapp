@@ -1,15 +1,19 @@
 
 @if($user->role == 'minero')
 
-@include('home.homeMinero')
+  @include('home.homeMinero')
 
 @elseif($user->role == 'alianza')
 
-@include('home.homeAlianza')
+  @include('home.homeAlianza')
+
+@elseif($user->role == 'educacion')
+  
+  @include('home.homeEducacion')
 
 @else
 
-<h1>Administrador</h1>
+  <h1>Administrador</h1>
 
 @endif
     
