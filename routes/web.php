@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Minero;
 use Intervention\Image\Facades\Image;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -149,11 +150,12 @@ Route::resource('minero','App\Http\Controllers\MineroController');
 Route::resource('educacion','App\Http\Controllers\EducacionController');
 Route::resource('alianza','App\Http\Controllers\AlianzaController');
 Route::resource('minar','App\Http\Controllers\MinaController');
+Route::resource('validar','App\Http\Controllers\validarController');
+
 
 
 
 Route::resource('editarPerfil','App\Http\Controllers\editarPerfil'); 
-Route::resource('validar','App\Http\Controllers\ValidarController');
 Route::resource('limpieza','App\Http\Controllers\LimpiezaController');
 Route::resource('detalle','App\Http\Controllers\DetalleBilletera');
 

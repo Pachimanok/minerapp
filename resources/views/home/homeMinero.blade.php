@@ -89,7 +89,7 @@
                     <h2 style="color: #00c2cb;">$ {{ $des }} <small style="color:white">desbloquear</small></h2>
                   </div>
                 </div>
-                <a  href="/billetera" class="btn btn-wshite col-sm mx-auto  mt-3"> abrir billetera</a>
+                <a  href="/billetera" class="btn btn-white col-sm mx-auto  mt-3"> abrir billetera</a>
               </div>
             </div>
           </div>

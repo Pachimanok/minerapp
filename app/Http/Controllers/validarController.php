@@ -18,7 +18,7 @@ class validarController extends Controller
      */
     public function index()
     {
-        //
+        return 'entrará acá?';  
     }
 
     /**
@@ -55,6 +55,7 @@ class validarController extends Controller
        $validacion->id_tema = $educacion->id;
        $validacion->user = $usuario;
        $validacion->save();
+    
 
         $min = DB::table('mineros')->where('user_name', '=' ,$usuario)->get();
         $minero = $min[0];
