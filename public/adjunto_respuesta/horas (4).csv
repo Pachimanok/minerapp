@@ -1,0 +1,54 @@
+id;fecha;horas;titulo;descripcion;colaborador;empresa;created_at;liquidada
+20;2/12/2020;2;Reunion Ramiro Martinez;"Vimos las posibilidad de usar API expreso lujan
+Sondeamos la posibilidad de rearmar Midas de acuerdo a los Problemas relevados en reunión con Comerciales. 
+Nos planteó la posibilidad de dejarlo para gestión interna y luego conectarlo con Plug-in con nuevas funcionalidades para escalar. 
+";Reunion Externa;ExportService;9/12/2020 13:12;
+21;4/12/2020;1;Reunion de Planificacion Aconcagua;"Quedamos en que nos traen una propuesta para la semana que viene de como vamos a encarar SS. 
+y definir si entra como Ticket o entra como un proyecto nuevo. ";Reunion Externa;taker;9/12/2020 13:14;
+22;3/12/2020;1;Reunion para ver Simple Solution ;Reunión para ver como funciona Simple Solution y ver como encaramos Aconcagua. ;Reunion Interna;taker;9/12/2020 13:16;
+23;8/12/2020;2;Estudio de MercadoPago para implementar parcho;Revisión de Informes de Mercado Pago para cargar al sistema de facturación los cobros que entran por ahí!;Planing;taker;9/12/2020 13:19;
+24;1/12/2020;4;Revision de Paginas Web y posibilidad de Formularios;Revisión de Página para ver posibles parches antes de que comience a andar el MIDAS;Planing;ExportService;9/12/2020 13:37;
+25;9/12/2020;1;Informe detallado según lo solicitado por Ramiro. ;Mail 9/12 a Ramiro.;Planing;ExportService;9/12/2020 14:16;
+26;2/12/2020;2;Crecimiento Server Group Capocha;"Posibilidad de hacer integraciones con Clientes. 
+La idea es ofrecer soluciones tecnológicas, a los clientes para que puedan integrarse a servicios de ExportService. ";Reunion Interna;ExportService;9/12/2020 15:41;
+27;3/12/2020;1;Reunion Andres Caleri;Le contamos como trabajamos y una breve introducción de tecnología para desarrollar su software. Lo vendimos como una solución del grupo. ;Reunion Externa;ExportService;9/12/2020 15:42;
+28;10/12/2020;4;Formulario para Certificados de Carga;Armamos un formulario para que se envien los certificados desde la WEB a correo de Nacho;Programación;ExportService;10/12/2020 19:44;
+29;10/12/2020;1;pagina servergroup.com;"Pagina Caida por dns. 
+Buscamos soluciones subir formularios";Aprendizaje;ExportService;10/12/2020 19:51;
+30;14/12/2020;1;Reunion con Ramiro;"Vimos tema MIDAS. 
+Posibilidad de Armar API o ponerse a laburar en MIDAS. 
+";Reunion Externa;ExportService;15/12/2020 14:22;
+31;11/12/2020;1;Reunion SS y Aconcagua;Como vamos a implementar Conexion. ;Reunion Externa;taker;15/12/2020 14:37;
+32;11/12/2020;2;Formulario de Certificaciones.;Armado de Formualrio para Clientes (revisar commit);Programación;ExportService;15/12/2020 14:38;
+33;14/12/2020;2;pagina servergroup.com;Revisión de como poder hacer para modificar la página. ;Aprendizaje;ExportService;15/12/2020 14:41;
+34;14/12/2020;1;Prioridades y Base de API;Armado de esquema para que puedan cotizar. ;Administrativo;ExportService;15/12/2020 14:48;
+35;15/12/2020;1;Opcion ID Mercado Pago Investigación;Revision de como poder hacer para linkear Usuario con pago ;Aprendizaje;taker;15/12/2020 14:53;
+36;15/12/2020;1;Modificaciones a Sistema de Ticket ;Segun lo que tenemos que mandar a SF;Programación;Global;15/12/2020 14:54;
+37;15/12/2020;1;Reunion con Aconcagua;Seguimiento y ver como solucionamos el tema de Tickets y progresos. ;Reunion Externa;taker;15/12/2020 14:55;
+38;17/12/2020;1;Reunion Aconcagua;"Hablamos de hacer concretas las reuniones de los viernes. 
+Mañana va a traer el reporte de todos los proyectos para empezar a hablar de algo en concreto. ";Reunion Externa;taker;17/12/2020 16:15;
+39;17/12/2020;2;Formulario personalizado para Total Trade;Formulario para hacer pedido de Certificados!;Programación;ExportService;17/12/2020 16:18;
+40;17/12/2020;1;Reunión Tecnologías;Como vamos a encarar el tema tecnologías a largo plazo. ;Reunion Interna;ExportService;17/12/2020 16:19;
+41;16/12/2020;1;Revision propuesta de Midas;"Vista de Propuesta de Midas transformación. Como encararlo y que dudas sacarme con San Juan
+";Aprendizaje;ExportService;17/12/2020 16:20;
+42;18/12/2020;1;Reunión con Martin Aconcagua;"Reunión con Martin
+Le vamos a dar PROA a SS el martes nos responde el presupuesto real. 
+Vamos a pasar las horas de presupuesto por mantenimiento y vamos a empezar con todo. 
+Nos va a pasar el archivo de la app para probarla. 
+Vamos a hacer reuniones concretas y recibir reportes todos los dias. ";Reunion Externa;taker;18/12/2020 14:24;
+43;17/12/2020;2;Preparación y Revision de proyectos para de Reunión Aconcagua;"Revisión de problemas Taker, presupuestos y Propuestas enviadas en su momento. 
+";Aprendizaje;taker;18/12/2020 14:31;
+44;18/12/2020;2;Prototipo MinnerApp;Captura para mineros;Programación;ExportService;18/12/2020 19:27;
+45;21/12/2020;2;Reunion API vs MIDAS;Revisamos con Ramiro las propuestas de Migración o reacondicionamiento de MIDAS.;Reunion Externa;ExportService;23/12/2020 12:38;
+46;23/12/2020;2;Reunión decisión MIDAS;Vimos diferencias entre el antiguo y el nuevo MIDAS;Reunion Interna;ExportService;23/12/2020 18:48;
+47;23/12/2020;2;Reunion para hacer API SS con TM;vimos la opcion de hacer Integracion con SS por san juan;Reunion Interna;taker;23/12/2020 21:40;
+48;24/12/2020;1;Reunión con Ramiro Integración SS;Revisamos avances en Propuesta para SS;Reunion Externa;taker;30/12/2020 13:11;
+49;28/12/2020;2;Reunion SS y Ramiro vimos la viabilidad;"Reunión con Ogro por la propuesta de Ramiro para SS
+Quedó aceptada a la tarde nos reunimos con SS para empezar a trabajar. 
+Hable con Martin Sosa para confirmar que cambiamos de SF para la integracion";Reunion Interna;taker;30/12/2020 13:17;
+50;28/12/2020;1;Reunion SS ;Reunión con propuesta funcional. ;Reunion Externa;taker;30/12/2020 13:17;
+51;28/12/2020;2;Banners;Modificaciones al código para cargar Banners. ;Programación;taker;30/12/2020 13:18;
+52;29/12/2020;2;Coneccion con Google Analitics para Publicidad ;Conexión y puesta en Marcha de Google Analitics para poder vender Banners. ;Seteos;taker;30/12/2020 13:19;
+53;29/12/2020;2;Modificaciones Front Taker AP;Modificamos Botones de Ingreso + Revisión general del Código + Revision de Libreria de Diseño para hacer el resto de la aplicación en la misma linea (Agus). ;Programación;taker;30/12/2020 13:20;
+54;29/12/2020;3;Logicas de Programación y Planing * ;Armado de Lógica de Minner App y Codeo de primeras líneas. ;Programación;ExportService;30/12/2020 13:23;
+55;30/12/2020;1;Seteo Hosting Minner *;Seteo de Hosting y Base de Datos Minner;Seteos;ExportService;30/12/2020 13:28;
