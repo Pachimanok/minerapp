@@ -10,7 +10,11 @@
           <div class="col-sm-5 mx-auto">
             @foreach ($educacion as $educacion)
             <div class="card">
-              <h1 class="text-center text-success pt-4"><i class="ni ni-lock-circle-open" style="font-size: 4rem;"></i></h1>
+              @if($educacion->estado== 'activo')
+                <h1 class="text-center text-success pt-4"><i class="fas fa-unlock-alt" style="font-size: 4rem;"></i></h1>
+              @else 
+                <h1 class="text-center text-success pt-4"><i class="fas fa-lock" style="font-size: 4rem; color:gray;"></i></h1>
+              @endif
               <h2 class="text-center" >{{ $educacion->titulo }}</h2>
               {{-- <p class="text-center"> {{ $educacion->descripcion }}</p> --}}
               <h5 class="text-center mb-0">Premio:</h5> 
@@ -20,8 +24,14 @@
                 <input type="hidden" name="id_educacion" value="{{ $educacion->id }}">
                 <div class="row">
                   <div class="col-sm-3 mx-auto text-center mb-4">
+                  @if($educacion->estado== 'activo')
+                  
                     <button class="btn btn-primary mx-auto" href="#">Validar</button>
-                  </div>
+                  
+                  @else 
+                  <button class="btn btn-primary mx-auto"  href="#" disabled>Validar</button>
+                  @endif
+                </div>
                 </div>
             </form>
             </div>

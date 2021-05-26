@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Catlimpieza;
+use App\Models\detallepedidolimpieza;
 use App\Models\pedidolimpieza;
 
-
-
-
-class LimpiezaController extends Controller
+class pedidolimpiezasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,15 +19,7 @@ class LimpiezaController extends Controller
      */
     public function index()
     {
-        $limpieza = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
-
-        $usuario = Auth::user();
-        $user = Auth::user()->name;
-        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-        $minero = $min[0];
-    
-        return view('limpieza.catalogo')->with('mineros', $minero)->with('user', $usuario)->with('limpieza', $limpieza);
-
+        //
     }
 
     /**
@@ -37,14 +29,7 @@ class LimpiezaController extends Controller
      */
     public function create()
     {
-        $usuario = Auth::user();
-        $user = Auth::user()->name;
-
-        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-        $minero = $min[0];
-    
-        return view('limpieza.minar')->with('mineros', $minero)->with('user', $usuario);
-        
+        //
     }
 
     /**
@@ -55,27 +40,8 @@ class LimpiezaController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = Auth::user();
-        $user = Auth::user()->name;
-        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-        $minero = $min[0];
-
-        $mina = $request->get('mina');
-        $minas = DB::table('minas')->where('user', '=' ,$user)->where('id', '=' ,$mina)->get();
-        $entrega = $minas;
-
-        $pedido = new pedidolimpieza(); 
-        $pedido->minaid = $mina;
-        $pedido->minero= $user;
-        $pedido->estado= 'comprando';
-        $pedido->save();
-
-        $id_pedido = pedidolimpieza::latest('id')->first();
-
-        return view('limpieza.minaseleccionada')->with('mineros', $minero)->with('user', $usuario)->with('mina', $entrega);
-
-
         
+
     }
 
     /**
@@ -109,7 +75,28 @@ class LimpiezaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $usuario = Auth::user();
+        $user = Auth::user()->name;
+        
+        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+        $minero = $min[0];
+
+        foreach($request->get('modo_pago') as $modo_pago)
+        foreach($request->get('horario_envio') as $horaio_envio)
+
+        $actualiza = pedidolimpieza::find($id);
+        $actualiza->observaciones = $request->get('obeservaciones');
+        $actualiza->modo_pago = $modo_pago;
+        $actualiza->horario_envio = $horaio_envio;
+        $actualiza->save();
+
+        $res = DB::table('pedidolimpiezas')->join('minas','pedidolimpiezas.minaid','=','minas.id')->where('pedidolimpiezas.id', '=' ,$id)->get();
+        $resumen = $res[0];
+
+        return view('limpieza.resumen')->with('mineros', $minero)->with('user', $usuario)->with('resumen', $resumen);
+ 
+
     }
 
     /**

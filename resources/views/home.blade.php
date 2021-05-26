@@ -37,6 +37,15 @@
   <script src="../assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.2.0"></script>
+  
+  <script src="../jquery-ui-1.12.1/jquery-ui.min.js'"></script>
+  <script>
+    
+    var cursos = ['html','css','php']
+    $('search').autocomplete({
+      source:cursos
+    });
+  </script>
 </body>
 
 </html>

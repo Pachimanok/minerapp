@@ -158,6 +158,9 @@ Route::resource('educacion','App\Http\Controllers\EducacionController');
 Route::resource('alianza','App\Http\Controllers\AlianzaController');
 Route::resource('minar','App\Http\Controllers\MinaController');
 Route::resource('validar','App\Http\Controllers\validarController');
+Route::resource('catlim','App\Http\Controllers\CatlimpiezaController');
+Route::resource('detpedlim','App\Http\Controllers\detallePedidoLimpiezas');
+
 
 
 
@@ -165,6 +168,8 @@ Route::resource('validar','App\Http\Controllers\validarController');
 Route::resource('editarPerfil','App\Http\Controllers\editarPerfil'); 
 Route::resource('limpieza','App\Http\Controllers\LimpiezaController');
 Route::resource('detalle','App\Http\Controllers\DetalleBilletera');
+Route::resource('pedidolimpieza','App\Http\Controllers\pedidolimpiezasController');
+
 
 route::get('/acobrar', function(){ 
     $usuario = Auth::user();

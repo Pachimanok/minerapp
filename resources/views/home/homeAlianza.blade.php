@@ -1,6 +1,5 @@
 @include('layouts.headerAlianza')
 <body>
-@include('layouts.user')
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
                 <div class="row">

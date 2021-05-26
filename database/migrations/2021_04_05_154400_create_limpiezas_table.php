@@ -14,7 +14,7 @@ class CreateLimpiezasTable extends Migration
     public function up()
     {
         Schema::create('limpiezas', function (Blueprint $table) {
-            $table->id();
+            $table->id();_
             $table->timestamps();
         });
     }
