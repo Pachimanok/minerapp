@@ -2,30 +2,29 @@
   $()['jquery'];
   console.log($().jquery);
   </script>
-@include('layouts.headerAlianza')
+@include('layouts.header')
 <body>
 @include('layouts.user')
-<div class="header bg-primary pb-3">
+<div class="header pb-3">
   <div class="container">
     <br>
-    <div class="card mt-2">
+    <div class="card mt-2" style="border: none;">
       <form class="mb-5"action="/pedidolimpieza/{{$pedido->id}}" method="POST">
         @method('PUT')
         @csrf
       <div class="card-body">
-        <h3 class="text-center">Número de Pedido: 000{{$pedido->id}}</h3>
+        <h4 class="text-center">Número de Pedido: 000{{$pedido->id}}</h4>
         @foreach ($detalle as $detalle)
             <div class="col-auto" style="display: flex;">
               <img alt="Image placeholder" src="{{ asset('img/limpieza/' . $detalle->foto) }}" class="avatar rounded-circle">
-              <h4 class="text-truncate ml-2" ><small>{{ $detalle->cantidad}} {{ $detalle->unidad}} de {{ $detalle->producto}}</small></h4>
+              <p class="text-truncate ml-2" style="    padding-top: 0.5rem;" ><small>{{ $detalle->cantidad}} {{ $detalle->unidad}} de {{ $detalle->producto}}</small></p>
             </div>
-            <hr>
+            <hr style="margin: 0.5rem;">
           @endforeach
-          <h4 class="text-center">Total a Pagar: <br> ${{$pedido->total}}</h4>
-          <hr>
+          <h4 class="text-center">Total a Pagar: <br> <strong class="text-success"> ${{$pedido->total}}</strong></h4>
           <div class="row form-inline">
             <div class="col-sm-12 mx-auto mb-2" style="text-align: center;">
-                <select type="text" name="modo_pago[]" class="form-control">
+                <select type="text" name="modo_pago[]" class="form-control" required>
                   <option value="">-.Elegir modo de Pago.-</option>
                   <option value="efectivo">Efectivo</option>
                   <option value="transferencia">Transferencia</option>
@@ -35,7 +34,7 @@
           </div>
           <div class="row form-inline">
             <div class="col-sm-12 mx-auto mb-2" style="text-align: center;">
-                <select type="text" name="horario_envio[]" class="form-control">
+                <select type="text" name="horario_envio[]" class="form-control" required>
                   <option value="">-.Elegir horario.-</option>
                   <option value="10 a 12 AM">10 a 12 AM</option>
                   <option value="3 a 7 PM">3 a 7 PM</option>
@@ -47,16 +46,21 @@
             <div class="col-sm-12 mx-auto mb-2" style="text-align: center;">
                 <textarea name="observaciones" rows="4" placeholder="Algun comentario..."></textarea>
           </div>
-              <button type="submit" class="btn btn-primary btn-block">Terminar Pedido</button>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <button type="submit" class="btn btn-primary btn-block pt-2 pb-2" style="border-radius: 50px; width:90%; background: #1f538a;
+            }">Terminar Pedido</button>
+            <p class="text-success text-center">5 | 5</p>
+
+            </div>
+          </div>
+              
         </div>
         </form>
       </div>
     </div>
 </div>
-                    <!-- Footer -->
-                    <footer class="footer  bg-dark ">
-                        <h5 class="text-light text-center">MinerApp :: un minero en cada casa</h5>
-                    </footer>
             </div>
         </div>
         <!-- Argon Scripts -->

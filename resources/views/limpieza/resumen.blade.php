@@ -1,18 +1,20 @@
 @include('layouts.header')
 <body>
 @include('layouts.user')
-<div class="header bg-primary pb-3">
-  <div class="container">
+<div class="header pb-3">
+  <div class="container mt-6">
     <br>
-    <div class="card mt-2">
-      <div class="card-body">
-        <h2 class="text-success text-center ">¡Compra realizada correctamente!</h2>
-        <h5 class="text-center text-secondary pb-0 mb-0">{{ $resumen->minero}}: Estaremos enviando el pedido a: {{ $resumen->titulo}}</h5>      
-        <h6 class="text-center text-secondary pb-0 mb-0">Direccion: {{$resumen->calle}} {{$resumen->numero}} @if($resumen->calle == 'si') piso: {{$resumen->piso}} - Dpto: {{$resumen->dpto}}  @endif {{$resumen->localidad}} </h6>
-        <h6 class="text-center text-secondary">Avisale a Contacto: {{$resumen->contacto}} que estermos entregando el pedido de {{$resumen->horario_envio}}</h6>
+    <div class="card mt-2" style="border:none;">
+      <div class="card-body" >
+        <h1 class="text-center text-success p-0" style="font-size: -webkit-xxx-large;"><i class="ni ni-check-bold"></i></h1>
+        <h2 class="text-success text-center p-0">¡Compra realizada correctamente!</h2>
+        <p class="text-center pb-0 mb-0">Estaremos enviando el pedido a: <br><strong>{{ $resumen->titulo}}</strong></h5>      
+        <p class="text-center pb-0 mb-0">Direccion: {{$resumen->calle}} {{$resumen->numero}} @if($resumen->calle == 'si') piso: {{$resumen->piso}} - Dpto: {{$resumen->dpto}}  @endif <br> {{$resumen->localidad}} </h6>
+        <p class="text-center">Avisale a Contacto: <br>{{$resumen->contacto}} que estermos entregando el pedido de {{$resumen->horario_envio}}</h6>
+        <br>
         <br><div class="row">
             <div class="col-sm-5 mx-auto">
-              <a href="/home" class="btn btn-primary btn-block">Terminar</a>
+              <a href="/home" class="btn btn-success btn-block" style="border-radius: 50px;">Terminar</a>
             </div>
           </div>
         </div>
@@ -20,10 +22,7 @@
       </div>
     </div>
 </div>
-                    <!-- Footer -->
-                    <footer class="footer  bg-dark ">
-                        <h5 class="text-light text-center">MinerApp :: un minero en cada casa</h5>
-                    </footer>
+                    
             </div>
         </div>
         <!-- Argon Scripts -->

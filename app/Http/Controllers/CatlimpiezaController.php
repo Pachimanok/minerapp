@@ -23,11 +23,13 @@ class CatlimpiezaController extends Controller
         $usuario = Auth::user();
         $user = $usuario->name;
 
-        $limpieza = DB::table('catlimpiezas')->get();
         $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
         $minero = $min[0];
+
+        $rubros = DB::table('limpiezarubros')->get();
+        $articulos = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
         
-        return view('formularios.catalogoLimpieza')->with('limpieza', $limpieza)->with('user', $usuario)->with('mineros', $minero);
+        return view('formularios.catalogoLimpieza')->with('rubros', $rubros)->with('user', $usuario)->with('mineros', $minero);
 
     }
 
@@ -121,6 +123,8 @@ class CatlimpiezaController extends Controller
 
         $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
         $minero = $min[0];
+
+        
         
         return view('formularios.articuloLimpieza')->with('limpieza', $limpieza)->with('user', $usuario)->with('mineros', $minero);
     }

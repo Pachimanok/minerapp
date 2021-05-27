@@ -2,22 +2,21 @@
   $()['jquery'];
   console.log($().jquery);
   </script>
-@include('layouts.headerAlianza')
+@include('layouts.header')
 <body>
 @include('layouts.user')
-<div class="header bg-primary pb-6">
+<div class="header pb-6">
   <div class="container-fluid">
     <div class="row pt-5">
+      <h3 class="text-center">Selecciona los productos:</h3>
       <form action="/detpedlim" method="POST">
       @csrf
         @foreach ($rubros as $rubro)
-        <p>
-          <button class="btn btn-primary btn-block" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample{{$rubro->id}}" aria-expanded="false" aria-controls="multiCollapseExample{{$rubro->id}}">{{$rubro->rubro}}</button>
+          <button class="btn btn-outline-primary btn-block" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample{{$rubro->id}}" aria-expanded="false" aria-controls="multiCollapseExample{{$rubro->id}}">{{$rubro->rubro}}</button>
           <div class="collapse multi-collapse" id="multiCollapseExample{{$rubro->id}}">
-            <div class="card card-body">
+            <div class="card card-body" style="border: none;">
               <ul class="list-group list-group-flush">
                 @foreach ($articulos as $articulo)
-
                 @if($articulo->rubro == $rubro->rubro)
                   <li class="list-group-item">
                     <div class="row align-items-center">
@@ -54,22 +53,18 @@
             </div>
           </div>
           @endforeach
-        </p>
-        
         <input type="hidden" name="pedido" value="{{ $pedido->id }}" >
         <div class="row">
           <div class="col-sm-3 mx-auto text-center">
-            <button class="btn btn-primary btn-block mt-3 bg-white text-dark">Hacer Pedido</button>
+            <button class="btn btn-primary btn-block mt-3" style="border-radius: 50px;">Hacer Pedido</button>
+            <p class="text-success text-center">3 | 5</p>
           </div>
         </div>
     </form>
     </div>
   </div>
 </div>
-                    <!-- Footer -->
-                    <footer class="footer  bg-dark ">
-                        <h5 class="text-light text-center">MinerApp :: un minero en cada casa</h5>
-                    </footer>
+                    
             </div>
         </div>
         <!-- Argon Scripts -->

@@ -1,30 +1,26 @@
 @include('layouts.header')
 <body>
 @include('layouts.user')
-<div class="header bg-primary ">
+<div class="header mt-7">
   <div class="container-fluid">
-  <div class="card">
-    <div class="card-header">
+    <div class="card-header mt-5 pt-6 pb-0">
       @foreach ($mina as $mina)
-      <h1 class="text-center">Armar un pedido para: {{$mina->titulo}} </h1>
-    </div>
-    <div class="card-body pb-5">
-      <h3 class="text-center">Direccion: {{$mina->calle}} {{$mina->numero}} @if($mina->calle == 'si') piso: {{$mina->piso}} - Dpto: {{$mina->dpto}}  @endif {{$mina->localidad}} </h3>
-      <h3 class="text-center">Contacto: {{$mina->contacto}} Celular: {{$mina->telefono}}</h3>
+      <h3 class="text-center mt-3 pb-0">Armar un pedido para:</h3>   
+      <h2 class="text-center pt-1">{{$mina->titulo}} </h2>   
+      <p class="text-center mb-0" >Direccion: {{$mina->calle}} {{$mina->numero}} @if($mina->calle == 'si') piso: {{$mina->piso}} - Dpto: {{$mina->dpto}}  @endif <br>{{$mina->localidad}} </p>
+      <p class="text-center ">Contacto: {{$mina->contacto}} Celular: {{$mina->telefono}}</p>
     </div>
     @endforeach
     <div class="row pb-3">
       <div class="col-sm-3 mx-auto text-center">
-        <a  class="btn btn-primary" href="/detpedlim/create">Hacer Pedido</a>
+        <a  class="btn btn-primary btn-block" style="border-radius:50px;"href="/detpedlim/create">Hacer Pedido</a>
+        <p class="text-success text-center">2 | 5</p>
       </div>
     </div>
   </div>
   </div>
 </div>
-                    <!-- Footer -->
-                    <footer class="footer  bg-dark ">
-                        <h5 class="text-light text-center">MinerApp :: un minero en cada casa</h5>
-                    </footer>
+                   
             </div>
         </div>
         <!-- Argon Scripts -->

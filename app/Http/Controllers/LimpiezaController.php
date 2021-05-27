@@ -25,8 +25,11 @@ class LimpiezaController extends Controller
         $user = Auth::user()->name;
         $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
         $minero = $min[0];
+
+        $rubros = DB::table('limpiezarubros')->get();
+        $articulos = DB::table('catlimpiezas')->get();
     
-        return view('limpieza.catalogo')->with('mineros', $minero)->with('user', $usuario)->with('limpieza', $limpieza);
+        return view('limpieza.catalogo')->with('mineros', $minero)->with('user', $usuario)->with('rubros', $rubros)->with('articulos', $articulos);
 
     }
 

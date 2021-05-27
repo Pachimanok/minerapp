@@ -40,7 +40,6 @@ class detallePedidoLimpiezas extends Controller
         
         $rubros = DB::table('limpiezarubros')->get();
         $articulos = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
-        
 
         return view('limpieza.selectproductos')->with('mineros', $minero)->with('user', $usuario)->with('rubros', $rubros)->with('articulos', $articulos)->with('pedido', $id_pedido);
 

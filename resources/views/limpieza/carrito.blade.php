@@ -5,10 +5,10 @@
 @include('layouts.header')
 <body>
 @include('layouts.user')
-<div class="header bg-primary pb-3">
+<div class="header pb-3">
   <div class="container">
     <br>
-    <div class="card mt-2">
+    <div class="card mt-2" style="border: none;">
       <form class="mb-5"action="/detpedlim/{{$id}}" method="POST">
         @method('PUT')
         @csrf
@@ -24,15 +24,17 @@
               </div>
             {{--   <div class="qty" style="text-align: center; margin-top: 3%;min-width: 8rem;">
                 <a class="btn btn-primary minus m-0" style="width: 2rem;">-</a> --}}
-                  <input type="number" name="cantidad[{{$pedido->id}}]" style="width: 3rem;text-align: center; height: 2.4rem;" min="1">
+                  <input type="number" name="cantidad[{{$pedido->id}}]" style="width: 3rem;text-align: center; height: 2.4rem;" placeholder='0' min="1" required>
                 {{-- a <class="btn btn-primary plus" style="width: 2rem;">+</a>
               </div> --}}
             </div>
             <hr>
           @endforeach
           <div class="row">
-            <div class="col-sm-5 mx-auto">
-              <button type="submit" class="btn btn-primary mx-auto">Hacer Pedido</button>
+            <div class="col-sm-5 text-center">
+              <button type="submit" class="btn btn-primary pt-2 pb-2" style="width: 90%; border-radius: 50px; background: #1f538a; ">Hacer Pedido</button>
+            <p class="text-success text-center">4 | 5</p>
+
             </div>
           </div>
         </div>
@@ -40,10 +42,6 @@
       </div>
     </div>
 </div>
-                    <!-- Footer -->
-                    <footer class="footer  bg-dark ">
-                        <h5 class="text-light text-center">MinerApp :: un minero en cada casa</h5>
-                    </footer>
             </div>
         </div>
         <!-- Argon Scripts -->

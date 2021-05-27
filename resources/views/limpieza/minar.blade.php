@@ -2,38 +2,34 @@
   $()['jquery'];
   console.log($().jquery);
   </script>
-@include('layouts.headerAlianza')
+@include('layouts.header')
 <body>
 @include('layouts.user')
-<div class="header bg-primary pb-6">
+<div class="header bg-white mt-6 pb-6 pt-6 mb-6">
   <div class="container-fluid">
     <div class="row pt-5">
       <form action="/limpieza" method="POST">
       @csrf
       <div class="col-sm-5 mx-auto text-center">
-        <select type="text" name="mina" class="form-control mb-4">
+        <select  type="text" name="mina" class="form-control mb-4">
           <option value="">Elgir Mina</option>
           <option value="1">Casa Mama</option>
           <option value="2">Casa Papa</option>
           <option value="3">Casa Abuela</option>
         </select>
-        <button  style="color: white">agregar mina</button>
       </div>
     </div>
- 
-    <div class="row">
-      <div class="col-sm-3 mx-auto text-center">
-        <button type="submit" class="btn btn-primary btn-block mt-3">Selccionar</button>
-      </div>
+    <div class="d-grid gap-2 mx-auto">
+      <button type="submit" class="btn btn-primary" style="padding: 10px 30px; border-radius: 50px; background: #1f538a ">Seleccionar</button>
+      <a class="btn btn-outline-primary" style="border-radius: 50px;">Agregar Mina</a>
+      <p class="text-success text-center">1 | 5</p>
+
     </div>
-    </div>
+    
   </form>
   </div>
 </div>
-                    <!-- Footer -->
-                    <footer class="footer  bg-dark ">
-                        <h5 class="text-light text-center">MinerApp :: un minero en cada casa</h5>
-                    </footer>
+                    
             </div>
         </div>
         <!-- Argon Scripts -->

@@ -1,66 +1,73 @@
-<script>
-  $()['jquery'];
-  console.log($().jquery);
-  </script>
-@include('layouts.headerAlianza')
+@include('layouts.header')
 
 <body>
-@include('layouts.user')
-<div class="header bg-primary pb-6">
-  <div class="container-fluid">
-    <div class="row">
-      
-      @foreach ($limpieza as $limpieza)
-      <div class="col-sm-4 order-sm-2">
-        <div class="card card-profile" style="border-radius: 50px;">
-          <div class="col-sm-1  mx-auto text-center mt-2">
-            <img src="../img/limpieza/{{ $limpieza->foto }}" style="border-radius: 50px; max-height: 150px; max-width: 150px;" alt="Image placeholder"
-            class="" >
-          </div>
-          <div class="card-body ">
-            <div class="row" >
-              <h3 class="text-center mb-0">{{ $limpieza->titulo }}</h3>
-            </div>
-            <div class="row mb-0">
-              <p class="text-center">{{ $limpieza->description }}</p>
-            </div>
-            <div class="row mb-0">
-              <h1 class="text-center">$ {{ $limpieza->preciouni }} <small style="color: gray;">/ {{ $limpieza->unidad }}</small></p>
-            </div>
-            <div class="row mb-0">
-              <p class="text-center mb-0">Rubro: {{ $limpieza->rubro }}</p>
-            </div>
-            <div class="row">
-              <span class="badge badge-dot mr-4">
-                <i class="bg-success"></i>
-                <span class="text-success">En Stock</span>
-              </span>
-            </div>
-          </div>
+    @include('layouts.user')
+    <div class="header pb-6">
+        <div class="container-fluid">
+          <h3 class="text-center">Catalogo de Limpieza Premium</h3>
+          <hr class="mt-1">
+            @foreach ($rubros as $rubro)
+                <button class="btn btn-outline-primary btn-block" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#multiCollapseExample{{ $rubro->id }}" aria-expanded="false"
+                    aria-controls="multiCollapseExample{{ $rubro->id }}">{{ $rubro->rubro }}</button>
+                <div class="collapse multi-collapse" id="multiCollapseExample{{ $rubro->id }}">
+                    <div class="card card-body" style="border: none;">
+                        <ul class="list-group list-group-flush">
+                            @foreach ($articulos as $articulo)
+                                @if ($articulo->rubro == $rubro->rubro)
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto text-center pl-0" style="width: 25%;">
+                                                <!-- Avatar -->
+                                                <img alt="Image placeholder"
+                                                    src="{{ asset('img/limpieza/' . $articulo->foto) }}"
+                                                    class="avatar rounded-circle">
+                                            </div>
+                                            <div class="col-auto" style="width: 50%;">
+                                                        <h4 class="mb-0 text-sm pb-0">{{ $articulo->titulo }}</h4>
+                                                        <p class="text-sm mt-0 mb-0" style="line-height: 10px;"><small>{{ $articulo->description }}</small></p>
+                                                   
+                                            </div>
+                                            <div class="col-auto" style="width: 20%;">
+                                              <div class="d-flex justify-content-between align-items-center">
+                                                  <div>
+                                                      <h5 class="text-sm text-primary mt-0 mb-0 pb-0">${{ $articulo->preciouni }}</h5>
+                                                      <p class="text-sm  mb-0" style="margin-top: -0.5rem;text-align: right;"><small>/{{ $articulo->unidad }}</small></p>
+
+                                                  </div>
+                                              </div>
+                                          </div>
+                                        </div>
+                                        
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endforeach
         </div>
-      </div>
-      @endforeach
     </div>
-  </div>
-</div>
-                    <!-- Footer -->
-                    <footer class="footer  bg-dark ">
-                        <h5 class="text-light text-center">MinerApp :: un minero en cada casa</h5>
-                    </footer>
-            </div>
-        </div>
-        <!-- Argon Scripts -->
-        <!-- Core -->
-        <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-        <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
-        <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-        <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-        <!-- Optional JS -->
-        <script src="../assets/vendor/chart.js/dist/Chart.min.js"></script>
-        <script src="../assets/vendor/chart.js/dist/Chart.extension.js"></script>
-        <!-- Argon JS -->
-        <script src="../assets/js/argon.js?v=1.2.0"></script>
+    </div>
+    </div>
+    </div>
+    <!-- Argon Scripts -->
+    <!-- Core -->
+    <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
+    <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <!-- Optional JS -->
+    <script src="../assets/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="../assets/vendor/chart.js/dist/Chart.extension.js"></script>
+    <!-- Argon JS -->
+    <script src="../assets/js/argon.js?v=1.2.0"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5
 </body>
 
 </html>
