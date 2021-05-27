@@ -93,7 +93,7 @@ class MineroController extends Controller
             $extencion = $archivo->getClientOriginalExtension();
             $name = $archivo->getClientOriginalName(); 
             $imagen = Image::make($archivo);
-            $imagen->resize(300,300);
+
             $imagen->encode($extencion);
             $path = public_path('img/avatar/' . $name);
             $imagen->save($path); 
@@ -102,7 +102,7 @@ class MineroController extends Controller
                 $extencion_fondo = $archivo_fondo->getClientOriginalExtension();
                 $name_fondo = $archivo_fondo->getClientOriginalName();
                 $imagen_fondo= Image::make($archivo_fondo);
-                $imagen_fondo->resize(300,300);
+                $imagen_fondo->resize(500,500);
                 $imagen_fondo->encode($extencion_fondo);
                 $path_fondo = public_path('img/fondo/' . $name_fondo);
                 $imagen_fondo->save($path_fondo); 

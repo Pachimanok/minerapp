@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg ">
         <div class="modal-content border-warning mt-5 mb-5">
             <div class="modal-body text-center">
-                <h1 class="text-center" style="color: #13538a;">¡Hola {{ $mineros->user_name }}!</h1>
+                <h2 class="text-center pb-0 text-primary" style="color: #1f538a;">¡Hola {{ $mineros->user_name }}!</h2>
                 <p class="text-center">Ya estás en nuestro sistema, termina de completar estos datos!</p>
                 <form action="/minero/{{ $mineros->id }}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
@@ -72,7 +72,7 @@
                 </div>
                 <div class="row mb-5">
                     <div class="col-lg-5 mx-auto">
-                        <button type="submit" class="btn btn-lg">Comenzar</button>
+                        <button type="submit" style="border-radius: 50px; background: #1f538a;" class="btn btn-lg btn-primary">Comenzar a Minar</button>
                     </div>
                     
                 </div>

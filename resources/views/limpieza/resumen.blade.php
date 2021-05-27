@@ -1,4 +1,4 @@
-@include('layouts.headerAlianza')
+@include('layouts.header')
 <body>
 @include('layouts.user')
 <div class="header bg-primary pb-3">

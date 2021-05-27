@@ -20,7 +20,7 @@
 </div>
   </div>
       <!-- Footer -->
-      <footer class="footer  bg-dark ">
+      <footer class="footer">
         <h5 class="text-light text-center">MinerApp :: un minero en cada casa</h5>
       </footer>
     </div>
@@ -39,6 +39,16 @@
   <script src="../assets/js/argon.js?v=1.2.0"></script>
   
   <script src="../jquery-ui-1.12.1/jquery-ui.min.js'"></script>
+  <script type="module">
+
+
+
+import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+const el = document.createElement('pwa-update');
+document.body.appendChild(el);
+
+  </script>
   <script>
     
     var cursos = ['html','css','php']

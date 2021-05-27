@@ -10,7 +10,7 @@
   <meta name="author" content="Creative Tim">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
   <!-- Favicon -->
-  <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="../assets/img/android-icon-192x192.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
@@ -20,36 +20,18 @@
   <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> 
 </head>
-
-
-<body class="bg-default">  
+<body>  
   <!-- Main content -->
   <div class="main-content">
     <!-- Header -->
-    <div class="bg-white py-7 py-lg-8 pt-lg-9">
+    <div class="bg-white py-4 py-lg-8 pt-lg-9">
       <div class="container">
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-              <img src="{{ asset('img/minerapp.PNG') }}" style="width: 200px">
+              <img src="{{ asset('/assets/img/android-icon-192x192.png') }}" style="width: 200px">
               <h1 style="color: #13538a">Crear un cuenta:</h1>
-              <p style="color: #13538a;margin-bottom: 0;" class="text-lead">Bienevenido a <strong>Miner App</strong> completa los siguientes daros para comenzar con tu registro:</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-    <!-- Page content -->
-    <div class="container mt--8 pb-5">
-      <!-- Table -->
-      <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8">
-          <div class="card bg-primary border-0">
-            <div class="card-body px-lg-5 py-lg-5">
-              <div class="text-center text-muted mb-4">
-                <small style="color: #3edad8;">Completa tus credenciales:</small>
-              </div>
+              <p style="color: #13538a;margin-bottom: 0;" class="text-lead">Completa los siguientes daros para comenzar con tu registro:</p>
               <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="form-group">
@@ -99,7 +81,13 @@
                         <input id="password-confirm" type="password" placeholder="Repetir Contraseña"class="form-control" name="password_confirmation" required autocomplete="new-password">
                     </div>
                 </div>
-                <div class="form-group row mb-0">
+                <div class="custom-control custom-control-alternative custom-checkbox">
+                  <input class="custom-control-input" type="checkbox" name="terminos" id="customCheckLogin">
+                  <label class="custom-control-label" for=" customCheckLogin">
+                  <span class="text-primary">Acepto los terminos y condiciones</span>
+                  </label>
+              </div>
+                <div class="form-group row mt-2 mb-0">
                     <div class="col-md-6 mx-auto text-center offset-md-4">
                         <button type="submit" class="btn btn-primary text-secondary">
                             {{ __('Registrarme') }}
@@ -111,8 +99,9 @@
           </div>
         </div>
       </div>
+      
     </div>
-  </div>
+    
   <!-- Footer -->
   <footer class="py-5" id="footer-main">
     <div class="container">

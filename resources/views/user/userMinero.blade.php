@@ -1,7 +1,7 @@
 <!-- Navbar links -->
 <ul class="navbar-nav align-items-center  ml-md-auto ">
     <li class="nav-item">
-      <a href="/home"><h2>MinerApp</h2></a>
+      <a href="/home"><img src="{{ asset('/assets/img/android-icon-36x36.png') }}"></a>
     </li>
     <li class="nav-item d-sm-none">
       <a class="nav-link" style="color:white;"  href="#" data-action="search-show" data-target="#navbar-search-main">

@@ -13,6 +13,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/home', function () {
 
     $usuario = Auth::user();
