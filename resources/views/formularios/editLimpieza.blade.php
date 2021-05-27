@@ -1,5 +1,5 @@
 
-@include('layouts.header')
+@include('layouts.headerAlianza')
 
 <body>
 {{-- @include('layouts.nav') --}}

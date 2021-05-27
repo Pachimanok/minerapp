@@ -62,7 +62,16 @@ Route::get('/home', function () {
         /* Datos dela Alianza */
         $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
         $ali = $alianza[0];
+        
+        if($ali->user == 'luchito'){
+            
+            $limpieza = DB::table('catlimpiezas')->get();
 
+            return view('formularios.catalogoLimpieza')->with('user', $usuario)->with('alianza', $ali)->with('limpieza', $limpieza);
+        }
+   
+
+        
         return view('home.homeAlianza')->with('user', $usuario)->with('alianza', $ali);
         
 

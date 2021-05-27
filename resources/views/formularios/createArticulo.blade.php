@@ -1,5 +1,5 @@
 
-@include('layouts.header')
+@include('layouts.headerAlianza')
 
 <body>
 {{-- @include('layouts.nav') --}}
@@ -9,7 +9,7 @@
         <div class="card bg-primary" style="border-none">
           <div class="card-body text-center">
                 <h3 class="text-white text-center">Crear Articulo para Catalogo</h3>
-                <h6 class="text-center" style="color: #119da4">User:{{ $mineros->name }}</h6>
+                <h6 class="text-center" style="color: #119da4">User:{{ ($alianza->user) }}</h6>
                 <br>
                 <form class="mb-5"action="/catlim" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -86,11 +86,10 @@
                             <div class="col-sm-5 mx-auto text-light text-center">
                             <select name="rubro[]" class="form-control">
                                 <option value="">Elegir Rubro</option>
-                                <option value="Limpieza">Limpieza</option>
-                                <option value="Descartables">Descartables</option>
-                                <option value="Automovil">Automovil</option>
-                                <option value="Baño">Baño</option>
-                                <option value="Otros">Otro</option>
+                                @foreach ($rubros as $rubro)
+                                    <option value="{{ $rubro->rubro}}">{{ $rubro->rubro}}</option>
+                                @endforeach
+                                
                             </select>
                             </div>
                         </div>

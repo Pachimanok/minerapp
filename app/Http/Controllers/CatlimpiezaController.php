@@ -42,10 +42,26 @@ class CatlimpiezaController extends Controller
     {
         $usuario = Auth::user();
         $user = $usuario->name;
-        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-        $minero = $min[0];
 
-        return view('formularios.createArticulo')->with('user', $usuario)->with('mineros', $minero);
+        if($usuario->role == 'minero'){
+           
+            $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+            $minero = $min[0];
+
+            return view('formularios.createArticulo')->with('user', $usuario)->with('mineros', $minero);
+
+        }else{
+
+            $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
+            $ali = $alianza[0];
+
+            $rubros = DB::table('limpiezarubros')->get();            
+            
+            $limpieza = DB::table('catlimpiezas')->get();
+
+            return view('formularios.createArticulo')->with('user', $usuario)->with('alianza', $ali)->with('rubros', $rubros);
+
+        }
     }
 
     /**
@@ -86,23 +102,20 @@ class CatlimpiezaController extends Controller
 
         $articulo->save();
 
-
         session()->flash('mensaje','Se envió con éxito');
         session()->flash('tipo','primary');
+
+
         
+        $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
+        $ali = $alianza[0];
+
+        $rubros = DB::table('limpiezarubros')->get();
+        $articulos = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
         
-        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+        return view('formularios.catalogoLimpieza')->with('rubros', $rubros)->with('limpieza', $articulos)->with('user', $usuario)->with('alianza', $ali);
+
        
-
-
-        $minero = $min[0];
-        $usuario = Auth::user();
-
-        $limpieza = DB::table('catlimpiezas')->get();
-        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-        $minero = $min[0];
-
-        return redirect('/catlim');
 
         /* return view('formularios.catalogoLimpieza')->with('limpieza', $limpieza)->with('user', $usuario)->with('mineros', $minero); */
 
@@ -141,11 +154,23 @@ class CatlimpiezaController extends Controller
         $user = $usuario->name;
 
         $limpieza = DB::table('catlimpiezas')->where('id','=',$id)->get();
+        if($usuario->role == 'minero'){
 
-        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-        $minero = $min[0];
-        
-        return view('formularios.editLimpieza')->with('limpieza', $limpieza)->with('user', $usuario)->with('mineros', $minero);
+            $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+            $minero = $min[0];
+            
+            return view('formularios.editLimpieza')->with('limpieza', $limpieza)->with('user', $usuario)->with('mineros', $minero);
+
+        }else{
+
+            $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
+            $ali = $alianza[0];
+
+            return view('formularios.editLimpieza')->with('limpieza', $limpieza)->with('user', $usuario)->with('alianza', $ali);
+
+        }
+
+       
     }
 
     /**
@@ -203,7 +228,15 @@ class CatlimpiezaController extends Controller
 
             }
 
-            return redirect('/catlim');
+        $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
+        $ali = $alianza[0];
+
+        $rubros = DB::table('limpiezarubros')->get();
+        $articulos = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
+        
+        return view('formularios.catalogoLimpieza')->with('rubros', $rubros)->with('limpieza', $articulos)->with('user', $usuario)->with('alianza', $ali);
+
+
 
     }
 

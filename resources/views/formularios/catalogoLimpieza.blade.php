@@ -30,6 +30,7 @@
                             </tr>
                           </thead>
                           <tbody class="list">
+                            
                             @foreach ($limpieza as $limpieza)
                             <tr>
                               <td>

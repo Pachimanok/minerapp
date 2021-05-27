@@ -23,23 +23,7 @@
   <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> 
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
-  @if($mineros->celular == null)
-  <link rel="stylesheet" href="{{assets('jquery-ui-1.12.1/jquery-ui.min.css')}}">
   
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-  [].forEach.call(document.querySelectorAll('.dropimage'), function(img){
-    img.onchange = function(e){
-      var inputfile = this, reader = new FileReader();
-      reader.onloadend = function(){
-        inputfile.style['background-image'] = 'url('+reader.result+')';
-      }
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  });
-});
-  </script>
- @endif 
 
  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
