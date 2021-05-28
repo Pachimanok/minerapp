@@ -19,17 +19,28 @@ class LimpiezaController extends Controller
      */
     public function index()
     {
-        $limpieza = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
-
         $usuario = Auth::user();
-        $user = Auth::user()->name;
-        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-        $minero = $min[0];
+        $user = $usuario->name;
 
+        $limpieza = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
         $rubros = DB::table('limpiezarubros')->get();
-        $articulos = DB::table('catlimpiezas')->get();
+        
+        
+        if($usuario->role == 'minero'){
+            $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+            $minero = $min[0];
+            return view('limpieza.catalogo')->with('mineros', $minero)->with('user', $usuario)->with('rubros', $rubros)->with('articulos', $limpieza);
+
+
+        }else{
+
+            $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
+            $ali = $alianza[0];
+            $articulos = DB::table('catlimpiezas')->get();
+            return view('limpieza.catalogo')->with('alianza', $ali)->with('user', $usuario)->with('rubros', $rubros)->with('articulos', $articulos);
+
+        }
     
-        return view('limpieza.catalogo')->with('mineros', $minero)->with('user', $usuario)->with('rubros', $rubros)->with('articulos', $articulos);
 
     }
 

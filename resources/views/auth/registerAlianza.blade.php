@@ -66,7 +66,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                     </div>
-                    <input id="celular" type="phone" placeholder="Celular" class="form-control @error('celular') is-invalid @enderror" name="celular" value="{{ old('celular') }}" required autocomplete="celular">
+                    <input id="celular" type="number" placeholder="Celular" class="form-control @error('celular') is-invalid @enderror" name="celular" value="{{ old('celular') }}" required autocomplete="celular">
                     @error('celular')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

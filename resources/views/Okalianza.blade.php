@@ -1,19 +1,19 @@
 @include('layouts.headerAlianza')
 <body>
-<div class="row" style="height: 10rem; background: #5e72e4;"></div>
-    <div class="header bg-primary pb-6">
+<div class="row" style="height: 10rem;"></div>
+    <div class="header pb-6">
       <div class="container-fluid">
         <div class="row">
             <div class="col">
-              <div class="card bg-default shadow">
+              <div class="card  shadow">
                 <div class="card-header bg-transparent border-0">
-                  <h3 class="text-white text-center mb-0">Bienvenido {{ $alianzas->user }}</h3>
+                  <h3 class="text-primary text-center mb-0">Bienvenido {{ $alianzas->user }}</h3>
                 </div>
   
                 
                 <h2 class="text-white text-center"></h2>
-                <p class="text-white text-center">Estamos terminando de revisar tu empresa {{ $alianzas->nombre_fantasia }}</p>
-                <p class="text-white text-center">Te enviaremos un correo a: {{ $alianzas->email }} dentro de las 48 horas hábiles. </p>
+                <p class="text-center">Estaremos revisando y configurando tu empresa <strong>{{ $alianzas->nombre_fantasia }}</strong></p>
+                <p class="text-center">Te enviaremos un correo a: <strong>{{ $alianzas->email }}</strong> dentro de las 48 horas hábiles para continuar con el proceso. </p>
 
 
                <div class="col-sm-3 text-center mx-auto">
@@ -28,9 +28,7 @@
       </div>
     </div>
       <!-- Footer -->
-      <footer class="footer  bg-dark ">
-        <h5 class="text-light text-center">MinerApp :: un minero en cada casa</h5>
-      </footer>
+      
     </div>
   </div>
   

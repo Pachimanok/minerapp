@@ -1,11 +1,31 @@
-@include('layouts.header')
-
-<body>
-    @include('layouts.user')
-    <div class="header pb-6">
+@if($user->role == 'minero')
+    @include('layouts.header')      
+    <body>
+    @include('layouts.user') 
+    <div class="header pb-6" >
+@else
+@include('layouts.headerAlianza')    
+    <body>
+    @include('layouts.user') 
+    <div class="header pb-6" style="max-width: 23rem;
+    min-height: 38rem;
+    margin-left: 40%;
+    border-style: groove;
+    border-radius: 20px;
+    background: white;
+    margin-top: 2rem;">
+    @endif
         <div class="container-fluid">
-          <h3 class="text-center">Catalogo de Limpieza Premium</h3>
-          <hr class="mt-1">
+            <a href="{{ URL::previous() }}" class="btn btn-block pb-0" style="border-radius: 50px;">| Salir |</a>
+          <h3 class="text-center pb-0">Catalogo de Limpieza Premium</h3>
+          <div class="row text-center">
+              <div class="col-sm-3 mx-auto">
+
+
+              </div>
+
+          </div>
+          <br class="mt-1">
             @foreach ($rubros as $rubro)
                 <button class="btn btn-outline-primary btn-block" type="button" data-bs-toggle="collapse"
                     data-bs-target="#multiCollapseExample{{ $rubro->id }}" aria-expanded="false"

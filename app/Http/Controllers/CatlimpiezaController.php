@@ -20,16 +20,36 @@ class CatlimpiezaController extends Controller
      */
     public function index()
     {
+        /* variables de accion  */
         $usuario = Auth::user();
         $user = $usuario->name;
 
-        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-        $minero = $min[0];
+        /* accion */
 
-        $rubros = DB::table('limpiezarubros')->get();
-        $articulos = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
+        /* variables para la vista */
+
+        if($usuario->role == 'minero'){
+
+            $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+            $minero = $min[0];
+            $rubros = DB::table('limpiezarubros')->get();
+            $articulos = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
         
+        /* redireccion a la vista */
         return view('formularios.catalogoLimpieza')->with('rubros', $rubros)->with('user', $usuario)->with('mineros', $minero);
+
+
+        }else{
+
+            $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
+            $ali = $alianza[0];
+            $rubros = DB::table('limpiezarubros')->get();
+            $articulos = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
+
+            /* redireccion a la vista */
+           return view('formularios.catalogoLimpieza')->with('rubros', $rubros)->with('limpieza', $articulos)->with('user', $usuario)->with('alianza', $ali);
+
+        }      
 
     }
 
@@ -104,8 +124,6 @@ class CatlimpiezaController extends Controller
 
         session()->flash('mensaje','Se envió con éxito');
         session()->flash('tipo','primary');
-
-
         
         $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
         $ali = $alianza[0];
@@ -134,12 +152,22 @@ class CatlimpiezaController extends Controller
 
         $limpieza = DB::table('catlimpiezas')->where('id','=',$id)->get();
 
-        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-        $minero = $min[0];
+        if($usuario->role == 'minero'){
+            $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+            $minero = $min[0];
+            return view('formularios.articuloLimpieza')->with('limpieza', $limpieza)->with('user', $usuario)->with('mineros', $minero);
+
+        }else{
+            
+            $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
+            $ali = $alianza[0];
+            return view('formularios.articuloLimpieza')->with('limpieza', $limpieza)->with('user', $usuario)->with('alianza', $ali);
+        }
+       
 
         
         
-        return view('formularios.articuloLimpieza')->with('limpieza', $limpieza)->with('user', $usuario)->with('mineros', $minero);
+        
     }
 
     /**
@@ -154,21 +182,13 @@ class CatlimpiezaController extends Controller
         $user = $usuario->name;
 
         $limpieza = DB::table('catlimpiezas')->where('id','=',$id)->get();
-        if($usuario->role == 'minero'){
+        
+        $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
+        $ali = $alianza[0];
 
-            $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-            $minero = $min[0];
-            
-            return view('formularios.editLimpieza')->with('limpieza', $limpieza)->with('user', $usuario)->with('mineros', $minero);
+        return view('formularios.editLimpieza')->with('limpieza', $limpieza)->with('user', $usuario)->with('alianza', $ali);
 
-        }else{
-
-            $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
-            $ali = $alianza[0];
-
-            return view('formularios.editLimpieza')->with('limpieza', $limpieza)->with('user', $usuario)->with('alianza', $ali);
-
-        }
+        
 
        
     }
@@ -234,7 +254,7 @@ class CatlimpiezaController extends Controller
         $rubros = DB::table('limpiezarubros')->get();
         $articulos = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
         
-        return view('formularios.catalogoLimpieza')->with('rubros', $rubros)->with('limpieza', $articulos)->with('user', $usuario)->with('alianza', $ali);
+        return redirect('/catlim')->with('rubros', $rubros)->with('limpieza', $articulos)->with('user', $usuario)->with('alianza', $ali);
 
 
 

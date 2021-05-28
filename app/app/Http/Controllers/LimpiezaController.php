@@ -17,7 +17,7 @@ class LimpiezaController extends Controller
      */
     public function index()
     {
-        //
+        echo 'hola';
     }
 
     /**
@@ -27,13 +27,29 @@ class LimpiezaController extends Controller
      */
     public function create()
     {
+
         $usuario = Auth::user();
-        $user = Auth::user()->name;
-        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-        $minero = $min[0];
+        $user = $usuario->name;
+
+        if($usuario->role == 'minero'){
+            
+            $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+            $minero = $min[0];
+            return view('minerales.limpieza')->with('mineros', $minero)->with('user', $usuario);
+        }else{
+            $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
+            $ali = $alianza[0];
+    return view('minerales.limpieza')->with('alianza', $alianza)->with('user', $usuario);
     
-    return view('minerales.limpieza')->with('mineros', $minero)->with('user', $usuario);
+        }
+
         
+       
+    
+   
+
+
+    
     }
 
     /**

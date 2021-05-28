@@ -1,10 +1,16 @@
 
-@include('layouts.header')
-
+@if($user->role == 'minero')
+@include('layouts.header')      
 <body>
-{{-- @include('layouts.nav') --}}
-@include('layouts.user')
-    <div class="header bg-primary pb-6">
+@include('layouts.user') 
+<div class="header pb-6" >
+@else
+@include('layouts.headerAlianza')    
+<body>
+@include('layouts.user') 
+<div class="header pb-6" >
+
+@endif
       <div class="container-fluid">
         <div class="card bg-white" style="border-none">
           <div class="card-body text-center">
@@ -24,7 +30,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-5 mx-auto text-light text-center" style="text-align:center;">
-                            <h1 class="text-center">$ {{ $limpieza->preciouni}} <small style="color: gray;">/{{ $limpieza->unidad}}</small></h1>
+                            <h1 class="text-center text-dark">$ {{ $limpieza->preciouni}} <small style="color: gray;">/{{ $limpieza->unidad}}</small></h1>
                         </div>
                     </div>
                     <div class="row">

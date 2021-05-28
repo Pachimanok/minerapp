@@ -18,42 +18,34 @@ Route::get('/home', function () {
 
     $usuario = Auth::user();
     $user = $usuario->name;
-    $user_id = Auth::user()->id;
-    $user_role = Auth::user()->role;
+    $user_id = $usuario->id;
+    $user_role = $usuario->role;
 
     if($user_role == 'minero'){
         
         /* Datos del minero */
         $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
         $minero = $min[0];
-
         /* Total Recaudado en el mes */
         $month = date('m');
         $recaudado = DB::table('billeteras')->select('monto')->where('user_name', '=' ,$user)->whereMonth('created_at', '=', $month)->sum('monto');
-
         /* Mensajes sin leer */
-
         $mensajes = DB::table('mensajes')->where('para', '=' ,$user)->where('estado', '=' ,'sin leer')->get();
         $cant_msj = $mensajes->count();
-
         /* temas de educacion */
-
         $educacion = DB::table('educacions')->where('estado', '=' ,'activo')->get();
         $cant_ed = $educacion->count();
-
         /* Datos para billetera */
-
         $aCobrar = DB::table('billeteras')->select('monto')->where('user_name', '=' ,$user)->where('estado', '=', 'a cobrar')->sum('monto');
-
         $desbloq = DB::table('billeteras')->select('monto')->where('user_name', '=' ,$user)->where('estado', '=', 'desbloquear')->sum('monto');  
 
+        /* enviamos a la vista */
         return view('home')->with('user', $usuario)->with('mineros', $minero)->with('recaudado', $recaudado)->with('mensaje', $mensajes)->with('cant_msj', $cant_msj)->with('educacion', $educacion)->with('cant_ed', $cant_ed)->with('cob', $aCobrar)->with('des', $desbloq)->with('id', $user_id);
 
 
     }elseif($user_role == 'educacion'){
 
         $educacion = DB::table('educacions')->get();
-        
         return view('home')->with('user', $usuario)->with('educacion', $educacion);
 
 
@@ -65,9 +57,26 @@ Route::get('/home', function () {
         
         if($ali->user == 'luchito'){
             
-            $limpieza = DB::table('catlimpiezas')->get();
+            $pedidos = DB::table('pedidolimpiezas')
+            ->select(
+            'pedidolimpiezas.id',
+            'pedidolimpiezas.minero',
+            'pedidolimpiezas.total',
+            'pedidolimpiezas.estado',
+            'pedidolimpiezas.observaciones',
+            'pedidolimpiezas.modo_pago',
+            'pedidolimpiezas.horario_envio',
+            'pedidolimpiezas.updated_at',
+            'minas.titulo',
+            'minas.telefono',
+            'minas.contacto',
+            'minas.localidad')
+            ->join('minas','pedidolimpiezas.minaid','=','minas.id')->get();
+            
+            
 
-            return view('formularios.catalogoLimpieza')->with('user', $usuario)->with('alianza', $ali)->with('limpieza', $limpieza);
+            
+            return view('home.homeLimpieza')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
         }
    
 
@@ -168,15 +177,20 @@ Route::resource('educacion','App\Http\Controllers\EducacionController');
 Route::resource('alianza','App\Http\Controllers\AlianzaController');
 Route::resource('minar','App\Http\Controllers\MinaController');
 Route::resource('validar','App\Http\Controllers\validarController');
-Route::resource('catlim','App\Http\Controllers\CatlimpiezaController');
-Route::resource('detpedlim','App\Http\Controllers\detallePedidoLimpiezas');
 
+
+
+/* Controladores de Limpieza */
+Route::resource('catlim','App\Http\Controllers\CatlimpiezaController');/* Cátalogo */
+Route::resource('limpieza','App\Http\Controllers\LimpiezaController'); /*  */
+
+
+Route::resource('detpedlim','App\Http\Controllers\detallePedidoLimpiezas');/* Pedido */
 
 
 
 
 Route::resource('editarPerfil','App\Http\Controllers\editarPerfil'); 
-Route::resource('limpieza','App\Http\Controllers\LimpiezaController');
 Route::resource('detalle','App\Http\Controllers\DetalleBilletera');
 Route::resource('pedidolimpieza','App\Http\Controllers\pedidolimpiezasController');
 
