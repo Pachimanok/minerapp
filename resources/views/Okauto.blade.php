@@ -1,39 +1,30 @@
 @include('layouts.header')
 <body>
 @include('layouts.user')
-    <div class="header bg-white mt-5 pb-6">
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-              <div class="card bg-default shadow">
-                <div class="card-header bg-transparent border-0">
-                  <h3 class="text-white text-center mb-0">{{ $mineros->user_name }} tu auto ha sido minado con exito</h3>
-                </div>
-  
-                
-                <h2 class="text-white text-center"></h2>
-                <p class="text-white text-center">En breves un representante de MIC Brokers se pondrá en contacto con: {{$auto->nombre }}</p>
-                <p class="text-white text-center">para terminar de completar la operacion.</p>
 
-
-               <div class="col-sm-3 text-center mx-auto">
-                    <a class="btn btn-primary mx-auto" href="/autos/create" target="_blank">Minar otro Auto</a>
-                    <a class="btn btn-primary mx-auto" href="/home" target="_blank">volver al Inicio</a>
-
-                </div>
-                
-                <div class="card-body">
-                </div>
-              </div>
+<div class="header pb-3">
+  <div class="container mt-6">
+    <br>
+    <div class="card mt-2" style="border:none;">
+      <div class="card-body" >
+        <h1 class="text-center text-success p-0" style="font-size: -webkit-xxx-large;"><i class="ni ni-check-bold"></i></h1>
+        <h2 class="text-success text-center p-0">¡{{$mineros->user_name}} el auto ha sido mindado correctamente!</h2>
+        <p class="text-center pb-0 mb-0">Un representante de MIC Brokers se pondrá en contacto con: <strong>{{$auto->nombre }}</strong> para terminar de completar la operacion.</p>      
+        <p class="text-center mt-2">Cuándo se cierre podras disfrutar de tu premio!</h6>
+        <br>
+        <br><div class="row">
+            <div class="col-sm-5 mx-auto">
+              <a href="/home" class="btn btn-success btn-block" style="border-radius: 50px;">Terminar</a>
+              <a class="btn btn-outline-success btn-block" style="border-radius: 50px;" href="/autos/create" target="_blank">Minar otro Auto</a>
             </div>
           </div>
+        </div>
+        </form>
       </div>
     </div>
-      <!-- Footer -->
-      <footer class="footer  bg-dark ">
-        <h5 class="text-light text-center">MinerApp :: un minero en cada casa</h5>
-      </footer>
-    </div>
+</div>
+    
+     
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>

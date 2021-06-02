@@ -82,6 +82,8 @@ class AutoController extends Controller
         $billetera->descripcion = 'MICAuto:'.$id_auto;
         $billetera->monto = 0;
         $billetera->alianza = 'MIC Autos';
+        $billetera->idPedido = $id_auto;
+
         $billetera->save();
 
         session()->flash('mensaje','Se envió con éxito');

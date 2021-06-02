@@ -100,6 +100,8 @@ class pedidolimpiezasController extends Controller
         $billetera->descripcion = 'LimpiezaID:'.$id;
         $billetera->alianza = 'EverClean';
         $billetera->monto = $total;
+        $billetera->idPedido = $id;
+
         $billetera->estado = 'Desbloquear';
         $billetera->save();
         
