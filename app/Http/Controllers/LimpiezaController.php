@@ -56,8 +56,9 @@ class LimpiezaController extends Controller
 
         $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
         $minero = $min[0];
+        $qmina = DB::table('minas')->where('user', '=' ,$user)->get();
     
-        return view('limpieza.minar')->with('mineros', $minero)->with('user', $usuario);
+        return view('limpieza.minar')->with('mineros', $minero)->with('user', $usuario)->with('minas', $qmina);
         
     }
 

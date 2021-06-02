@@ -16,12 +16,14 @@
                         </div>
                     </div>
                     <div class="col-sm-4 pl-1 pr-0" style="    max-width: 25%;">
+                        <a href="/mina">
                         <div class="card text-center" style="height: 3rem; background: #e2f4f5; border-style: revert;">
                             <small class="mt-1" style="font-size: smaller;
                           font-weight: 100;
-                          "> 5</small>
+                          "> {{$qminas}}</small>
                             <small style="font-size: small;">Minas</small>
                         </div>
+                        </a>
                     </div>
                     <div class="col-sm-4 pl-1 pr-0" style="    max-width: 25%;">
                         <div class="card text-center" style="height: 3rem; background: #e2f4f5; border-style: revert;">

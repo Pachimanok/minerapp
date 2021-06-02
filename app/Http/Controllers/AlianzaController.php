@@ -72,8 +72,11 @@ class AlianzaController extends Controller
      */
     public function show($id)
     {
-        $ali = DB::table('alianzas')->where('id','=', $id)->get(0);
+        $usuario = Auth::user();
+        $ali = DB::table('alianzas')->where('id','=', $id)->get();
         $alianza = $ali[0];
+
+        return view('perfilAlianza')->with('alianza',$alianza)->with('user', $usuario);
 
         
     }

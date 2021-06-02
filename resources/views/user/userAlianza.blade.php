@@ -85,7 +85,7 @@
       <div class="dropdown-header noti-title">
         <h6 class="text-overflow m-0">Bienevenido!</h6>
       </div>
-      <a href="/minero/{{ $alianza->id }}" class="dropdown-item">
+      <a href="{{-- /alianza/{{ $alianza->id }} --}}#" class="dropdown-item">
         <i class="ni ni-single-02"></i>
         <span>Mis Datos</span>
       </a>

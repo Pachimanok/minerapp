@@ -1,18 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Billetera;
-use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Catlimpieza;
-use App\Models\detallepedidolimpieza;
-use App\Models\pedidolimpieza;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Mina;
 
-
-class pedidolimpiezasController extends Controller
+class MinarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +15,18 @@ class pedidolimpiezasController extends Controller
      */
     public function index()
     {
-        //
+        
+        $usuario = Auth::user();
+        $user = Auth::user()->name;
+        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+        $minero = $min[0];
+        
+        
+        /* traer informacion sobre las minas disponibles */
+        $minerales = db::table('minerales')->join('alianzas', 'minerales.alianza', '=', 'alianzas.nombre_fantasia')->get();
+        $usuario = Auth::user();
+        return view('minar')->with('mineros', $minero)->with('user', $usuario)->with('minerales', $minerales);
+        /* enviar a la vista */
     }
 
     /**
@@ -42,8 +47,7 @@ class pedidolimpiezasController extends Controller
      */
     public function store(Request $request)
     {
-        
-
+        //
     }
 
     /**
@@ -77,37 +81,7 @@ class pedidolimpiezasController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $usuario = Auth::user();
-        $user = Auth::user()->name;
-        
-        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-        $minero = $min[0];
-
-        foreach($request->get('modo_pago') as $modo_pago)
-        foreach($request->get('horario_envio') as $horaio_envio)
-
-        $actualiza = pedidolimpieza::find($id);
-        $total = $actualiza->total * 0.1;
-        $actualiza->observaciones = $request->get('obeservaciones');
-        $actualiza->modo_pago = $modo_pago;
-        $actualiza->horario_envio = $horaio_envio;
-        $actualiza->estado = 'confirmado';
-        $actualiza->save();
-
-        $billetera = new Billetera();
-        $billetera->user_name = $user;
-        $billetera->descripcion = 'LimpiezaID:'.$id;
-        $billetera->alianza = 'EverClean';
-        $billetera->monto = $total;
-        $billetera->estado = 'Desbloquear';
-        $billetera->save();
-        
-        $res = DB::table('pedidolimpiezas')->join('minas','pedidolimpiezas.minaid','=','minas.id')->where('pedidolimpiezas.id', '=' ,$id)->get();
-        $resumen = $res[0];
-
-        return view('limpieza.resumen')->with('mineros', $minero)->with('user', $usuario)->with('resumen', $resumen);
- 
+        //
     }
 
     /**

@@ -4,73 +4,43 @@
 <body>
 {{-- @include('layouts.nav') --}}
 @include('layouts.user')
-    <div class="header bg-primary pb-6">
+    <div class="header pb-6">
       <div class="container-fluid">
         <div class="header-body">
-          <div class="row">
+          <div class="row mt-1"> 
             @foreach ($minerales as $mineral)
-            <div class="col-xl-4 order-xl-2">
-              <div class="card card-profile">
-                <img src="../img/avatar/{{ $mineral->avatar }}" alt="Image placeholder" class="card-img-top">
-                <div class="card-header text-center border-0 pt-4 pt-md-4 pb-0 pb-md-4">
-                  <div class="d-flex justify-content-between">
-                    <a href="{{ $mineral->link_catalogo }}" target="_blank" class="btn btn-sm btn-info  mr-4 ">Cátalogo</a>
-                    <a href="{{ $mineral->link_minar }}" class="btn btn-sm btn-default float-right">Minar</a>
+            <li class="list-group-item">
+              <div class="row align-items-center">
+                  <div class="col-auto text-center ml-2 pl-0" style="width: 25%;">
+                      
+                      <img alt="Image placeholder"
+                          src="{{ asset('/img/avatar/' . $mineral->avatar) }}"
+                          class="img-fluid" style="border-radius:20px; min-height: 3.5rem;">
                   </div>
-                </div>
-                <div class="card-body pt-0">
-                  <div class="row">
-                    <div class="col">
-                      <div class="card-profile-stats d-flex justify-content-center">
-                        <div>
-                          <span class="heading">{{ $mineral->comision }}%</span>
-                          <span class="description">Comisión</span>
-                        </div>
-                        <div>
-                          <span class="heading">{{ $mineral->rubro }}</span>
-                          <span class="description">Rubro</span>
-                        </div>
-                        <div>
-                          <span class="heading">3</span>
-                          <span class="description">Desafios</span>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="col-auto" style="width: 50%;">
+                              <h4 class="mb-0 text-sm pb-0">{{ $mineral->nombre_fantasia }} <small></small></h4>
+                              <p class="text-sm mt-0 mb-0" style="line-height: 10px;"><small>{{ $mineral->rubro}}</small></p>
+                              <a href="{{-- alianza/{{ $mineral->id}} --}}" ><span class="badge badge-primary" disabled>saber +</span></a>
+                              <a href="{{ $mineral->link_catalogo }}" target="{{$mineral->pagblank}}"><span class="badge badge-primary">catalogo</span></a>
                   </div>
-                  <div class="text-center">
-                    <h5 class="h3">
-                       {{ $mineral->nombre_fantasia }}<span class="font-weight-light">,{{ $mineral->subrubro}}</span>
-                    </h5>
-                    <div class="h5 font-weight-300">
-                      <i class="ni ni-delivery-fast mr-2"></i>
-                      {{ $mineral->shipping }}
-                    </div>
-                    <div class="h5 font-weight-300">
-                      <i class="ni ni-credit-card mr-2"></i>
-                      {{ $mineral->medios_pago}}
-                    </div>
-                    <div class="h5 mt-4 mb-3">
-                      <i class="ni ni-cart mr-2"></i>{{ $mineral->datos_pedir }}
-                    </div>
-                    <div>
-                      <a href="{{ $mineral->link_saber_mas }}" class="btn btn-outline-primary"><i class="ni education_hat mr-2"></i>Saber mas de nuestra aliaza</a>
-                    </div>
-                  </div>
+                  <div class="col-auto" style="width: 20%;">
+                    <a href="{{ $mineral->link_minar }}" class="btn btn-sm btn-default float-right"><i class="ni ni-diamond"></i></a>
                 </div>
               </div>
-            </div>
+          </li>
             @endforeach
 
-
+<div class="row text-center mt-5">
+  <div class="col-sm-5 mx-auto">
+    <a href="" class="btn btn-primary" style="border-radius: 50px;">Recomendar Alianza</a>
+  </div></div>
 
         </div>
       </div>
     </div>
 
       <!-- Footer -->
-      <footer class="footer  bg-dark ">
-        <h5 class="text-light text-center">MinerApp :: un minero en cada casa</h5>
-      </footer>
+     
     </div>
   </div>
   {{-- bootstrap script --}}
