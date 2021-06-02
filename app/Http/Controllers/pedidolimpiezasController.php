@@ -100,9 +100,9 @@ class pedidolimpiezasController extends Controller
         $billetera->descripcion = 'LimpiezaID:'.$id;
         $billetera->alianza = 'EverClean';
         $billetera->monto = $total;
-        $billetera->idPedido = $id;
+        $billetera->idPedido= $id;
 
-        $billetera->estado = 'Desbloquear';
+        $billetera->estado = 'desbloquear';
         $billetera->save();
         
         $res = DB::table('pedidolimpiezas')->join('minas','pedidolimpiezas.minaid','=','minas.id')->where('pedidolimpiezas.id', '=' ,$id)->get();

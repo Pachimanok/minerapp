@@ -1,5 +1,4 @@
 @include('layouts.header')
-
 <body>
     {{-- @include('layouts.nav') --}}
     @include('layouts.user')
@@ -19,37 +18,44 @@
             <div class="card" style="border:none;background: #f7f8f9">
                 <div class="card-body text-center pt-1 pb-1">
                     <p class="mt-0" style="color:gray">Ulitmos Movimientos:</p>
-                    <div class="row" style="background: #f7f8f9">
-                        <div class="col" style="max-width: 10%">
-                            <i class="ni ni-check-bold mt-3 text-success"></i>
-                        </div>
-                        <div class="col text-success" style="max-width: 60%; min-width: 60%;">
-                            <p class="text-left mb-0" style="font-size: small;">Ever Clean </p>
-                            <p class="text-left mt-0"
-                                style="font-size: small; font-weight: 500;margin-top: -0.3rem !important;">Casa Viejos
-                            </p>
-                        </div>
-                        <div class="col text-success">
-                            <p class="text-rigth mt-2" style="font-size: small;font-weight: 500;">$ 5150.00</p>
-                        </div>
-                    </div>
-                    <hr class="mt-1 mb-1">
-                    <div class="row" style="background: #f7f8f9">
-                        <div class="col text-primary" style="max-width: 10%">
-                            <i class="ni ni-fat-delete mt-3 text-primary"></i>
-                        </div>
-                        <div class="col text-primary" style="max-width: 60%; min-width: 60%;">
-                            <p class="text-left mb-0" style="font-size: small;">Seguro</p>
-                            <p class="text-left mt-0"
-                                style="font-size: small; font-weight: 500;margin-top: -0.3rem !important;">Jorge Nievas
-                            </p>
-                        </div>
-                        <div class="col text-primary">
-                            <p class="text-rigth mt-2" style="font-size: small;font-weight: 500;">$ 170.00</p>
-                        </div>
-                    </div>
-                    <hr class="mt-1 mb-1">
 
+                    @foreach ($ultimos as $ultimo)
+                        @if ($ultimo->estado == 'a cobrar')
+                            <div class="row" style="background: #f7f8f9">
+                                <div class="col" style="max-width: 10%">
+                                    <i class="ni ni-check-bold mt-3 text-success"></i>
+                                </div>
+                                <div class="col text-success" style="max-width: 60%; min-width: 60%;">
+                                    <p class="text-left mb-0" style="font-size: small;">{{ $ultimo->alianza }} </p>
+                                    <p class="text-left mt-0"
+                                        style="font-size: small; font-weight: 500;margin-top: -0.3rem !important;">
+                                        ID:{{ $ultimo->idPedido }}
+                                    </p>
+                                </div>
+                                <div class="col text-success">
+                                    <p class="text-rigth mt-2" style="font-size: small;font-weight: 500;">$
+                                        {{ $ultimo->monto }} </p>
+                                </div>
+                            </div>
+                            <hr class="mt-1 mb-1">
+                        @else
+                        <div class="row" style="background: #f7f8f9">
+                          <div class="col text-primary" style="max-width: 10%">
+                              <i class="ni ni-fat-delete mt-3 text-primary"></i>
+                          </div>
+                          <div class="col text-primary" style="max-width: 60%; min-width: 60%;">
+                              <p class="text-left mb-0" style="font-size: small;">{{ $ultimo->alianza }} </p>
+                              <p class="text-left mt-0"
+                                  style="font-size: small; font-weight: 500;margin-top: -0.3rem !important;">ID:{{ $ultimo->idPedido }}
+                              </p>
+                          </div>
+                          <div class="col text-primary">
+                              <p class="text-rigth mt-2" style="font-size: small;font-weight: 500;">$ {{ $ultimo->monto }} </p>
+                          </div>
+                      </div>
+                      <hr class="mt-1 mb-1">
+                        @endif
+                    @endforeach
                     <a href="" class="text-center" style="font-weight: 500;">+</a>
                 </div>
             </div>
@@ -57,7 +63,7 @@
     </div>
 
     <!-- Footer -->
-   
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
