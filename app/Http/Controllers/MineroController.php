@@ -84,39 +84,17 @@ class MineroController extends Controller
         
         $minero = Minero::find($id);   
 
-        $archivo_fondo = $request->File('fondo'); 
+        $archivo = $request->File('avatar');
             
-        if($request->File('avatar') != null){
-
-            $archivo = $request->File('avatar');
-            
-            $extencion = $archivo->getClientOriginalExtension();
-            $name = $archivo->getClientOriginalName(); 
-            $imagen = Image::make($archivo);
-
-            $imagen->encode($extencion);
-            $path = public_path('img/avatar/' . $name);
-            $imagen->save($path); 
-
-            if($archivo_fondo){
-                $extencion_fondo = $archivo_fondo->getClientOriginalExtension();
-                $name_fondo = $archivo_fondo->getClientOriginalName();
-                $imagen_fondo= Image::make($archivo_fondo);
-                $imagen_fondo->resize(500,500);
-                $imagen_fondo->encode($extencion_fondo);
-                $path_fondo = public_path('img/fondo/' . $name_fondo);
-                $imagen_fondo->save($path_fondo); 
-                
-            }else{
-                $name_fondo = 'fondo.png';
-            }
-
-        }else{
-            $name = 'avatar.png';
-        }
+        $extencion = $archivo->getClientOriginalExtension();
+        $name = $archivo->getClientOriginalName(); 
+        $imagen = Image::make($archivo);
+        $imagen->resize(600,500);
+        $imagen->encode($extencion);
+        $path = public_path('img/avatar/' . $name);
+        $imagen->save($path); 
         
-        $minero->avatar = $name;
-        $minero->fondo = $name_fondo;        
+        $minero->avatar = $name;       
         $minero->name = $request->get('nombre');
         $minero->lastName = $request->get('apellido');
         $minero->localizacion = $request->get('localizacion');
