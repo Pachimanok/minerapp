@@ -37,7 +37,7 @@
                                             <div class="col-auto text-center pl-0" style="width: 25%;">
                                                 <!-- Avatar -->
                                                 <img alt="Image placeholder"
-                                                    src="{{ asset('img/limpieza/' . $articulo->foto) }}"
+                                                    src="{{ asset('img/demo/' . $articulo->foto) }}"
                                                     class="avatar rounded-circle">
                                             </div>
                                             <div class="col-auto" style="width: 50%;">

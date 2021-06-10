@@ -16,7 +16,7 @@
         <h4 class="text-center">Número de Pedido: 000{{$pedido->id}}</h4>
         @foreach ($detalle as $detalle)
             <div class="col-auto" style="display: flex;">
-              <img alt="Image placeholder" src="{{ asset('img/limpieza/' . $detalle->foto) }}" class="avatar rounded-circle">
+              <img alt="Image placeholder" src="{{ asset('img/demo/' . $detalle->foto) }}" class="avatar rounded-circle">
               <p class="text-truncate ml-2" style="    padding-top: 0.5rem;" ><small>{{ $detalle->cantidad}} {{ $detalle->unidad}} de {{ $detalle->producto}}</small></p>
             </div>
             <hr style="margin: 0.5rem;">

@@ -9,7 +9,7 @@
   <div class="container-fluid">
     <div class="row pt-5">
       <h3 class="text-center">Selecciona los productos:</h3>
-      <form action="/detpedlim" method="POST">
+      <form action="/detpeddemo" method="POST">
       @csrf
         @foreach ($rubros as $rubro)
           <button class="btn btn-outline-primary btn-block" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample{{$rubro->id}}" aria-expanded="false" aria-controls="multiCollapseExample{{$rubro->id}}">{{$rubro->rubro}}</button>
@@ -22,7 +22,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto ">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="{{ asset('img/limpieza/' . $articulo->foto) }}" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="{{ asset('img/demo/' . $articulo->foto) }}" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
