@@ -85,21 +85,17 @@
       <div class="dropdown-header noti-title">
         <h6 class="text-overflow m-0">Bienevenido!</h6>
       </div>
-      <a href="{{-- /alianza/{{ $alianza->id }} --}}#" class="dropdown-item">
+      <a href="/alianza/{{ $alianza->id }}" class="dropdown-item">
         <i class="ni ni-single-02"></i>
         <span>Mis Datos</span>
       </a>
-      <a href="/limpieza" class="dropdown-item">
+      <a href="@if($alianza->id == '9')  /limpieza @elseif($alianza->id == '10')  /demo @else # @endif" class="dropdown-item">
         <i class="ni ni-settings-gear-65"></i>
         <span>Vista Catalogo</span>
       </a>
-      <a href="/catlim" class="dropdown-item">
+      <a href="@if($alianza->id == '9')  /catlim @elseif($alianza->id == '10')  /catdemo @else # @endif" class="dropdown-item">
         <i class="ni ni-settings-gear-65"></i>
         <span>Catalogo</span>
-      </a>
-      <a href="#!" class="dropdown-item">
-        <i class="ni ni-settings-gear-65"></i>
-        <span>Minerales</span>
       </a>
       <a href="#!" class="dropdown-item">
         <i class="ni ni-settings-gear-65"></i>

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
+
 
 
 use Illuminate\Http\Request;
@@ -89,7 +91,7 @@ class AlianzaController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -101,7 +103,45 @@ class AlianzaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $alianza = Alianza::find($id);
+        $id = $alianza->id;
+
+        $archivo = $request->File('avatar');
+
+        if ($archivo != null) {
+            
+            $extencion = $archivo->getClientOriginalExtension();
+            $name = $archivo->getClientOriginalName();
+            $imagen = Image::make($archivo);
+            $imagen->resize(300, 300);
+            $imagen->encode($extencion);
+            $path = public_path('img/avatar/' . $name);
+            $imagen->save($path);
+            
+            } else {
+                
+                $q = DB::table('alianzas')->where('id', '=', $id)->first();
+                $name = $q->avatar;
+            }
+
+            
+        $alianza->avatar = $name;
+        $alianza->razonSocial = $request->get('razonSocial');
+        $alianza->cuit = $request->get('cuit');
+        $alianza->shipping = $request->get('shipping');
+        $alianza->medios_pago = $request->get('medios_pago');
+        $alianza->link_saber_mas = $request->get('link_saber_mas');
+        $alianza->pagina_web = $request->get('pagina_web');
+        $alianza->descripcion= $request->get('descripcion');
+        $alianza->rubro = $request->get('rubro');
+        $alianza->video = $request->get('video');
+        $alianza->save();
+
+        $ali = DB::table('alianzas')->where('id', '=', $id)->get();
+        $alianza= $ali[0];
+
+        return back()->withInput(); 
     }
 
     /**

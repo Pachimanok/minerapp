@@ -70,7 +70,7 @@ Route::get('/home', function () {
         $alianza = DB::table('alianzas')->where('user', '=', $user)->get();
         $ali = $alianza[0];
 
-        if ($ali->user == 'EverClean') {
+        if ($ali->user == 'luismadg') {
 
             $pedidos = DB::table('pedidolimpiezas')
                 ->select(
@@ -89,13 +89,32 @@ Route::get('/home', function () {
                 )
                 ->join('minas', 'pedidolimpiezas.minaid', '=', 'minas.id')->get();
 
-
-
-
             return view('home.homeLimpieza')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
+       
+        } elseif($ali->user == 'alianzaDemo'){
+
+            $pedidos = DB::table('pedidodemos')
+            ->select(
+                'pedidodemos.id',
+                'pedidodemos.minero',
+                'pedidodemos.total',
+                'pedidodemos.estado',
+                'pedidodemos.observaciones',
+                'pedidodemos.modo_pago',
+                'pedidodemos.horario_envio',
+                'pedidodemos.updated_at',
+                'minas.titulo',
+                'minas.telefono',
+                'minas.contacto',
+                'minas.localidad'
+            )
+            ->join('minas', 'pedidodemos.minaid', '=', 'minas.id')->get();
+
+            return view('home.homeDemo')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
+
         }
 
-
+       
 
         return view('home.homeAlianza')->with('user', $usuario)->with('alianza', $ali);
     }
@@ -240,12 +259,14 @@ Route::resource('validar', 'App\Http\Controllers\validarController');
 
 /* Controladores de Limpieza */
 Route::resource('catlim', 'App\Http\Controllers\CatlimpiezaController');/* Cátalogo */
-Route::resource('limpieza', 'App\Http\Controllers\LimpiezaController'); /*  */
-
-
+Route::resource('limpieza', 'App\Http\Controllers\LimpiezaController'); /* General */
 Route::resource('detpedlim', 'App\Http\Controllers\detallePedidoLimpiezas');/* Pedido */
 
-
+/* Controllers Demo */
+Route::resource('catdemo', 'App\Http\Controllers\catalogoDemoController');/* Cátalogo */
+Route::resource('demo', 'App\Http\Controllers\DemoController');/* Controlladore para minar */
+Route::resource('detpeddemo', 'App\Http\Controllers\detallePedidoDemoController');/* Controlladore para minar */
+Route::resource('pedidodemo', 'App\Http\Controllers\pedidoDemoController');
 
 
 Route::resource('editarPerfil', 'App\Http\Controllers\editarPerfil');
