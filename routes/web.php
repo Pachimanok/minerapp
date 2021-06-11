@@ -92,7 +92,7 @@ Route::get('/home', function () {
             return view('home.homeLimpieza')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
        
         } elseif($ali->user == 'alianzaDemo'){
-
+/* $2y$10$Nagg0/5x9gTHbJpAnxvT0.NdT.U0H5PsmM8MMYUJEInx1HSw7nABq */
             $pedidos = DB::table('pedidodemos')
             ->select(
                 'pedidodemos.id',
@@ -112,9 +112,28 @@ Route::get('/home', function () {
 
             return view('home.homeDemo')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
 
-        }
+        }elseif($ali->user == 'foc'){
 
-       
+            $pedidos = DB::table('pedidofocs')
+            ->select(
+                'pedidofocs.id',
+                'pedidofocs.minero',
+                'pedidofocs.total',
+                'pedidofocs.estado',
+                'pedidofocs.observaciones',
+                'pedidofocs.modo_pago',
+                'pedidofocs.horario_envio',
+                'pedidofocs.updated_at',
+                'minas.titulo',
+                'minas.telefono',
+                'minas.contacto',
+                'minas.localidad'
+            )
+            ->join('minas', 'pedidofocs.minaid', '=', 'minas.id')->get();
+
+            return view('home.homeFoc')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
+
+        }
 
         return view('home.homeAlianza')->with('user', $usuario)->with('alianza', $ali);
     }
@@ -267,6 +286,12 @@ Route::resource('catdemo', 'App\Http\Controllers\catalogoDemoController');/* Cá
 Route::resource('demo', 'App\Http\Controllers\DemoController');/* Controlladore para minar */
 Route::resource('detpeddemo', 'App\Http\Controllers\detallePedidoDemoController');/* Controlladore para minar */
 Route::resource('pedidodemo', 'App\Http\Controllers\pedidoDemoController');
+
+/* Controllers Foc */
+Route::resource('catfoc', 'App\Http\Controllers\catalogoFocController');/* Cátalogo */
+Route::resource('foc', 'App\Http\Controllers\FocController');/* Controlladore para minar */
+Route::resource('detpedfoc', 'App\Http\Controllers\detallePedidoFocController');/* Controlladore para minar */
+Route::resource('pedidofoc', 'App\Http\Controllers\pedidoFocController');
 
 
 Route::resource('editarPerfil', 'App\Http\Controllers\editarPerfil');
