@@ -13,7 +13,13 @@
                     <form action="/bancodelsol" method="POST">
                         @csrf
                         <div class="col-sm-5 mx-auto text-center">
-                            <input type="number" name="dni" class="form-control"placeholder="DNI PARA ABRIR CUENTA"id="">
+                            <label for="name" class="form-control-label">DNI</label>
+                            <input type="number" name="dni" class="form-control"placeholder="00000000"id="">
+                        </div>
+                        <br>
+                        <div class="col-sm-5 mx-auto text-center">
+                            <label for="name" class="form-control-label">Celular:</label>
+                            <input type="number" name="celular" class="form-control"placeholder="2614123456"id="">
                         </div>
                 </div>
                 <div class="d-grid gap-2 mx-auto">

@@ -55,9 +55,12 @@ class bandodelsolController extends Controller
         $minero = $min[0];
 
         $dni = $request->get('dni');
+        $celular = $request->get('celular');
+
 
         $pedido = new bancodelsol(); 
         $pedido->dni = $dni;
+        $pedido->celular = $celular;
         $pedido->minero= $user;
         $pedido->save();
 
@@ -65,12 +68,13 @@ class bandodelsolController extends Controller
 
         $billetera = new Billetera();
         $billetera->user_name = $user;
+        
         $billetera->descripcion = 'Banco del Sol:'.$dni;
         $billetera->alianza = 'bancodelsol';
         $billetera->monto = $total;
         $billetera->idPedido= $dni;
 
-        return view('bancodelsol.instrucciones')->with('mineros', $minero)->with('user', $usuario);
+        return view('bancodelsol.instrucciones')->with('mineros', $minero)->with('user', $usuario)->with('celular', $celular);
 
     }
 

@@ -8,13 +8,13 @@
       <div class="card-body" >
         <h1 class="text-center text-success p-0" style="font-size: -webkit-xxx-large;"><i class="ni ni-check-bold"></i></h1>
         <h2 class="text-success text-center p-0">¡Usuario Registrado Correctamente en MinerApp!</h2>
-          <p class="text-center pb-0 mb-0">1. Compartí el Link al Usurio para que descargue la App de Banco del Sol.</h5> 
+          <p class="text-center pb-0 mb-0">1. Compartí el Link al Usuario para que descargue la App de Banco del Sol.</h5> 
           <p class="text-center pb-0 mb-0">2. El usuario debe darse de alta.</h5>
           <p class="text-center pb-0 mb-0">2. Disfrutar de los Beneficios de contar con un Banco On Line.</h5>
         <br>
         <br><div class="row">
             <div class="col-sm-5 mx-auto">
-              <a href="https://api.whatsapp.com/send?phone=542612128105&text=Para Descargar la App ingresá a este enlase: https://open.bancodelsol.com/h7QiLF9ufRtdfSh29" class="btn btn-success btn-block" style="border-radius: 50px;">Compartir</a>
+              <a href="https://api.whatsapp.com/send?phone=54{{$celular}}&text=Para Descargar la App ingresá a este enlase: https://open.bancodelsol.com/h7QiLF9ufRtdfSh29" class="btn btn-success btn-block" style="border-radius: 50px;">Compartir</a>
             </div>
           </div>
         </div>
