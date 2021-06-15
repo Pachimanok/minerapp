@@ -273,6 +273,8 @@ Route::resource('minar', 'App\Http\Controllers\MinarController');
 Route::resource('mina', 'App\Http\Controllers\MinaController');
 
 Route::resource('validar', 'App\Http\Controllers\validarController');
+Route::resource('bancodelsol', 'App\Http\Controllers\bandodelsolController');
+
 
 
 
