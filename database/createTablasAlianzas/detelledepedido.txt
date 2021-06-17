@@ -1,0 +1,34 @@
+
+CREATE TABLE `detallepedido[nombre]s` (
+  `id` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `producto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `idpedido` int(11) NOT NULL,
+  `precio` decimal(11,0) NOT NULL,
+  `user` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `detallepedido[nombre]s`
+  ADD PRIMARY KEY (`id`);
+  
+ALTER TABLE `detallepedido[nombre]s`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
+CREATE TABLE `detallepedidoblueseas` (
+  `id` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `producto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `idpedido` int(11) NOT NULL,
+  `precio` decimal(11,0) NOT NULL,
+  `user` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `detallepedidoblueseas`
+  ADD PRIMARY KEY (`id`);
+  
+ALTER TABLE `detallepedidoblueseas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;

@@ -1,0 +1,21 @@
+CREATE TABLE `cat[nombre]s` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unidad` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `preciouni` decimal(11,2) NOT NULL,
+  `rubro` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rub_rec` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `activos` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `user` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `cat[nombre]s`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `cat[nombre]s`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+

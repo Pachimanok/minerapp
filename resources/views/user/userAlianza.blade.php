@@ -89,11 +89,21 @@
         <i class="ni ni-single-02"></i>
         <span>Mis Datos</span>
       </a>
-      <a href="@if($alianza->id == '9')  /limpieza @elseif($alianza->id == '10')  /demo @elseif($alianza->id == '11')  /foc  @else # @endif" class="dropdown-item">
+      <a href="@if($alianza->id == '9') /limpieza 
+        @elseif($alianza->id == '10')  /demo 
+        @elseif($alianza->id == '11')  /foc  
+        @elseif($alianza->id == '12')  /huerta
+        @elseif($alianza->id == '13')  /doliva
+        @else # @endif" class="dropdown-item">
         <i class="ni ni-settings-gear-65"></i>
         <span>Vista Catalogo</span>
       </a>
-      <a href="@if($alianza->id == '9')  /catlim @elseif($alianza->id == '10')  /catdemo @elseif($alianza->id == '11')  /catfoc @else # @endif" class="dropdown-item">
+      <a href="@if($alianza->id == '9')  /catlim 
+        @elseif($alianza->id == '10')  /catdemo 
+        @elseif($alianza->id == '11')  /catfoc 
+        @elseif($alianza->id == '12')  /cathuerta 
+        @elseif($alianza->id == '13')  /catdoliva
+        @else # @endif" class="dropdown-item">
         <i class="ni ni-settings-gear-65"></i>
         <span>Catalogo</span>
       </a>

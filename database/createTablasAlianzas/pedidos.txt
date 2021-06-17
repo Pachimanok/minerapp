@@ -1,0 +1,39 @@
+CREATE TABLE `pedido[nombre]s` (
+  `id` int(11) NOT NULL,
+  `minaid` int(11) NOT NULL,
+  `minero` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total` decimal(11,2) DEFAULT NULL,
+  `estado` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `observaciones` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modo_pago` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `horario_envio` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `pedido[nombre]s`
+  ADD PRIMARY KEY (`id`);
+  
+ALTER TABLE `pedido[nombre]s`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+COMMIT;
+
+CREATE TABLE `pedidoblueseas` (
+  `id` int(11) NOT NULL,
+  `minaid` int(11) NOT NULL,
+  `minero` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total` decimal(11,2) DEFAULT NULL,
+  `estado` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `observaciones` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modo_pago` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `horario_envio` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `pedidoblueseas`
+  ADD PRIMARY KEY (`id`);
+  
+ALTER TABLE `pedidoblueseas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+COMMIT;

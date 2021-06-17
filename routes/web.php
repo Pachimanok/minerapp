@@ -61,7 +61,6 @@ Route::get('/home', function () {
 
    
     } elseif ($user_role == 'educacion') {
-
         $educacion = DB::table('educacions')->get();
         return view('home')->with('user', $usuario)->with('educacion', $educacion);
     } else {
@@ -92,7 +91,6 @@ Route::get('/home', function () {
             return view('home.homeLimpieza')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
        
         } elseif($ali->user == 'alianzaDemo'){
-/* $2y$10$Nagg0/5x9gTHbJpAnxvT0.NdT.U0H5PsmM8MMYUJEInx1HSw7nABq */
             $pedidos = DB::table('pedidodemos')
             ->select(
                 'pedidodemos.id',
@@ -133,6 +131,85 @@ Route::get('/home', function () {
 
             return view('home.homeFoc')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
 
+        } elseif($ali->user == 'DIOLIVA'){
+            $pedidos = DB::table('pedidodolivas')
+            ->select(
+                'pedidodolivas.id',
+                'pedidodolivas.minero',
+                'pedidodolivas.total',
+                'pedidodolivas.estado',
+                'pedidodolivas.observaciones',
+                'pedidodolivas.modo_pago',
+                'pedidodolivas.horario_envio',
+                'pedidodolivas.updated_at',
+                'minas.titulo',
+                'minas.telefono',
+                'minas.contacto',
+                'minas.localidad'
+            )
+            ->join('minas', 'pedidodolivas.minaid', '=', 'minas.id')->get();
+
+            return view('home.homeDoliva')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
+
+        } elseif($ali->user == 'bluesea'){
+            $pedidos = DB::table('pedidodolivas')
+            ->select(
+                'pedidodoblueseas.id',
+                'pedidodoblueseas.minero',
+                'pedidodoblueseas.total',
+                'pedidodoblueseas.estado',
+                'pedidodoblueseas.observaciones',
+                'pedidodoblueseas.modo_pago',
+                'pedidodoblueseas.horario_envio',
+                'pedidodoblueseas.updated_at',
+                'minas.titulo',
+                'minas.telefono',
+                'minas.contacto',
+                'minas.localidad'
+            )
+            ->join('minas', 'pedidoblueseas.minaid', '=', 'minas.id')->get();
+
+            return view('home.homeBluesea')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
+
+        }  elseif($ali->user == 'laderas'){
+            $pedidos = DB::table('pedidoladeras')
+            ->select(
+                'pedidodoladeras.id',
+                'pedidodoladeras.minero',
+                'pedidodoladeras.total',
+                'pedidodoladeras.estado',
+                'pedidodoladeras.observaciones',
+                'pedidodoladeras.modo_pago',
+                'pedidodoladeras.horario_envio',
+                'pedidodoladeras.updated_at',
+                'minas.titulo',
+                'minas.telefono',
+                'minas.contacto',
+                'minas.localidad'
+            )
+            ->join('minas', 'pedidoladeras.minaid', '=', 'minas.id')->get();
+
+            return view('home.homeLaderas')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
+
+        } elseif($ali->user == 'huertaonline'){
+            $pedidos = DB::table('pedidohuertas')
+            ->select(
+                'pedidohuertas.id',
+                'pedidohuertas.minero',
+                'pedidohuertas.total',
+                'pedidohuertas.estado',
+                'pedidohuertas.observaciones',
+                'pedidohuertas.modo_pago',
+                'pedidohuertas.horario_envio',
+                'pedidohuertas.updated_at',
+                'minas.titulo',
+                'minas.telefono',
+                'minas.contacto',
+                'minas.localidad'
+            )
+            ->join('minas', 'pedidohuertas.minaid', '=', 'minas.id')->get();
+
+            return view('home.homeHuerta')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
         }
 
         return view('home.homeAlianza')->with('user', $usuario)->with('alianza', $ali);
@@ -295,6 +372,30 @@ Route::resource('foc', 'App\Http\Controllers\FocController');/* Controlladore pa
 Route::resource('detpedfoc', 'App\Http\Controllers\detallePedidoFocController');/* Controlladore para minar */
 Route::resource('pedidofoc', 'App\Http\Controllers\pedidoFocController');
 
+/* Controllers doliva */
+/* $2y$10$fvx.o.wrczP4nMHfF93JseHRcMbyItY8PKwTNvpSQzXcKmnNMaZca */
+Route::resource('catdoliva', 'App\Http\Controllers\catalogoDolivaController');/* Cátalogo */
+Route::resource('doliva', 'App\Http\Controllers\dolivaController');/* Controlladore para minar */
+Route::resource('detpeddoliva', 'App\Http\Controllers\detallePedidoDolivaController');/* Controlladore para minar */
+Route::resource('pedidodoliva', 'App\Http\Controllers\pedidoDolivaController');
+
+/* Controllers laderas */
+Route::resource('catladeras', 'App\Http\Controllers\catalogoLaderasController');/* Cátalogo */
+Route::resource('laderas', 'App\Http\Controllers\LaderasController');/* Controlladore para minar */
+Route::resource('detpedladeras', 'App\Http\Controllers\detallePedidoLaderasController');/* Controlladore para minar */
+Route::resource('pedidoladeras', 'App\Http\Controllers\pedidoLaderasController');
+
+/* Controllers Huerta */
+Route::resource('cathuerta', 'App\Http\Controllers\catalogoHuertaController');/* Cátalogo */
+Route::resource('huerta', 'App\Http\Controllers\huertaController');/* Controlladore para minar */
+Route::resource('detpedhuerta', 'App\Http\Controllers\detallePedidoHuertaController');/* Controlladore para minar */
+Route::resource('pedidohuerta', 'App\Http\Controllers\pedidoHuertaController');
+
+/* Controllers BlueSea */
+Route::resource('catbluesea', 'App\Http\Controllers\catalogoBlueController');/* Cátalogo */
+Route::resource('bluesea', 'App\Http\Controllers\blueController');/* Controlladore para minar */
+Route::resource('detpedbluesea', 'App\Http\Controllers\detallePedidoBlueseaController');/* Controlladore para minar */
+Route::resource('pedidobluesea', 'App\Http\Controllers\pedidoBlueseaController');
 
 Route::resource('editarPerfil', 'App\Http\Controllers\editarPerfil');
 Route::resource('detalle', 'App\Http\Controllers\DetalleBilletera');
