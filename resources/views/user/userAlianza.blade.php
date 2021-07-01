@@ -94,6 +94,8 @@
         @elseif($alianza->id == '11')  /foc  
         @elseif($alianza->id == '12')  /huerta
         @elseif($alianza->id == '13')  /doliva
+        @elseif($alianza->id == '15')  /plimplim
+
         @else # @endif" class="dropdown-item">
         <i class="ni ni-settings-gear-65"></i>
         <span>Vista Catalogo</span>
@@ -103,6 +105,8 @@
         @elseif($alianza->id == '11')  /catfoc 
         @elseif($alianza->id == '12')  /cathuerta 
         @elseif($alianza->id == '13')  /catdoliva
+        @elseif($alianza->id == '15')  /catplimplim
+
         @else # @endif" class="dropdown-item">
         <i class="ni ni-settings-gear-65"></i>
         <span>Catalogo</span>

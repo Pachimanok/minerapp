@@ -210,6 +210,26 @@ Route::get('/home', function () {
             ->join('minas', 'pedidohuertas.minaid', '=', 'minas.id')->get();
 
             return view('home.homeHuerta')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
+        } elseif($ali->user == 'LauraPañalera'){
+            $pedidos = DB::table('pedidoplimplims')
+            ->select(
+                'pedidoplimplims.id',
+                'pedidoplimplims.minero',
+                'pedidoplimplims.total',
+                'pedidoplimplims.estado',
+                'pedidoplimplims.observaciones',
+                'pedidoplimplims.modo_pago',
+                'pedidoplimplims.horario_envio',
+                'pedidoplimplims.updated_at',
+                'minas.titulo',
+                'minas.telefono',
+                'minas.contacto',
+                'minas.localidad'
+                /* $2y$10$aIvivVN270Dg6HIMSi4RR.z5LiTKAs971ql3Nq/TpcH6rqMvlIqG. */
+            )
+            ->join('minas', 'pedidoplimplims.minaid', '=', 'minas.id')->get();
+
+            return view('home.homePlimplim')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
         }
 
         return view('home.homeAlianza')->with('user', $usuario)->with('alianza', $ali);
@@ -340,6 +360,8 @@ Route::post('/agregar/store', function (Request $request){
 
 });
 
+Route::resource('configAlianza', 'App\Http\Controllers\configAlianzaController');
+
 /* Route::get('/minero/{id}', [MineroController::class, 'show']); */
 
 Route::resource('autos', 'App\Http\Controllers\AutoController');
@@ -396,6 +418,12 @@ Route::resource('catbluesea', 'App\Http\Controllers\catalogoBlueController');/* 
 Route::resource('bluesea', 'App\Http\Controllers\blueController');/* Controlladore para minar */
 Route::resource('detpedbluesea', 'App\Http\Controllers\detallePedidoBlueseaController');/* Controlladore para minar */
 Route::resource('pedidobluesea', 'App\Http\Controllers\pedidoBlueseaController');
+
+/* Controllers Plimplim */
+Route::resource('catplimplim', 'App\Http\Controllers\catalogoPlimplimController');/* Cátalogo */
+Route::resource('plimplim', 'App\Http\Controllers\PlimplimController');/* Controlladore para minar */
+Route::resource('detpedplim', 'App\Http\Controllers\detallePedidoPlimplimController');/* Controlladore para minar */
+Route::resource('pedidoplim', 'App\Http\Controllers\pedidoPlimplimController');
 
 Route::resource('editarPerfil', 'App\Http\Controllers\editarPerfil');
 Route::resource('detalle', 'App\Http\Controllers\DetalleBilletera');
