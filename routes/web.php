@@ -230,7 +230,28 @@ Route::get('/home', function () {
             ->join('minas', 'pedidoplimplims.minaid', '=', 'minas.id')->get();
 
             return view('home.homePlimplim')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
-        }
+        } elseif($ali->user == 'FranJuegos'){
+            $pedidos = DB::table('pedidopiedralibres')
+            ->select(
+            'pedidopiedralibres.id',
+            'pedidopiedralibres.minero',
+            'pedidopiedralibres.total',
+            'pedidopiedralibres.estado',
+            'pedidopiedralibres.observaciones',
+            'pedidopiedralibres.modo_pago',
+            'pedidopiedralibres.horario_envio',
+            'pedidopiedralibres.updated_at',
+            'minas.titulo',
+            'minas.telefono',
+            'minas.contacto',
+            'minas.localidad'
+            
+            )
+            ->join('minas', 'pedidopiedralibres.minaid', '=', 'minas.id')->get();
+            
+            return view('home.homepiedralibre')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
+            }
+            /* $2y$10$d87.OdY2c2y.exOpGaNZq.R3piTOhUrBBRz3Y4ob39fpOpbRM0ksS */
 
         return view('home.homeAlianza')->with('user', $usuario)->with('alianza', $ali);
     }
@@ -424,6 +445,13 @@ Route::resource('catplimplim', 'App\Http\Controllers\catalogoPlimplimController'
 Route::resource('plimplim', 'App\Http\Controllers\PlimplimController');/* Controlladore para minar */
 Route::resource('detpedplim', 'App\Http\Controllers\detallePedidoPlimplimController');/* Controlladore para minar */
 Route::resource('pedidoplim', 'App\Http\Controllers\pedidoPlimplimController');
+
+/* Controllers piedralibre */
+Route::resource('catpiedralibre', 'App\Http\Controllers\catalogopiedralibreController');/* Cátalogo */
+Route::resource('piedralibre', 'App\Http\Controllers\piedralibreController');/* Controlladore para minar */
+Route::resource('detpedpiedralibre', 'App\Http\Controllers\detallePedidopiedralibreController');/* Controlladore para minar */
+Route::resource('pedidopiedralibre', 'App\Http\Controllers\pedidopiedralibreController');
+
 
 Route::resource('editarPerfil', 'App\Http\Controllers\editarPerfil');
 Route::resource('detalle', 'App\Http\Controllers\DetalleBilletera');

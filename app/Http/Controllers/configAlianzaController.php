@@ -36,8 +36,10 @@ class configAlianzaController extends Controller
     {
         
         $alianza = $request->get('alianza');
+        $fantasia = $request->get('fantasia');
+
         
-        return view('crearAlianza')->with('alianza',$alianza);
+        return view('crearAlianza')->with('alianza',$alianza)->with('fantasia',$fantasia);
     }
 
     /**

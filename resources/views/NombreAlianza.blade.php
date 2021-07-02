@@ -61,7 +61,8 @@
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
                     <input  placeholder="todominusculayjunto" type="text" class="form-control" name="alianza" value="{{ old('alianza') }}" required autocomplete="alianza" autofocus>
-                                
+                    <input  placeholder="La Empresa" type="text" class="form-control" name="fantasia" value="{{ old('fantasia') }}" required autocomplete="fantasia">
+                              
                   </div>
                 </div>
                 
