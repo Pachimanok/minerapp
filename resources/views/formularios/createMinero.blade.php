@@ -13,7 +13,7 @@
                             <div>
                                 <!-- this div just for demo display -->
                                 <label class="dropimage" style="border-radius: 50%;margin: 0 auto;width: 60%;padding-bottom: 60%">
-                                    <input id="perfil-upload" title="Drop image or click me" name="avatar" type="file">
+                                    <input id="perfil-upload" title="Drop image or click me" name="avatar" type="file" required>
                                 </label>
                             </div>
                         </div>
