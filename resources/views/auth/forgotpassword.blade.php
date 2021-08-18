@@ -47,13 +47,19 @@
     <!-- Header -->
     <div class="bg-white  py-5 py-lg-8 pt-sm-1">
       <div class="container">
+        @if(session('status')) 
+              <div class="alert alert-info" role="alert">
+                {{ session('status')}}
+              </div>
+              @endif
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-              <img src="{{ asset('/assets/img/android-icon-192x192.png') }}" >
-              <h1 style="color: #13538a">Ingresá:</h1>
-              <p>Bienevenido a <strong>Miner App</strong></p>
-              <form method="POST" action="{{ route('login') }}">
+              <img src="{{ asset('/assets/img/android-icon-192x192.png') }}" style="width: 200px">
+              <h1 style="color: #13538a">Resetear Password</h1>
+              <p style="color: #13538a;margin-bottom: 0;" class="text-lead mb-3">Bienevenido a <strong>Miner App</strong></p>
+              
+              <form method="POST" action="{{ route('password.email') }}">
                 @csrf
                 <div class="form-group mb-3">
                   <div class="input-group input-group-merge input-group-alternative">
@@ -68,97 +74,32 @@
                                 @enderror
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                    </div>
-                    <input id="password" placeholder="Contraseña" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                  </div>
-                </div>
-                <div class="text-center">
-                  <div class="custom-control custom-control-alternative custom-checkbox">
-                      <input class="custom-control-input" type="checkbox" name="remember" id=" customCheckLogin" {{ old('remember') ? 'checked' : '' }}>
-                      <label class="custom-control-label" for=" customCheckLogin">
-                      <span class="text-primary">Recordarme</span>
-                      </label>
-                  </div>
-                </div>
+        
+                
                 <div class="row mt-2">
                   <div class="col-sm-5 mx-auto text-center">
-                    <button type="submit" class="btn btn-primary btn-block mx-auto">Iniciar</button>
+                    <button type="submit" class="btn btn-primary btn-block mx-auto">Recuperar Contraseña</button>
                   </div>
                 </div>
-                <div class="row mt-2">
-                  <div class="col-sm-5 text-center mx-auto">
-                    <a href="/registro" class="btn btn-outline-primary btn-block mx-auto">Registrarme</a>
-                  </div>
-                </div> 
-                <div class="row">
-                  <div class="col-sm-7 mx-auto text-center ">
-                      @if (Route::has('password.request'))
-                          <a class="btn btn-link text-primary" href="{{ route('password.request') }}">
-                              {{ __('olvidaste la contraseña?') }}
-                          </a>
-                      @endif
-                    </div>
-                </div> 
+                
+                
               </form>
             </div>
           </div>
         </div>
       </div> 
     </div>
-    <!-- Page content -->
-    <div class="container mt-8 pb-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8">
-          <div class="card bg-primary border-0">
-            <div class="card-body px-lg-5 py-lg-5">
-              <div class="text-center text-muted mb-4">
-                <small>Te interesa ser alieanza:</small>
-                <div class="col-8 mx-auto text-center">
-                  <a href="/alianza/create" class="btn btn-outline-primary text-white">Registro de Alianza</a>
-                </div>
-              </div>
 
-            </div>
-          </div>
-         
-        </div>
-      </div>
-    </div>
-  </div>
   <!-- Footer -->
   <footer class="py-5" id="footer-main">
     <div class="container">
       <div class="row align-items-center justify-content-xl-between">
         <div class="col-xl-6">
           <div class="copyright text-center text-xl-left text-muted">
-            &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+            &copy; 2021 <a href=" class="font-weight-bold ml-1" target="_blank">PipeCodeTeam</a>
           </div>
         </div>
-        <div class="col-xl-6">
-          <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-            </li>
-          </ul>
-        </div>
+        
       </div>
     </div>
   </footer>

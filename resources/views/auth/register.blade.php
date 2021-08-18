@@ -29,9 +29,8 @@
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-              <img src="{{ asset('/assets/img/android-icon-192x192.png') }}" style="width: 200px">
-              <h1 style="color: #13538a">Crear un cuenta:</h1>
-              <p style="color: #13538a;margin-bottom: 0;" class="text-lead">Completa los siguientes daros para comenzar con tu registro:</p>
+              <img src="{{ asset('/assets/img/android-icon-192x192.png') }}">
+              <h1 class="text-lead">Completa los siguientes daros para comenzar con tu registro:</p>
               <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="form-group">

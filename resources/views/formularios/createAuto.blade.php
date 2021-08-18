@@ -17,8 +17,8 @@
                             <div class="col-sm-3 mx-auto">
                                 <div>
                                     <label class="dropimage">
-                                        <input id="perfil-upload" title="Drop image or click me" name="photo"
-                                            type="file">
+                                        <input id="perfil-upload" title="Drop image or click me" name="foto"
+                                        type="file" required>
                                     </label>
                                     <small class="text-dark">subir tarjeta verde</small>
                                 </div>

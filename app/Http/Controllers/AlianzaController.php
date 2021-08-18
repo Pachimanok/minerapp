@@ -7,10 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
-
-
-
 use Illuminate\Http\Request;
+
 
 class AlianzaController extends Controller
 {

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Route;
+use GuzzleHttp\Client;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +15,9 @@ class PolController extends Controller
      */
     public function index()
     {
-        //
+        $pol = route::get('http://localhost:3000/3');
+
+        dd($pol);
     }
 
     /**

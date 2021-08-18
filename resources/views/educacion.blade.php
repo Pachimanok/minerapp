@@ -24,7 +24,7 @@
                 <input type="hidden" name="id_educacion" value="{{ $educacion->id }}">
                 <div class="row">
                   <div class="col-sm-3 mx-auto text-center mb-4">
-                  @if($educacion->estado== 'activo')
+                                      @if($educacion->estado== 'activo')
                   
                     <button class="btn btn-primary mx-auto" href="#">Validar</button>
                   

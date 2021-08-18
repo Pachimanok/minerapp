@@ -18,7 +18,7 @@
                             <div>
                                 <label class="dropimage">
                                     <input id="perfil-upload" title="Drop image or click me" name="foto"
-                                        type="file">
+                                        type="file" required>
                                 </label>
                                 <small class="text-white">Imagen del Producto</small>
                             </div>

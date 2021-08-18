@@ -42,6 +42,10 @@
 <meta name="msapplication-TileImage" content="../assets/img/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+  <style type="text/css"> html{ margin: 0; height: 100%; overflow: hidden; } iframe { position: absolute; left:0; right:0; bottom:0; top:0; border: 0; } </style> 
+
 {{-- fin para mobile --}}
   <!-- Template Main CSS File -->
   <link href="../aslnd/css/style.css" rel="stylesheet">
@@ -80,11 +84,13 @@
     </div>
   </header><!-- End Header -->
 
+
+<div class="container">
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSedQAZp-hmiODAdPgvQxJi_6cyuvdk2R12uo2-Uzaj-pyouWA/viewform?embedded=true" width="1640" height=“1640”></iframe>
+</div>
   <!-- ======= Hero Section ======= -->
   <section class="hero-section" id="hero">
-
     <div class="wave">
-
       <svg width="100%" height="355px" viewBox="0 0 1920 355" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
           <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
@@ -92,7 +98,6 @@
           </g>
         </g>
       </svg>
-
     </div>
 
     <div class="container">
@@ -122,6 +127,8 @@
     <section class="section">
       <div class="container">
 
+        <iframe id="typeform-full" width="100%" height="100%" frameborder="0" allow="camera; microphone; autoplay; encrypted-media;" src="https://form.typeform.com/to/WwnLOEzi?typeform-medium=embed-snippet"></iframe>
+        <script type="text/javascript" src="https://embed.typeform.com/embed.js"></script> 
         <div class="row justify-content-center text-center mb-5">
           <div class="col-md-5" data-aos="fade-up">
             <h2 class="section-heading">Parcicipa siendo:</h2>

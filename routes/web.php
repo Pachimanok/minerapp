@@ -5,17 +5,36 @@ use Faker\Provider\Lorem;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Models\Minero;
 use App\Models\Mina;
-
+use GuzzleHttp\Client;
 use Intervention\Image\Facades\Image;
+
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/macanudas', function (GuzzleHttp\Client $client){
+    
+    $usuario = Auth::user();
+    $user = $usuario->name;
+
+    
+    $response = $client->request('GET', "http://api.picadasmacanudas.com/api/picadas");
+    $data = json_decode($response->getBody());
+    
+    $picadas = $data->data;
+    $rubros = Arr::add(['id' , '1'], 'rubro', 'picadas');
+   
+    $min = DB::table('mineros')->where('user_name', '=', $user)->get();
+    $minero = $min[0];
+    return view('macanudas.catalogo')->with('picadas', $picadas)->with('rubros', $rubros)->with('user', $usuario)->with('mineros', $minero);
+
+});
 
 Route::get('/home', function () {
 
@@ -394,6 +413,8 @@ Route::resource('mina', 'App\Http\Controllers\MinaController');
 
 Route::resource('validar', 'App\Http\Controllers\validarController');
 Route::resource('bancodelsol', 'App\Http\Controllers\bandodelsolController');
+Route::resource('pol', 'App\Http\Controllers\PolController');
+
 
 
 
@@ -424,7 +445,7 @@ Route::resource('pedidodoliva', 'App\Http\Controllers\pedidoDolivaController');
 
 /* Controllers laderas */
 Route::resource('catladeras', 'App\Http\Controllers\catalogoLaderasController');/* Cátalogo */
-Route::resource('laderas', 'App\Http\Controllers\LaderasController');/* Controlladore para minar */
+Route::resource('laderas', 'App\Http\Controllers\laderasController');/* Controlladore para minar */
 Route::resource('detpedladeras', 'App\Http\Controllers\detallePedidoLaderasController');/* Controlladore para minar */
 Route::resource('pedidoladeras', 'App\Http\Controllers\pedidoLaderasController');
 
