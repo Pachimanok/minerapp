@@ -32,6 +32,9 @@ class detallePedidoLimpiezas extends Controller
 
         $usuario = Auth::user();
         $user = Auth::user()->name;
+         /* Notificaciones */
+         $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+         $qnot = $not->count();
         
         $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
         $minero = $min[0];
@@ -41,7 +44,8 @@ class detallePedidoLimpiezas extends Controller
         $rubros = DB::table('limpiezarubros')->get();
         $articulos = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
 
-        return view('limpieza.selectproductos')->with('mineros', $minero)->with('user', $usuario)->with('rubros', $rubros)->with('articulos', $articulos)->with('pedido', $id_pedido);
+        return view('limpieza.selectproductos')->with('mineros', $minero)->with('user', $usuario)->with('rubros', $rubros)->with('articulos', $articulos)->with('pedido', $id_pedido)->with('not', $not)
+        ->with('qnot', $qnot);
 
     }
 
@@ -128,6 +132,7 @@ class detallePedidoLimpiezas extends Controller
 
         $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
         $minero = $min[0];
+        
         foreach($request->get('cantidad') as $idart=>$cantidad){
 
           $catalogo = DB::table('catlimpiezas')->where('id','=', $idart)->get();

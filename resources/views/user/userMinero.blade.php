@@ -20,48 +20,32 @@
       <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
         <!-- Dropdown header -->
         <div class="px-3 py-3">
-          <h6 class="text-sm text-muted m-0">Tenes<strong class="text-primary">2</strong> notificationes.</h6>
+          <h6 class="text-sm text-muted m-0">Tenes <strong class="text-primary">{{ $qnot }}</strong> notificationes.</h6>
         </div>
         <!-- List group -->
         <div class="list-group list-group-flush">
-          <a href="#!" class="list-group-item list-group-item-action">
+          @foreach ($not as $notificacion)
+          <a href="{{$notificacion->link}}" class="list-group-item list-group-item-action">
               <div class="row align-items-center">
                 <div class="col-auto">
                   <!-- Avatar -->
-                  <img alt="Image placeholder" src="../assets/img/theme/team-2.jpg" class="avatar rounded-circle">
+                  <img alt="Image placeholder" src="../assets/img/theme/{{$notificacion->imagen}}" class="avatar rounded-circle">
                 </div>
-                <div class="col ml--2">
+                <div class="col ml-2">
+                 
                   <div class="d-flex justify-content-between align-items-center">
                     <div>
-                      <h4 class="mb-0 text-sm">Titulo de la Notificacion</h4>
+                      <h4 class="mb-0 text-sm">{{$notificacion->titulo}}</h4>
                     </div>
                     <div class="text-right text-muted">
-                      <small>Desafio</small>
+                      <small>{{$notificacion->created_at}}</small>
                     </div>
                   </div>
-                  <p class="text-sm mb-0">¡POL te desafia a desbloquear el Contenido de Amistad!</p>
+                  <p class="text-sm mb-0">{{$notificacion->descripcion}}</p>
                 </div>
               </div>
           </a>
-          <a href="#!" class="list-group-item list-group-item-action">
-            <div class="row align-items-center">
-              <div class="col-auto">
-                <!-- Avatar -->
-                <img alt="Image placeholder" src="../assets/img/theme/team-2.jpg" class="avatar rounded-circle" style="max-width: 3rem !important;">
-              </div>
-              <div class="col ml--2">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <h4 class="mb-0 text-sm">No Olvides facturar tus ingresos</h4>
-                  </div>
-                  <div class="text-right text-muted">
-                    <small>Billetera</small>
-                  </div>
-                </div>
-                <p class="text-sm mb-0">Acordate que si no envias la factura no podras liquidar tu dinero</p>
-              </div>
-            </div>
-          </a>
+          @endforeach
         </div>
         <!-- View all -->
         <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>

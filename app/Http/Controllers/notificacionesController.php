@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Mina;
+use App\Models\notification;
 
-class MinarController extends Controller
+
+class notificacionesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,7 @@ class MinarController extends Controller
      */
     public function index()
     {
-         
- 
+
         $usuario = Auth::user();
         $user = Auth::user()->name;
         $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
@@ -25,13 +26,12 @@ class MinarController extends Controller
         /* Notificaciones */
         $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
         $qnot = $not->count();
+
+        $notificaciones = DB::table('notifications')->get();
+
+        return view('formularios.notificaciones')->with('mineros', $minero)->with('user', $usuario) ->with('not', $not)
+        ->with('qnot', $qnot)->with('notificaciones', $notificaciones);
         
-        /* traer informacion sobre las minas disponibles */
-        $minerales = db::table('minerales')->join('alianzas', 'minerales.alianza', '=', 'alianzas.nombre_fantasia')->get();
-        $usuario = Auth::user();
-        return view('minar')->with('mineros', $minero)->with('user', $usuario)->with('minerales', $minerales)->with('not', $not)
-        ->with('qnot', $qnot);
-        /* enviar a la vista */
     }
 
     /**
@@ -41,7 +41,18 @@ class MinarController extends Controller
      */
     public function create()
     {
-        //
+
+        $usuario = Auth::user();
+        $user = Auth::user()->name;
+        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+        $minero = $min[0];
+        
+        /* Notificaciones */
+        $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+        $qnot = $not->count();
+        
+        return view('formularios.createNotificacion')->with('mineros', $minero)->with('user', $usuario)->with('not', $not)
+        ->with('qnot', $qnot);;
     }
 
     /**
@@ -52,7 +63,36 @@ class MinarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request['destinatario'] == 'todos'){
+            
+
+        }elseif($request['destinatario'] == 'mineros'){
+
+        }else{
+
+        foreach($request['tipo'] as $tipo);
+        $notificacion = new notification();
+        $notificacion->destinatario = $request['destinatario'];
+        $notificacion->titulo = $request['titulo'];
+        $notificacion->descripcion = $request['description'];
+        $notificacion->link = $request['link'];
+        $notificacion->tipo = $tipo;
+        $notificacion->save();
+
+        }
+
+        $usuario = Auth::user();
+        $user = Auth::user()->name;
+        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+        $minero = $min[0];
+        
+        /* Notificaciones */
+        $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+        $qnot = $not->count();
+
+        return redirect('/notificacion')->with('user', $user)->with('not', $not)
+        ->with('qnot', $qnot);
+       
     }
 
     /**

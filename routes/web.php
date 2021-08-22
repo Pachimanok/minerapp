@@ -48,6 +48,10 @@ Route::get('/home', function () {
         /* Datos del minero */
         $min = DB::table('mineros')->where('user_name', '=', $user)->get();
         $minero = $min[0];
+        /* Notificaciones */
+        $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+        $qnot = $not->count();
+
         /* Total Recaudado en el mes */
         $month = date('m');
         $recaudado = DB::table('billeteras')->select('monto')->where('user_name', '=', $user)->whereMonth('created_at', '=', $month)->sum('monto');
@@ -76,7 +80,11 @@ Route::get('/home', function () {
         ->with('cob', $aCobrar)
         ->with('des', $desbloq)
         ->with('id', $user_id)
-        ->with('qminas', $qminas);
+        ->with('qminas', $qminas)
+        ->with('not', $not)
+        ->with('qnot', $qnot);
+
+
 
    
     } elseif ($user_role == 'educacion') {
@@ -473,8 +481,10 @@ Route::resource('piedralibre', 'App\Http\Controllers\piedralibreController');/* 
 Route::resource('detpedpiedralibre', 'App\Http\Controllers\detallePedidopiedralibreController');/* Controlladore para minar */
 Route::resource('pedidopiedralibre', 'App\Http\Controllers\pedidopiedralibreController');
 
+Route::resource('notificacion', 'App\Http\Controllers\notificacionesController');
 
 Route::resource('editarPerfil', 'App\Http\Controllers\editarPerfil');
+
 Route::resource('detalle', 'App\Http\Controllers\DetalleBilletera');
 Route::resource('pedidolimpieza', 'App\Http\Controllers\pedidolimpiezasController');
 

@@ -51,7 +51,7 @@
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
               <img src="{{ asset('/assets/img/android-icon-192x192.png') }}" >
-              <h1 style="color: #13538a">Ingresá:</h1>
+              <h1>Ingresá:</h1>
               <p>Bienevenido a <strong>Miner App</strong></p>
               <form method="POST" action="{{ route('login') }}">
                 @csrf

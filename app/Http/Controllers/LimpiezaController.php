@@ -21,6 +21,10 @@ class LimpiezaController extends Controller
     {
         $usuario = Auth::user();
         $user = $usuario->name;
+         /* Notificaciones */
+         $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+         $qnot = $not->count();
+         
 
         $limpieza = DB::table('catlimpiezas')->where('activos', '=' ,'si')->get();
         $rubros = DB::table('limpiezarubros')->get();
@@ -29,7 +33,8 @@ class LimpiezaController extends Controller
         if($usuario->role == 'minero'){
             $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
             $minero = $min[0];
-            return view('limpieza.catalogo')->with('mineros', $minero)->with('user', $usuario)->with('rubros', $rubros)->with('articulos', $limpieza);
+            return view('limpieza.catalogo')->with('mineros', $minero)->with('user', $usuario)->with('rubros', $rubros)->with('articulos', $limpieza)->with('not', $not)
+            ->with('qnot', $qnot);
 
 
         }else{
@@ -37,7 +42,8 @@ class LimpiezaController extends Controller
             $alianza = DB::table('alianzas')->where('user', '=' ,$user)->get();
             $ali = $alianza[0];
             $articulos = DB::table('catlimpiezas')->get();
-            return view('limpieza.catalogo')->with('alianza', $ali)->with('user', $usuario)->with('rubros', $rubros)->with('articulos', $articulos);
+            return view('limpieza.catalogo')->with('alianza', $ali)->with('user', $usuario)->with('rubros', $rubros)->with('articulos', $articulos)->with('not', $not)
+            ->with('qnot', $qnot);
 
         }
     
@@ -53,12 +59,17 @@ class LimpiezaController extends Controller
     {
         $usuario = Auth::user();
         $user = Auth::user()->name;
+         /* Notificaciones */
+         $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+         $qnot = $not->count();
+         
 
         $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
         $minero = $min[0];
         $qmina = DB::table('minas')->where('user', '=' ,$user)->get();
     
-        return view('limpieza.minar')->with('mineros', $minero)->with('user', $usuario)->with('minas', $qmina);
+        return view('limpieza.minar')->with('mineros', $minero)->with('user', $usuario)->with('minas', $qmina)->with('not', $not)
+        ->with('qnot', $qnot);
         
     }
 
@@ -87,7 +98,11 @@ class LimpiezaController extends Controller
 
         $id_pedido = pedidolimpieza::latest('id')->first();
 
-        return view('limpieza.minaseleccionada')->with('mineros', $minero)->with('user', $usuario)->with('mina', $entrega);
+         /* Notificaciones */
+         $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+         $qnot = $not->count();
+        return view('limpieza.minaseleccionada')->with('mineros', $minero)->with('user', $usuario)->with('mina', $entrega)->with('not', $not)
+        ->with('qnot', $qnot);;
 
 
         
