@@ -19,7 +19,21 @@ class AlianzaController extends Controller
      */
     public function index()
     {
-        //
+        
+        $usuario = Auth::user();
+        $user = Auth::user()->name;
+        $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+        $minero = $min[0];
+        
+        /* Notificaciones */
+        $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+        $qnot = $not->count();
+        
+        $minerales = db::table('alianzas')->get();
+        $usuario = Auth::user();
+        return view('minar')->with('mineros', $minero)->with('user', $usuario)->with('minerales', $minerales)->with('not', $not)
+        ->with('qnot', $qnot);
+        
     }
 
     /**
@@ -73,10 +87,33 @@ class AlianzaController extends Controller
     public function show($id)
     {
         $usuario = Auth::user();
-        $ali = DB::table('alianzas')->where('id','=', $id)->get();
-        $alianza = $ali[0];
+        $r = $usuario->role;
 
-        return view('perfilAlianza')->with('alianza',$alianza)->with('user', $usuario);
+        if($r == 'alianza'){
+
+            $ali = DB::table('alianzas')->where('id','=', $id)->get();
+            $alianza = $ali[0];
+            return view('perfilAlianza')->with('alianza',$alianza)->with('user', $usuario);
+
+        }else{
+
+            $usuario = Auth::user();
+            $user = $usuario->name;
+            $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
+            $minero = $min[0];
+        
+            /* Notificaciones */
+            $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+            $qnot = $not->count();
+            
+            $minerales = db::table('alianzas')->where('id', '=', $id)->get();
+            $mineral = $minerales[0];
+
+           
+            return view('formularios.verAlianza')->with('mineros', $minero)->with('user', $usuario)->with('mineral', $mineral)->with('not', $not)->with('qnot', $qnot);
+
+        }
+        
 
         
     }

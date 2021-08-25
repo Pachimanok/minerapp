@@ -15,7 +15,6 @@ class MinarController extends Controller
      */
     public function index()
     {
-         
  
         $usuario = Auth::user();
         $user = Auth::user()->name;
@@ -27,7 +26,7 @@ class MinarController extends Controller
         $qnot = $not->count();
         
         /* traer informacion sobre las minas disponibles */
-        $minerales = db::table('minerales')->join('alianzas', 'minerales.alianza', '=', 'alianzas.nombre_fantasia')->get();
+        $minerales = db::table('alianzas')->get();
         $usuario = Auth::user();
         return view('minar')->with('mineros', $minero)->with('user', $usuario)->with('minerales', $minerales)->with('not', $not)
         ->with('qnot', $qnot);
