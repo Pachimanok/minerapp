@@ -47,8 +47,14 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <a href='/minar' class="btn btn-primary col-sm mx-auto  m-3"
+                        <a href='/minado' class="btn btn-primary col-sm mx-auto  m-3"
                             style="border-radius: 50px; ">MINAR</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a href='/minar' class="btn btn-primary col-sm mx-auto  m-3"
+                            style="border-radius: 50px; ">ALIANZAS</a>
                     </div>
                 </div>
                 <div class="card-body" style="

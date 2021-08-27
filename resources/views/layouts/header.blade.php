@@ -30,6 +30,11 @@
 
   {{-- para mobile --}}
 
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+
   <link rel="apple-touch-icon" sizes="57x57" href="../assets/img/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="../assets/img/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="../assets/img/apple-icon-72x72.png">
@@ -49,7 +54,7 @@
   <meta name="theme-color" content="#ffffff">
 
   {{-- fin para mobile --}}
-  
+ 
   @if($mineros->celular == null)
   
   <script>
@@ -57,20 +62,10 @@
         $("#myModal").modal('show');
     });
   </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-  [].forEach.call(document.querySelectorAll('.dropimage'), function(img){
-    img.onchange = function(e){
-      var inputfile = this, reader = new FileReader();
-      reader.onloadend = function(){
-        inputfile.style['background-image'] = 'url('+reader.result+')';
-      }
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  });
-});
-  </script>
+  
  @endif 
+
+
 </head>
 
 <body style="font-family: 'Ubuntu', sans-serif;"> 

@@ -424,6 +424,7 @@ Route::resource('bancodelsol', 'App\Http\Controllers\bandodelsolController');
 Route::resource('pol', 'App\Http\Controllers\PolController');
 
 
+Route::resource('minado', 'App\Http\Controllers\minadoController');/* Cátalogo */
 
 
 
