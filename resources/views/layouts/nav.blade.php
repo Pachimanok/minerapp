@@ -1,106 +1,51 @@
-<!-- Sidenav -->
-<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
-    <div class="scrollbar-inner">
-      <!-- Brand -->
-      <div class="sidenav-header  align-items-center">
-        <a class="navbar-brand" href="javascript:void(0)">
-          <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
-        </a>
-      </div>
-      <div class="navbar-inner">
-        <!-- Collapse -->
-        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-          <!-- Nav items -->
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" href="dashboard.html">
-                <i class="ni ni-tv-2 text-primary"></i>
-                <span class="nav-link-text">Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="icons.html">
-                <i class="ni ni-planet text-orange"></i>
-                <span class="nav-link-text">Icons</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="map.html">
-                <i class="ni ni-pin-3 text-primary"></i>
-                <span class="nav-link-text">Google</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="profile.html">
-                <i class="ni ni-single-02 text-yellow"></i>
-                <span class="nav-link-text">Profile</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="tables.html">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Tables</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">
-                <i class="ni ni-key-25 text-info"></i>
-                <span class="nav-link-text">Login</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="register.html">
-                <i class="ni ni-circle-08 text-pink"></i>
-                <span class="nav-link-text">Register</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="upgrade.html">
-                <i class="ni ni-send text-dark"></i>
-                <span class="nav-link-text">Upgrade</span>
-              </a>
-            </li>
-          </ul>
-          <!-- Divider -->
-          <hr class="my-3">
-          <!-- Heading -->
-          <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Documentation</span>
-          </h6>
-          <!-- Navigation -->
-          <ul class="navbar-nav mb-md-3">
-            <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
-                <i class="ni ni-spaceship"></i>
-                <span class="nav-link-text">Getting started</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
-                <i class="ni ni-palette"></i>
-                <span class="nav-link-text">Foundation</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html" target="_blank">
-                <i class="ni ni-ui-04"></i>
-                <span class="nav-link-text">Components</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/plugins/charts.html" target="_blank">
-                <i class="ni ni-chart-pie-35"></i>
-                <span class="nav-link-text">Plugins</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active active-pro" href="upgrade.html">
-                <i class="ni ni-send text-dark"></i>
-                <span class="nav-link-text">Upgrade to PRO</span>
-              </a>
-            </li>
-          </ul>
+<div class="container-fluid fixed-top " style="box-shadow: 12px -8px 29px 4px rgb(35 35 35 / 32%);">
+    <div class="d-flex">
+        <div class="col-sm-10 text-center">
+            <h1>Alianzas</h1>
         </div>
-      </div>
+        <div class="col-sm-2 text-right align-center">
+            <li class="nav-item dropdown" style="margin-top: 10%;">
+                <a class="nav-link" href="#" style="color:#13538a; margin-top: 30%; margin-botton:30%;" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="ni ni-bell-55"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
+                    <!-- Dropdown header -->
+                    <div class="px-3 py-3">
+                        <h6 class="text-sm text-muted m-0">Tenes <strong
+                                class="text-primary">{{ $qnot }}</strong> notificationes.</h6>
+                    </div>
+                    <!-- List group -->
+                    <div class="list-group list-group-flush">
+                        @foreach ($not as $notificacion)
+                            <a href="{{ $notificacion->link }}" class="list-group-item list-group-item-action">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <!-- Avatar -->
+                                        <img alt="Image placeholder"
+                                            src="../assets/img/theme/{{ $notificacion->imagen }}"
+                                            class="avatar rounded-circle">
+                                    </div>
+                                    <div class="col ml-2">
+
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h4 class="mb-0 text-sm">{{ $notificacion->titulo }}</h4>
+                                            </div>
+                                            <div class="text-right text-muted">
+                                                <small>{{ $notificacion->created_at }}</small>
+                                            </div>
+                                        </div>
+                                        <p class="text-sm mb-0">{{ $notificacion->descripcion }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                    <!-- View all -->
+                    <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
+                </div>
+            </li>
+        </div>
     </div>
-  </nav>
+</div>

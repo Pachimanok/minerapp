@@ -68,6 +68,6 @@
 
 </head>
 
-<body style="font-family: 'Ubuntu', sans-serif;"> 
+<body> 
 
 @include('formularios.createMinero')

@@ -1,38 +1,50 @@
 @include('layouts.header')
 
 <body>
-    @include('layouts.user')
-    <div class="header pb-6">
-        <div class="container-fluid">
+    {{-- @include('layouts.user') --}}
+    @include('layouts.nav')
+
+    <div class="header pb-6" style="margin-top: 30% !important;">
+        <div class="container-fluid mt-3">
             <div class="header-body">
                 <div class="row mt-1">
                     @foreach ($minerales as $mineral)
-                        <li class="list-group-item"
-                            style="padding: 0rem 1rem !important; border: none; position: relative;">
-                            <div class="row">
-                                <div class="col-auto text-center ml-2 pl-0"
-                                    style="width: 25%;overflow: hidden; margin: 0px 10px 0px 10px; position: relative;">
-                                    <img alt="Image placeholder" src="{{ asset('/img/avatar/' . $mineral->avatar) }}"
-                                        class="img-fluid" style="border-radius: 0px 10px 10px 0px; position:absolute;left: -100%;right: -100%;top: -100%;bottom: -100%;margin: auto;min-height: 100%;min-width: 100%;">
-                                </div>
-                                <div class="col-auto" style="width: 60%;     padding-left: 0;">
-                                    <h4 class="mb-0 text-sm pb-0">{{ $mineral->nombre_fantasia }} <small></small></h4>
-                                    <p class="text-sm mt-1 mb-1" style="line-height: 10px; color:#A6AAB4;"><small><i
-                                                class="fas fa-money-check-alt"></i> {{ $mineral->medios_pago }}</small>
-                                    </p>
-                                    <p class="text-sm mt-1 mb-1" style="line-height: 10px; color:#A6AAB4;"><small><i
-                                                class="fas fa-map-marker-alt"></i> {{ $mineral->shipping }}</small></p>
 
-                                    <a href="#"><span class="badge badge-primary bg-white"
+                        <li class="list-group-item"
+                            style="padding: 0rem 1rem !important; border: none; position: relative;background: #f0f8ff00;">
+                            <a href="alianza/{{ $mineral->id }}" style="margin: 0px; width: 100%; height: 100%;">
+                                <div class="row">
+
+                                    <div class="col-auto text-center ml-2 pl-0"
+                                        style="width: 25%;overflow: hidden; margin: 0px 10px 0px 10px; position: relative;">
+                                        <img alt="Image placeholder"
+                                            src="{{ asset('/img/avatar/' . $mineral->avatar) }}" class="img-fluid"
+                                            style="border-radius: 0px 10px 10px 0px; position:absolute;left: -100%;right: -100%;top: -100%;bottom: -100%;margin: auto;min-height: 100%;min-width: 100%;">
+                                    </div>
+                                    <div class="col-auto" style="width: 60%;     padding-left: 0;">
+                                        <h4 class="mb-0 text-sm pb-0">{{ $mineral->nombre_fantasia }}</h4>
+                                        <p class="text-sm mt-1 mb-1" style="line-height: 10px; color:#A6AAB4;"><small><span style="text-align:center;    margin-right: 0.5rem;"><i
+                                                    class="fas fa-credit-card"></i></span >{{ $mineral->medios_pago }}</small></p>
+                                        <p class="text-sm mt-1 mb-1" style="line-height: 10px; color:#A6AAB4;"><small><span style="text-align:center;"><i
+                                                    class="fas fa-map-marker-alt" style="width: 17px; margin-right: 0.25rem;"></i></span>{{ $mineral->shipping }}</small></p>
+                                        <p class="text-sm mt-1 mb-1" style="line-height: 10px; color:#A6AAB4;"><small><span style="text-align:center;"><i
+                                                    class="ni ni-money-coins" style="width: 17px; margin-right: 0.25rem;"></i></span>{{ $mineral->comision }}%</small>
+                                        </p>
+                                        <span class="badge badge-primary bg-white"
                                             style="text-transform: lowercase !important;">
-                                            {{ $mineral->hash }}</span></a>
+                                            {{ $mineral->hash }}</span>
+                                    </div>
+                                    <div class="col-auto" style="width: 10%;">
+                                        <i class="fas fa-chevron-right" style="color:#A6AAB4"></i>
+                                    </div>
+
                                 </div>
-                                <div class="col-auto" style="width: 10%;">
-                                    <a href="alianza/{{ $mineral->id }}" style="color:#A6AAB4"><i class="fas fa-chevron-right"></i></a>
-                                </div>
-                            </div>
+                            </a>
+
                             <hr style="margin: 1rem 0rem; height: 0px;">
+
                         </li>
+
                     @endforeach
 
                     <div class="row text-center mt-5">
