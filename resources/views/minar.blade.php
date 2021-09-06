@@ -14,7 +14,6 @@
                             style="padding: 0rem 1rem !important; border: none; position: relative;background: #f0f8ff00;">
                             <a href="alianza/{{ $mineral->id }}" style="margin: 0px; width: 100%; height: 100%;">
                                 <div class="row">
-
                                     <div class="col-auto text-center ml-2 pl-0"
                                         style="width: 25%;overflow: hidden; margin: 0px 10px 0px 10px; position: relative;">
                                         <img alt="Image placeholder"

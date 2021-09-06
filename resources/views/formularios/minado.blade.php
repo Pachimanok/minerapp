@@ -1,6 +1,6 @@
 @include('layouts.header')
 <body>
-    @include('layouts.user')
+    
     <div class="header pb-6">
         <div class="card-header" style="background: #F5F5F5;
         text-align: center;
@@ -11,6 +11,7 @@
             <p class="text-center" style="margin: 2rem 2rem 2rem;">¿Dónde hiciste tu compra?</p>
             @foreach ($minerales as $mineral)
                 <li class="list-group-item" style="padding: 0rem 1rem !important; border: none; position: relative;">
+                    <a href="minado/{{ $mineral->id }}">
                     <div class="d-flex" style="height: 3rem;">
                         <div class="col-auto text-center ml-2 pl-0"
                             style="width: 25%;overflow: hidden; margin: 0px 10px 0px 10px; position: relative;">
@@ -22,10 +23,11 @@
                             <h4 class="mb-0 text-sm pb-0">{{ $mineral->nombre_fantasia }}</h4> 
                         </div>
                         <div class="col-auto" style="width: 10%;">
-                            <a href="minado/{{ $mineral->id }}" style="color:#A6AAB4"><i class="fas fa-chevron-right"></i></a>
+                            <p style="color:#A6AAB4"><i class="fas fa-chevron-right"></i></p>
                         </div>
                     </div>
                     <hr style="margin: 0.8rem 0rem; height: 0px;">
+                </a>
                 </li>
             @endforeach
         </div>

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TerminoMinadoAlianza;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Minado;
 use Intervention\Image\Facades\Image;
+
 
 
 class minadoController extends Controller
@@ -81,6 +84,8 @@ class minadoController extends Controller
 
         foreach($request['mina'] as $mina);
         foreach($request['tipo_pago'] as $tipo_pago);
+        foreach($request['metodo_pago'] as $metodo_pago);
+
 
         $minado = new Minado();
         $minado->fecha_pago = $request['fecha_pago'];
@@ -88,6 +93,7 @@ class minadoController extends Controller
         $minado->comision =  $comision;
         $minado->mina = $mina;
         $minado->tipo_pago =  $tipo_pago;
+        $minado->metodo_pago =  $metodo_pago;
         $minado->fecha_entrega = $request['fecha_pago']; 
         $minado->comprobante = $name;
         $minado->user = $user;
@@ -117,6 +123,7 @@ class minadoController extends Controller
 
         $ali = DB::table('alianzas')->where('id', '=', $id)->get();
         $alianza = $ali[0];
+        
 
         return view ('formularios.cargarMinado')->with('mineros', $minero)->with('user', $usuario)->with('not', $not)->with('qnot', $qnot)->with('alianza', $alianza)->with('minas', $minas);
     }
@@ -144,6 +151,16 @@ class minadoController extends Controller
         $minado = Minado::find($id);
         $minado->calificacion_compra = $request['valuacion'];
         $minado->save();
+
+        $minado = DB::table('minados')->select('alianza')->where('id', '=', $id)->get();
+        $al = $minado[0];
+
+        /*  $ali = DB::table('alianzas')->where('nombre_fantasia', '=', $al)->get();
+            /* $alianza = $ali[0] */
+        /*  dd($ali[0]); */
+        /*   $mail = $alianza->email ; */
+
+        Mail::to('prio@minerapp.com.ar')->send(new TerminoMinadoAlianza);
 
         return redirect('/home');
     }

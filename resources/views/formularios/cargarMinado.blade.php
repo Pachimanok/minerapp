@@ -32,7 +32,7 @@ input[type="date"]:focus:before {
 }
 </style>
 <body>
-    @include('layouts.user')
+
     <div class="header pb-6">
         <div class="card-header" style="background: #F5F5F5;
         text-align: center;
@@ -46,17 +46,27 @@ input[type="date"]:focus:before {
             <div class="container" style="min-height: 24rem;">
                 <input type="hidden" name="alianza" value="{{ $alianza->id }}">
                 <input type="date" class="form-control" name="fecha_pago"  placeholder="Fecha del Pago *" onchange="this.className=(this.value!=''?'has-value':'')" required>
-                <input type="number" name="monto" style="padding-left: 1.4rem;"class="form-control" placeholder="Mondo de compra*" required>
-                <select name="mina[]" id="" class="form-control" required>
+                <input type="number" name="monto" style="padding-left: 1.4rem;"class="form-control" placeholder="Monto de compra*" required>
+                <select name="mina[]" id="producto" class="form-control" onchange="ShowSelected()" required>
                     <option value="">Seleccionar Mina*</option>
                     @foreach ($minas as $mina)
                         <option value="{{ $mina->id }}">{{ $mina->titulo }}</option>
                     @endforeach
+                    <option value="/mina/create">+ Agregar Mina</option>
                 </select>
+                
                 <select name="tipo_pago[]" id="" class="form-control" required>
                     <option value="">Tipo de Pago*</option>
-                    <option value="Mercado Pago">Mercado Pago</option>
+                    <option value="Pago Único">Pago Único</option>
+                    <option value="Suscripción">Suscripción</option>
+                </select>
+                <select name="metodo_pago[]" id="" class="form-control" required>
+                    <option value="">Método de Pago*</option>
+                    <option value="Efectivo">Efectivo</option>
                     <option value="Transferencia">Transferencia</option>
+                    <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                    <option value="Tarjeta de Débito">Tarjeta de Débito</option>
+                    <option value="Mercado Pago">Mercado Pago</option>
                 </select>
                 <input type="date" class="form-control" name="fecha_entrega"  placeholder="Fecha del Entrega *" onchange="this.className=(this.value!=''?'has-value':'')" required>
                 <label style=" padding-left: 1.5rem; color: #8898aa; margin-top: 0.8rem; font-size: smaller;">Cargar comprobante (img,jpeg,png)*
@@ -77,7 +87,21 @@ input[type="date"]:focus:before {
         </div>
     </div>
 
+    <script type="text/javascript">
+        function ShowSelected()
+        {
+       
+        var combo = document.getElementById("producto");
+        var selected = combo.options[combo.selectedIndex].text;
 
+        if (selected == '+ Agregar Mina'){
+           /*  console.log(combo.options[combo.selectedIndex].value) */
+            window.open('/mina/create','_top')
+        }
+        
+        
+        }
+        </script>
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"

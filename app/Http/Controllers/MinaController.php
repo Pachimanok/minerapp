@@ -40,8 +40,10 @@ class MinaController extends Controller
             $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
             $minero = $min[0];
             $localidades = DB::table('delivery')->get();
+            $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+            $qnot = $not->count();
             
-            return view('formularios.createMinas')->with('mineros', $minero)->with('user', $usuario)->with('localidades', $localidades);
+            return view('formularios.createMinas')->with('mineros', $minero)->with('user', $usuario)->with('localidades', $localidades)->with('not', $not)->with('qnot', $qnot);
     }
 
     /**

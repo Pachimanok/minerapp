@@ -12,7 +12,7 @@
                     <p class="text-gray text-center pb-0 mt-5 mb-0" style="line-height: 25px;">Revisaremos los datos y
                         en tu billetera encotraras el valor acumunlado</h5>
                     <p class="text-center pb-0 mb-0"> <small> La comision a recibir es de:</small></h6>
-                    <p class="text-center mt-0">$ {{ $com }}0</h6>
+                    <p class="text-center mt-0">$ {{ $com }},00</h6>
                         <br>
                         <br>
                         <br>
@@ -101,7 +101,6 @@
                             cabs.forEach(function(v){v.style.color = "#ffa400"});
                             document.querySelector('#bot').disabled = false;
 
-                            
                         }
 
                     </script>
