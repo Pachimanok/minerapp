@@ -1,14 +1,8 @@
 @include('layouts.header')
 
 <body>
-   
+    @include('layouts.user')
     <div class="header pb-6">
-        <div class="card-header" style="background: #F5F5F5; text-align: center; padding: 1.5rem 1rem 1rem;">
-            <div class="row">
-                <a href="/minado" class="text-left" style="font-size: large; z-index: 5;"><i class="fas fa-chevron-left"></i></a>
-                <h3 class="card-title text-center mb-0" style="margin-top: -2.3rem;">{{ $mineral->nombre_fantasia }}</h3>
-            </div>
-        </div>
         <div class="container-fluid" style="height: 5rem;
       overflow: hidden;
       position: relative;">
@@ -93,7 +87,7 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                         data-parent="#accordionExample">
                         <div class="accordion-body">
-                            <p class="text-left mt-3"
+                            <p class="text-center mt-3"
                                 style="font-size: smaller; line-height: initial; color: #3c3c43b3;">
                                 {{ $mineral->q_hacer }}</p>
 
@@ -116,22 +110,22 @@
                     <div id="collapseTree" class="collapse" aria-labelledby="headingTree"
                         data-parent="#accordionExample">
                         <div class="accordion-body">
-                            <p class="text-left mt-3"
+                            <p class="text-center mt-3"
                                 style="font-size: smaller; line-height: initial; color: #3c3c43b3;">Lorem ipsum dolor
                                 sit amet consectetur adipisicing elit. Id voluptates rem, atque aut eveniet ipsum
                                 reprehenderit quos laborum fuga, sunt deserunt. Facilis ducimus similique quas? Minus
                                 deserunt ipsam praesentium necessitatibus!</p>
-                            <p class="text-left mt-3"
+                            <p class="text-center mt-3"
                                 style="font-size: smaller; line-height: initial; color: #3c3c43b3;">Lorem ipsum dolor
                                 sit amet consectetur adipisicing elit. Id voluptates rem, atque aut eveniet ipsum
                                 reprehenderit quos laborum fuga, sunt deserunt. Facilis ducimus similique quas? Minus
                                 deserunt ipsam praesentium necessitatibus!</p>
-                            <p class="text-left mt-3"
+                            <p class="text-center mt-3"
                                 style="font-size: smaller; line-height: initial; color: #3c3c43b3;">Lorem ipsum dolor
                                 sit amet consectetur adipisicing elit. Id voluptates rem, atque aut eveniet ipsum
                                 reprehenderit quos laborum fuga, sunt deserunt. Facilis ducimus similique quas? Minus
                                 deserunt ipsam praesentium necessitatibus!</p>
-                            <p class="text-left mt-3"
+                            <p class="text-center mt-3"
                                 style="font-size: smaller; line-height: initial; color: #3c3c43b3;">Lorem ipsum dolor
                                 sit amet consectetur adipisicing elit. Id voluptates rem, atque aut eveniet ipsum
                                 reprehenderit quos laborum fuga, sunt deserunt. Facilis ducimus similique quas? Minus
@@ -165,13 +159,13 @@
                                 <div class="d-flex">
                                     <div class="col-sm-6 mx-auto d-flex">
                                         <div class="col-sm-6">
-                                            <a href="{{ $mineral->link_cat }}"class="btn btn-secondary btn-lg"
+                                            <a class="btn btn-secondary btn-lg"
                                                 style="border-radius: 50%; box-shadow:none !important; color:#13538a;"><i
                                                     class="far fa-paper-plane p-2" style="font-size:1.5rem;"></i></a>
                                             <p><small>Visitar Sitio</small></p>
                                         </div>
                                         <div class="col-sm-6">
-                                            <a   href="https://api.whatsapp.com/send?text={{ $mineral->link_cat }}" class="btn btn-secondary btn-lg"
+                                            <a class="btn btn-secondary btn-lg"
                                                 style="border-radius: 50%; box-shadow:none !important; color:#13538a;"><i
                                                     class="fas fa-share-alt p-2" style="font-size:1.5rem;"></i></a>
                                             <p><small>Compartir</small></p>
@@ -184,7 +178,7 @@
 
                                     <!-- Objetivo -->
                                     <div class="input-group mb-3">
-                                        <input id="foo" value="{{ $mineral->link_cat }}" class="form-control ml-5 text-center" disabled>
+                                        <input id="foo" value="https://mninerapp.com.ar-" class="form-control ml-5 text-center" disabled>
                                         <button class="btn btn-outline-secondary" data-clipboard-target="#foo" ><i class="fas fa-copy"></i></button>
                                       </div>
                                     

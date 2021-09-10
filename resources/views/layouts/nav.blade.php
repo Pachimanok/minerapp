@@ -1,19 +1,12 @@
-<div class="container-fluid" 
-style="box-shadow: 12px -8px 29px 4px rgb(35 35 35 / 32%); 
-position: fixed;
-top: 0; 
-opacity: 1;
-    background: white;
-    z-index: 5;
-">
-    <div class="d-flex bg-white">
+<div class="container-fluid fixed-top " style="box-shadow: 12px -8px 29px 4px rgb(35 35 35 / 32%);">
+    <div class="d-flex">
         <div class="col-sm-10 text-center">
             <h1>Alianzas</h1>
         </div>
         <div class="col-sm-2 text-right align-center">
             <li class="nav-item dropdown" style="margin-top: 10%;">
-                <a class="nav-link" href="#" style="color:#13538a; margin-top: 30%; margin-botton:30%;"
-                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="#" style="color:#13538a; margin-top: 30%; margin-botton:30%;" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     <i class="ni ni-bell-55"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">

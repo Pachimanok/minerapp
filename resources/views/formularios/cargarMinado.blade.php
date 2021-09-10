@@ -32,12 +32,12 @@ input[type="date"]:focus:before {
 }
 </style>
 <body>
+
     <div class="header pb-6">
-        <div class="card-header" style="background: #F5F5F5; text-align: center; padding: 1.5rem 1rem 1rem;">
-            <div class="row">
-                <a href="/minado" class="text-left" style="font-size: large; z-index: 5;"><i class="fas fa-chevron-left"></i></a>
-                <h3 class="card-title text-center mb-0" style="margin-top: -2.3rem;">Detalle</h3>
-            </div>
+        <div class="card-header" style="background: #F5F5F5;
+        text-align: center;
+        padding: 1rem;">
+            <h3 class="card-title mb-0">Detalles</h3>
         </div>
         <div class="container">
             <p class="text-center" style="    margin: 1rem 1rem 2rem; line-height: 19px; font-size: 15px; color: #8E8E93;;">Para completar la compra, recuerda que debes completar el campo "fecha de entrega".<br>*Estan excluido los servicios.</p>
@@ -46,7 +46,7 @@ input[type="date"]:focus:before {
             <div class="container" style="min-height: 24rem;">
                 <input type="hidden" name="alianza" value="{{ $alianza->id }}">
                 <input type="date" class="form-control" name="fecha_pago"  placeholder="Fecha del Pago *" onchange="this.className=(this.value!=''?'has-value':'')" required>
-                <input type="number" name="monto" style="padding-left: 1.4rem;"class="form-control" placeholder="Monto de compra [ 1000.00 ]*" required>
+                <input type="number" name="monto" style="padding-left: 1.4rem;"class="form-control" placeholder="Monto de compra*" required>
                 <select name="mina[]" id="producto" class="form-control" onchange="ShowSelected()" required>
                     <option value="">Seleccionar Mina*</option>
                     @foreach ($minas as $mina)
@@ -71,7 +71,7 @@ input[type="date"]:focus:before {
                 <input type="date" class="form-control" name="fecha_entrega"  placeholder="Fecha del Entrega *" onchange="this.className=(this.value!=''?'has-value':'')" required>
                 <label style=" padding-left: 1.5rem; color: #8898aa; margin-top: 0.8rem; font-size: smaller;">Cargar comprobante (img,jpeg,png)*
                     <input  style="opacity:0;" name="comprobante"
-                    type="file" accept="image/*" required>
+                    type="file" required>
                 </label>
             </div>
             <div class="custom-control custom-checkbox ml-3">
@@ -79,7 +79,7 @@ input[type="date"]:focus:before {
                 <label class="custom-control-label" for="customCheck1" style=" color: #3c3c43b3;">Acepto los <Strong style="color: #13538a;">Términos y condiciones</Strong></label>
               </div>
               <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary mt-3 pt-3 pb-3 text-white" style="border-radius: 10px;
+                <button type="submit" class="btn btn-primary mt-3 text-white" style="border-radius: 10px;
                 background: #13538a;" type="button">Enviar</a>
                 
               </div>
