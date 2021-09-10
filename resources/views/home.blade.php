@@ -2,6 +2,8 @@
 @if($user->role == 'minero')
 
   @include('home.homeMinero')
+  
+
 
 @elseif($user->role == 'alianza')
 
@@ -19,10 +21,7 @@
     
 </div>
   </div>
-      <!-- Footer -->
-      <footer class="footer">
-        <h5 class="text-light text-center">MinerApp :: un minero en cada casa</h5>
-      </footer>
+     
     </div>
   </div>
   <!-- Argon Scripts -->

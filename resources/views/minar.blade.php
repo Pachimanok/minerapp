@@ -1,15 +1,11 @@
 @include('layouts.header')
-
 <body>
-    {{-- @include('layouts.user') --}}
-    @include('layouts.nav')
-
+  @include('layouts.nav') 
     <div class="header pb-6" style="margin-top: 30% !important;">
         <div class="container-fluid mt-3">
             <div class="header-body">
                 <div class="row mt-1">
                     @foreach ($minerales as $mineral)
-
                         <li class="list-group-item"
                             style="padding: 0rem 1rem !important; border: none; position: relative;background: #f0f8ff00;">
                             <a href="alianza/{{ $mineral->id }}" style="margin: 0px; width: 100%; height: 100%;">

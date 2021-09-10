@@ -1,5 +1,6 @@
-<div class="container-fluid fixed-top " style="box-shadow: 12px -8px 29px 4px rgb(35 35 35 / 32%);">
-    <div class="d-flex">
+
+<div class="container-fluid" style="box-shadow: 12px -8px 29px 4px rgb(35 35 35 / 32%);  position: fixed; top: 0;  opacity: 1; background: white; z-index: 5;">
+    <div class="d-flex bg-white">
         <div class="col-sm-10 text-center">
             <h1>Alianzas</h1>
         </div>

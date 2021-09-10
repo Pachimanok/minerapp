@@ -1,7 +1,5 @@
 @include('layouts.header')
-
 <body>
-    @include('layouts.user')
     <div class="header pb-6">
         <div class="container-fluid" style="height: 5rem;
       overflow: hidden;
