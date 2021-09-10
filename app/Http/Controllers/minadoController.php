@@ -160,8 +160,8 @@ class minadoController extends Controller
         /*  dd($ali[0]); */
         /*   $mail = $alianza->email ; */
 
-        Mail::to('prio@minerapp.com.ar')->send(new TerminoMinadoAlianza);
-
+       /*  Mail::to('prio@minerapp.com.ar')->send(new TerminoMinadoAlianza);
+ */
         return redirect('/home');
     }
 

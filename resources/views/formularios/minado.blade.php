@@ -2,10 +2,11 @@
 <body>
     
     <div class="header pb-6">
-        <div class="card-header" style="background: #F5F5F5;
-        text-align: center;
-        padding: 1rem;">
-            <h3 class="card-title mb-0">Minar</h3>
+        <div class="card-header" style="background: #F5F5F5; text-align: center; padding: 1.5rem 1rem 1rem;">
+            <div class="row">
+                <a href="/home" class="text-left" style="font-size: large; z-index:5"><i class="fas fa-chevron-left"></i></a>
+                <h3 class="card-title text-center mb-0" style="margin-top: -2.3rem;">Minar</h3>
+            </div>
         </div>
         <div class="container">
             <p class="text-center" style="margin: 2rem 2rem 2rem;">¿Dónde hiciste tu compra?</p>
@@ -32,19 +33,15 @@
             @endforeach
         </div>
     </div>
-
-
-
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
-                integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
-                integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+            integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+            integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
+    </script>
 
         <!-- Argon Scripts -->
         <!-- Core -->

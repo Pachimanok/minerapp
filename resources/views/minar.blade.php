@@ -1,9 +1,7 @@
 @include('layouts.header')
-
 <body>
     {{-- @include('layouts.user') --}}
     @include('layouts.nav')
-
     <div class="header pb-6" style="margin-top: 30% !important;">
         <div class="container-fluid mt-3">
             <div class="header-body">
@@ -12,7 +10,7 @@
 
                         <li class="list-group-item"
                             style="padding: 0rem 1rem !important; border: none; position: relative;background: #f0f8ff00;">
-                            <a href="alianza/{{ $mineral->id }}" style="margin: 0px; width: 100%; height: 100%;">
+                            <a href="alianza/{{ $mineral->id }}" style="margin: 0px; width: 100%; height: 100%; z-index: 5;">
                                 <div class="row">
                                     <div class="col-auto text-center ml-2 pl-0"
                                         style="width: 25%;overflow: hidden; margin: 0px 10px 0px 10px; position: relative;">
@@ -29,7 +27,7 @@
                                         <p class="text-sm mt-1 mb-1" style="line-height: 10px; color:#A6AAB4;"><small><span style="text-align:center;"><i
                                                     class="ni ni-money-coins" style="width: 17px; margin-right: 0.25rem;"></i></span>{{ $mineral->comision }}%</small>
                                         </p>
-                                        <span class="badge badge-primary bg-white"
+                                        <span class="badge badge-primary bg-white text-wrap text-left"
                                             style="text-transform: lowercase !important;">
                                             {{ $mineral->hash }}</span>
                                     </div>

@@ -1,18 +1,17 @@
 @include('layouts.header')
 
 <body>
-    @include('layouts.user')
     <div class="header pb-3">
-        <div class="container mt-6">
+        <div class="container mt-3">
             <br>
-            <div class="card mt-2" style="border:none;">
+            <div class="card" style="border:none;">
                 <div class="card-body">
                     <h1 class="text-center text-success p-0"><i class="fas fa-check-circle"></i></h1>
                     <h3 class="text-center p-0">¡El proceso se realizó con éxito!</h3>
                     <p class="text-gray text-center pb-0 mt-5 mb-0" style="line-height: 25px;">Revisaremos los datos y
                         en tu billetera encotraras el valor acumunlado</h5>
                     <p class="text-center pb-0 mb-0"> <small> La comision a recibir es de:</small></h6>
-                    <p class="text-center mt-0">$ {{ $com }},00</h6>
+                    <p class="text-center mt-0">$ {{ number_format($com, 2, '.', '') }}</h6>
                         <br>
                         <br>
                         <br>
@@ -58,7 +57,7 @@
                         </div>
                             <div class="d-grid gap-2">
 
-                        <button type="submit" id="bot" class="btn btn-primary mt-3 text-white" disabled>finalizar</button>
+                        <button type="submit" id="bot" class="btn btn-primary mt-3 pt-3 pb-3 text-white" style=" background: #13538a; border-radius: 15px;" disabled>finalizar</button>
                         </div>
                     <script>
                         function colorear1(){
