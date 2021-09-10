@@ -17,7 +17,7 @@
           border-width: 6px;
           border-color: rgba(255, 255, 255, 0);
           margin-top: -33px;
-          font-size: xx-large;
+          font-size: xx-large;git
           background: #264b8f;"><i class="fas fa-gem"></i></a></li>
         <li class="list-group-item"style="width:20%; border:none; font-size: xx-large; padding-left: 0;margin: 0 0 0.5rem 0;padding-bottom: 0;"><a href="/minar" style="/* color:#80808080 !important; */"><i class="far fa-handshake"></i></a></li>
         <li class="list-group-item mr-1"style="width:20%; border:none; font-size: xx-large; padding-left: 0;margin: 0 0 0.5rem 0;padding-bottom: 0;"><a href="" style="color:#80808080 !important;"><i class="far fa-bell"></i></a></li>
