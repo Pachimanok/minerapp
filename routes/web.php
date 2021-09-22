@@ -67,7 +67,7 @@ Route::get('/home', function () {
         /* Datos para billetera */
         $aCobrar = DB::table('billeteras')->select('monto')->where('user_name', '=', $user)->where('estado', '=', 'a cobrar')->sum('monto');
         $desbloq = DB::table('billeteras')->select('monto')->where('user_name', '=', $user)->where('estado', '=', 'desbloquear')->sum('monto');
-
+        
         /* enviamos a la vista */
         return view('home')
         ->with('user', $usuario)
@@ -81,6 +81,7 @@ Route::get('/home', function () {
         ->with('des', $desbloq)
         ->with('id', $user_id)
         ->with('qminas', $qminas)
+        ->with('minas', $minas)
         ->with('not', $not)
         ->with('qnot', $qnot);
 
@@ -316,12 +317,15 @@ Route::get('/mensajes', function () {
 
 Route::get('/perfil', function () {
 
+
     $user = Auth::user()->name;
-    $min = DB::table('mineros')->where('user_name', '=', $user)->get();
+    $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+    $qnot = $not->count();
+    $min = DB::table('mineros')->join('users','mineros.user_name','=','users.name')->where('user_name', '=', $user)->get();
     $minero = $min[0];
 
 
-    return view('perfil')->with('mineros', $minero)->with('user', $user);
+    return view('perfil')->with('mineros', $minero)->with('user', $user)->with('qnot', $qnot);
 });
 
 Route::get('/billetera', function () {
@@ -421,8 +425,6 @@ Route::resource('mina', 'App\Http\Controllers\MinaController');
 
 Route::resource('validar', 'App\Http\Controllers\validarController');
 Route::resource('bancodelsol', 'App\Http\Controllers\bandodelsolController');
-Route::resource('pol', 'App\Http\Controllers\PolController');
-
 
 Route::resource('minado', 'App\Http\Controllers\minadoController');/* Cátalogo */
 
@@ -432,6 +434,7 @@ Route::resource('minado', 'App\Http\Controllers\minadoController');/* Cátalogo 
 Route::resource('catlim', 'App\Http\Controllers\CatlimpiezaController');/* Cátalogo */
 Route::resource('limpieza', 'App\Http\Controllers\LimpiezaController'); /* General */
 Route::resource('detpedlim', 'App\Http\Controllers\detallePedidoLimpiezas');/* Pedido */
+Route::resource('pedidolimpieza', 'App\Http\Controllers\pedidolimpiezasController');
 
 /* Controllers Demo */
 Route::resource('catdemo', 'App\Http\Controllers\catalogoDemoController');/* Cátalogo */
@@ -439,55 +442,13 @@ Route::resource('demo', 'App\Http\Controllers\DemoController');/* Controlladore 
 Route::resource('detpeddemo', 'App\Http\Controllers\detallePedidoDemoController');/* Controlladore para minar */
 Route::resource('pedidodemo', 'App\Http\Controllers\pedidoDemoController');
 
-/* Controllers Foc */
-Route::resource('catfoc', 'App\Http\Controllers\catalogoFocController');/* Cátalogo */
-Route::resource('foc', 'App\Http\Controllers\FocController');/* Controlladore para minar */
-Route::resource('detpedfoc', 'App\Http\Controllers\detallePedidoFocController');/* Controlladore para minar */
-Route::resource('pedidofoc', 'App\Http\Controllers\pedidoFocController');
-
-/* Controllers doliva */
-/* $2y$10$fvx.o.wrczP4nMHfF93JseHRcMbyItY8PKwTNvpSQzXcKmnNMaZca */
-Route::resource('catdoliva', 'App\Http\Controllers\catalogoDolivaController');/* Cátalogo */
-Route::resource('doliva', 'App\Http\Controllers\dolivaController');/* Controlladore para minar */
-Route::resource('detpeddoliva', 'App\Http\Controllers\detallePedidoDolivaController');/* Controlladore para minar */
-Route::resource('pedidodoliva', 'App\Http\Controllers\pedidoDolivaController');
-
-/* Controllers laderas */
-Route::resource('catladeras', 'App\Http\Controllers\catalogoLaderasController');/* Cátalogo */
-Route::resource('laderas', 'App\Http\Controllers\laderasController');/* Controlladore para minar */
-Route::resource('detpedladeras', 'App\Http\Controllers\detallePedidoLaderasController');/* Controlladore para minar */
-Route::resource('pedidoladeras', 'App\Http\Controllers\pedidoLaderasController');
-
-/* Controllers Huerta */
-Route::resource('cathuerta', 'App\Http\Controllers\catalogoHuertaController');/* Cátalogo */
-Route::resource('huerta', 'App\Http\Controllers\huertaController');/* Controlladore para minar */
-Route::resource('detpedhuerta', 'App\Http\Controllers\detallePedidoHuertaController');/* Controlladore para minar */
-Route::resource('pedidohuerta', 'App\Http\Controllers\pedidoHuertaController');
-
-/* Controllers BlueSea */
-Route::resource('catbluesea', 'App\Http\Controllers\catalogoBlueController');/* Cátalogo */
-Route::resource('bluesea', 'App\Http\Controllers\blueController');/* Controlladore para minar */
-Route::resource('detpedbluesea', 'App\Http\Controllers\detallePedidoBlueseaController');/* Controlladore para minar */
-Route::resource('pedidobluesea', 'App\Http\Controllers\pedidoBlueseaController');
-
-/* Controllers Plimplim */
-Route::resource('catplimplim', 'App\Http\Controllers\catalogoPlimplimController');/* Cátalogo */
-Route::resource('plimplim', 'App\Http\Controllers\PlimplimController');/* Controlladore para minar */
-Route::resource('detpedplim', 'App\Http\Controllers\detallePedidoPlimplimController');/* Controlladore para minar */
-Route::resource('pedidoplim', 'App\Http\Controllers\pedidoPlimplimController');
-
-/* Controllers piedralibre */
-Route::resource('catpiedralibre', 'App\Http\Controllers\catalogopiedralibreController');/* Cátalogo */
-Route::resource('piedralibre', 'App\Http\Controllers\piedralibreController');/* Controlladore para minar */
-Route::resource('detpedpiedralibre', 'App\Http\Controllers\detallePedidopiedralibreController');/* Controlladore para minar */
-Route::resource('pedidopiedralibre', 'App\Http\Controllers\pedidopiedralibreController');
 
 Route::resource('notificacion', 'App\Http\Controllers\notificacionesController');
 
 Route::resource('editarPerfil', 'App\Http\Controllers\editarPerfil');
 
 Route::resource('detalle', 'App\Http\Controllers\DetalleBilletera');
-Route::resource('pedidolimpieza', 'App\Http\Controllers\pedidolimpiezasController');
+
 
 
 route::get('/acobrar', function () {

@@ -1,62 +1,99 @@
 @include('layouts.header')
 
 <body>
-    {{-- @include('layouts.nav') --}}
-    @include('layouts.user')
-    <div class="card card-profile bg-primary mt-5 pt-2 pb-2">
-        <div class="row">
-            <div class="col-lg-3 mx-auto text-center mb-2">
+    <div class="header d-flex" style="background: #F5F5F5;">
+
+        <div class="text-right" style="width:5%;">
+            <a href="/home"><i class="fas fa-chevron-left" style="margin-top: 2rem;"></i></a></div>
+        <div class="card-header" style="background: #F5F5F5;
+            text-align: center;
+            width:90%">
+            <h3 class="card-title mb-0">Tu Perfil</h3>
+        </div>
+        <div class="text-left" style="width:5%;"></div>
+    </div>
+
+    <div class="card card-profile mt-5 ml-1" style="border:none;">
+        <div class="d-flex">
+            <div class="col-sm-1 text-left pr-0 text-center">
                 <a href="#">
-                    <img src="{{ asset('img/avatar/' . $mineros->avatar) }}" style="    max-width: 11rem;" class="rounded-circle">
+                    <img src="{{ asset('img/avatar/' . $mineros->avatar) }}" style="width: 8rem;"
+                        class="rounded-circle img-fluid">
                 </a>
             </div>
-        </div>
-        <div class="card-body bg-white pt-2">
-            <div class="row">
-                <div class="col">
-                    <div class="card-profile-stats d-flex justify-content-center">
-                        <div>
-                            <span class="heading">{{ $mineros->pts }}</span>
-                            <span class="description">puntos</span>
-                        </div>
-                        <div>
-                            <span class="heading">5°</span>
-                            <span class="description">Ranking</span>
-                        </div>
-                        <div>
-                            <span class="heading">{{ $mineros->grado }}°</span>
-                            <span class="description">Grado Miner</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center">
-                <h5 class="h3">
-                    {{ $mineros->name }} {{ $mineros->lastName }}<span class="font-weight-light">,
-                        {{ $mineros->edad }}</span>
-                </h5>
-                <div class="h5 font-weight-300">
-                    <i class="ni location_pin mr-2"></i>{{ $mineros->localizacion }}
-                </div>
-                <div class="h5 mt-4">
-                    <i class="ni business_briefcase-24 mr-2"></i>{{ $mineros->subtitulo }}
-                </div>
-                <div>
-                    <i class="ni education_hat mr-2"></i>"{{ $mineros->frase }}"
-                </div>
-                <div class="col-sm-3 mx-auto mt-3">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                        data-bs-target="#editarPerfil">Editar perfil</button>
-                </div>
+            <div class="col-sm-10 pl-0">
+                <h3 class="text-left pb-0 mt-3">{{ $mineros->name }}</h3>
+                <p class="text-left pt-0 m-0" style="height: 1.3rem;"><small>{{ $mineros->email }}</small></p>
+                <a href="" style="color:gray"><small> Editar Perfil</small></a>
+
             </div>
         </div>
+        <h2 class="text-left ml-2">Datos de la Cuenta</h2>
+
+        <div class="card" style="border:none; border-radius:10px;">
+            <div class="card-body p-2 ml-1 mr-1 d-flex " style="background: #F8F8F8;">
+                <div class="text-left" style="min-width:90%;">
+                    <h4 class="ml-2">Alias</h4>
+                </div>
+                <div class="col-sm-1">
+                    <i class="fas fa-chevron-right mt-3"></i>
+                </div>
+            </div>
+            <div class="card-body p-2 ml-1 mr-1 mt-2 d-flex " style="background: #F8F8F8;">
+                <div class="text-left" style="min-width:90%;">
+                    <h4 class="ml-2">E-mail</h4>
+                </div>
+                <div class="col-sm-1">
+                    <i class="fas fa-chevron-right mt-3"></i>
+                </div>
+            </div>
+            <div class="card-body p-2 ml-1 mr-1 mt-2 d-flex " style="background: #F8F8F8;">
+                <div class="text-left" style="min-width:90%;">
+                    <h4 class="ml-2">Teléfono</h4>
+                </div>
+                <div class="col-sm-1">
+                    <i class="fas fa-chevron-right mt-3"></i>
+                </div>
+            </div>
+            <div class="card-body p-2 ml-1 mr-1 mt-2 d-flex " style="background: #F8F8F8;">
+                <div class="text-left" style="min-width:50%;">
+                    <h4 class="ml-2">Contaseña</h4>
+                </div>
+                <div class="text-right" style="min-width:40%;">
+                    <p class="ml-2 mt-1">Restablecer</p>
+                </div>
+                <div class="col-sm-1">
+                    <i class="fas fa-chevron-right mt-2"></i>
+                </div>
+            </div>
+            <h2 class="text-left ml-2 mt-5">Soporte</h2>
+            <div class="card-body p-2 ml-1 mr-1 mt-2 d-flex " style="background: #F8F8F8;">
+                <div class="text-left" style="min-width:90%;">
+                    <h4 class="ml-2">Privacidad</h4>
+                </div>
+                <div class="col-sm-1">
+                    <i class="fas fa-chevron-right mt-3"></i>
+                </div>
+            </div>
+            <div class="card-body p-2 ml-1 mr-1 mt-2 d-flex " style="background: #F8F8F8;">
+                <div class="text-left" style="min-width:90%;">
+                    <h4 class="ml-2">Términos y condiciones</h4>
+                </div>
+                <div class="col-sm-1">
+                    <i class="fas fa-chevron-right mt-3"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
     </div>
     {{-- modal usuario --}}
     <div id="editarPerfil" class="modal fade">
         <div class="modal-dialog modal-dialog-centered modal-lg ">
             <div class="modal-content border-warning mt-5 mb-5">
                 <div class="modal-body text-center">
-                    <h1 class="text-center" style="color: #13538a;">Editar perfil de {{ $mineros->user_name }}!</h1>
+                    <h1 class="text-center" style="color: #13538a;">Editar perfil de {{ $mineros->user_name }}!
+                    </h1>
                     <form action="/editarPerfil/{{ $mineros->id }}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
@@ -74,17 +111,18 @@
                         </div>
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
-                          [].forEach.call(document.querySelectorAll('.dropimage'), function(img){
-                            img.onchange = function(e){
-                              var inputfile = this, reader = new FileReader();
-                              reader.onloadend = function(){
-                                inputfile.style['background-image'] = 'url('+reader.result+')';
-                              }
-                              reader.readAsDataURL(e.target.files[0]);
-                            }
-                          });
-                        });
-                          </script>
+                                [].forEach.call(document.querySelectorAll('.dropimage'), function(img) {
+                                    img.onchange = function(e) {
+                                        var inputfile = this,
+                                            reader = new FileReader();
+                                        reader.onloadend = function() {
+                                            inputfile.style['background-image'] = 'url(' + reader.result + ')';
+                                        }
+                                        reader.readAsDataURL(e.target.files[0]);
+                                    }
+                                });
+                            });
+                        </script>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -150,8 +188,9 @@
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-city">Descripcion
                                                 Corta:</label>
-                                            <input type="text" class="form-control" value="{{ $mineros->subtitulo }}"
-                                                name="subtitulo" placeholder="Jugador de Tejo - Jovi: Correr descalzo">
+                                            <input type="text" class="form-control"
+                                                value="{{ $mineros->subtitulo }}" name="subtitulo"
+                                                placeholder="Jugador de Tejo - Jovi: Correr descalzo">
                                         </div>
                                     </div>
 

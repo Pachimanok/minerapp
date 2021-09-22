@@ -53,11 +53,17 @@ class MineroController extends Controller
      */
     public function show($id)
     {
+        
     $usuario = Auth::user();
+    $user = $usuario->name;
     $min = DB::table('mineros')->where('id', '=' ,$id)->get();
     $minero = $min[0];
+   
+    $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+    $qnot = $not->count();
+   
 
-    return view('perfil')->with('mineros', $minero)->with('user', $usuario);
+    return view('perfil')->with('mineros', $minero)->with('user', $usuario)->with('qnot', $qnot);
 
     }
 
