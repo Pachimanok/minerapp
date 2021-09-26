@@ -15,7 +15,7 @@
 
 @else
 
-  <h1>Administrador</h1>
+  @include('home.homeAdmin')
 
 @endif
     

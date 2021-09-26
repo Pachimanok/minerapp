@@ -91,6 +91,9 @@ Route::get('/home', function () {
     } elseif ($user_role == 'educacion') {
         $educacion = DB::table('educacions')->get();
         return view('home')->with('user', $usuario)->with('educacion', $educacion);
+
+    } elseif ($user_role == 'admin') {
+        return view('home')->with('user',$usuario);
     } else {
 
         /* Datos dela Alianza */
