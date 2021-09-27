@@ -93,7 +93,7 @@ Route::get('/home', function () {
         return view('home')->with('user', $usuario)->with('educacion', $educacion);
 
     } elseif ($user_role == 'admin') {
-        return view('home')->with('user',$usuario);
+        return view('home')->with('user', $usuario);
     } else {
 
         /* Datos dela Alianza */
@@ -308,6 +308,11 @@ Route::get('/alianzas', function () {
 
     return view('alianzas')->with('mineros', $minero)->with('user', $usuario);
 });
+Route::get('/alianzasAdmin', function () {
+
+    return view('dashboard.alianzas');
+
+});
 Route::get('/mensajes', function () {
     /* controlador mensajes */
     $usuario = Auth::user();
@@ -451,6 +456,9 @@ Route::resource('notificacion', 'App\Http\Controllers\notificacionesController')
 Route::resource('editarPerfil', 'App\Http\Controllers\editarPerfil');
 
 Route::resource('detalle', 'App\Http\Controllers\DetalleBilletera');
+
+/* Routes andres jimmy */
+
 
 
 

@@ -11,15 +11,15 @@
     </div>
     <div class="bg-default col-sm-1 fixed-top" id="sidebarbody" onclick="sidebar();" style="display:none; height: 100vh">
         <button class="ml-6 btn btn-default"><i class="ni ni-fat-remove"></i></button>
-        <a href="/dashboard/alianzas" class="d-block text-info">Alianzas</a>
+        <a href="/alianzasAdmin" class="d-block text-info">Alianzas</a>
         <div class="mt-1"></div>
-        <a href="/dashboard/minero" class="d-block text-info">Mineros</a>
+        <a href="../dashboard/minero" class="d-block text-info">Mineros</a>
         <div class="mt-1"></div>
-        <a href="/dashboard/notificaciones" class="d-block text-info">Notificaciones</a>
+        <a href="../dashboard/notificaciones" class="d-block text-info">Notificaciones</a>
         <div class="mt-1"></div>
-        <a href="/dashboard/billetera" class="d-block text-info">Billetera/Minados</a>
+        <a href="../dashboard/billetera" class="d-block text-info">Billetera/Minados</a>
         <div class="mt-1"></div>
-        <a href="/dashboard/usuario" class="d-block text-info">Usuarios</a>
+        <a href="../dashboard/usuario" class="d-block text-info">Usuarios</a>
         <div class="mt-1"></div>
     </div>
 </div>
