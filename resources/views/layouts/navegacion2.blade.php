@@ -12,7 +12,7 @@
             style="width:20%; 
             border:none; 
            ">
-          <a href="">
+          <a href="/home" style="color:#80808080 !important;">
             <i class="fas fa-home" style="font-size: x-large; margin:0;"></i><br>
             <small >Inicio</small>
          </a>
@@ -23,8 +23,8 @@
             padding-left: 0; 
             padding-bottom: 0;
             padding-right: 0;">
-         <a href="/billetera" style="color:#80808080 !important;">
-          <i class="fas fa-wallet" style="font-size: x-large;color:#80808080 !important; margin:0;"></i><br>
+         <a href="" style="">
+          <i class="fas fa-wallet" style="font-size: x-large;"></i><br>
           <small>Billetera</small>
         </a></li>
         <li class="list-group-item" style="padding: 0; border:none;"><a href="/minado" class="btn btn-primary btn-lg" style="border-radius: 50%;

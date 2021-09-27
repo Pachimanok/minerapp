@@ -335,13 +335,16 @@ Route::get('/billetera', function () {
     $user = $usuario->name;
     $min = DB::table('mineros')->where('user_name', '=', $user)->get();
     $minero = $min[0];
+    $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+    $qnot = $not->count();
 
-    $aCobrar = DB::table('billeteras')->select('monto')->where('user_name', '=', $user)->where('estado', '=', 'a cobrar')->sum('monto');
-    $desbloq = DB::table('billeteras')->select('monto')->where('user_name', '=', $user)->where('estado', '=', 'desbloquear')->sum('monto');
+    $aCobrar = DB::table('minados')->select('comision')->where('user', '=', $user)->where('libre', '=', '1')->where('cobrado', '=', '0')->sum('comision');
+    $desbloq = DB::table('minados')->select('comision')->where('user', '=', $user)->where('cobrado', '=', '1')->sum('comision');
     
-    $ultimos = db::table('billeteras')->where('user_name', '=', $user)->take(5)->get();
-
-    return view('billetera')->with('mineros', $minero)->with('user', $usuario)->with('aCobrar', $aCobrar)->with('desbloq', $desbloq)->with('ultimos', $ultimos);
+    $ultimos = db::table('minados')->join('minas','minados.mina','=','minas.id')->where('minados.user', '=', $user)->take(5)->get();
+    
+    return view('billetera')->with('mineros', $minero)->with('user', $usuario)->with('aCobrar', $aCobrar)->with('desbloq', $desbloq)->with('ultimos', $ultimos)->with('not', $not)
+    ->with('qnot', $qnot);
 });
 Route::get('/educacion', function () {
 });

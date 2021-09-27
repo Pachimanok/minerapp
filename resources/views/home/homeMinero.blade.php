@@ -4,7 +4,7 @@
     <style>
         .modal-backdrop.show {
             opacity: 0;
-            z-index:-1;
+            z-index: -1;
         }
 
         i {
@@ -13,7 +13,7 @@
         }
 
     </style>
-    <div class="offcanvas offcanvas-start mt-5 ml-2" tabindex="-1" style="height:max-content !important;" tabindex="-1"
+    <div class="offcanvas offcanvas-start mt-5 ml-2" tabindex="-1" style="height:auto !important;" tabindex="-1"
         id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -201,7 +201,7 @@
         </a>
         <div class="dropdown-divider"></div>
 
-        <a href="#!" class="dropdown-item">
+        <a href="#!" class="dropdown-item mb-5" >
             <i class="far fa-question-circle"></i>
             <span>¿Cómo gestionar y utilizar minas?</span>
         </a>
