@@ -10,7 +10,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 
 
-class AlianzaController extends Controller
+class AlianzaAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,9 @@ class AlianzaController extends Controller
      */
     public function index()
     {
-     
+
+        $alianzas['alianzas'] = Alianza::paginate(22);
+        return view('dashboard.alianzas', $alianzas);
         
     }
 
@@ -30,7 +32,7 @@ class AlianzaController extends Controller
      */
     public function create()
     {
-        return view('formularios.createAlianza');
+        return view('formularios.createAlianzaAdmin');
     }
 
     /**
@@ -42,26 +44,33 @@ class AlianzaController extends Controller
     public function store(Request $request)
     {
         
-        $alianzas = new Alianza;
-        $alianzas->nombre_fantasia =$request->get('fantasia');
-        $alianzas->user =$request->get('user');
-        $alianzas->cuit =$request->get('cuit');
-        $alianzas->email =$request->get('email');
-        $alianzas->celular =$request->get('celular');
-        $alianzas->save();
+        $user = Auth::user()->name;
+        $alianza = new Alianza();
+        $alianza->user = $user;
+        $alianza->nombre_fantasia = $request['nombrefantasia'];
+        $alianza->avatar = $request['avatar'];
+        $alianza->fondo = $request['alianzafondo'];
+        $alianza->cuit = $request['cuit'];
+        $alianza->razonSocial = $request['razonsocial'];
+        $alianza->email = $request['email'];
+        $alianza->celular = $request['celular'];
+        $alianza->comision = $request['comision'];
+        $alianza->shipping = $request['shipping'];
+        $alianza->medios_pago = $request['mediosdepago'];
+        $alianza->link_saber_mas = $request['linksabermas'];
+        $alianza->hash = $request['hash'];
+        $alianza->link_cat = $request['linkcat'];
+        $alianza->link_promo = $request['linkpromo'];
+        $alianza->descripcion = $request['descripcion'];
+        $alianza->rubro = $request['rubro'];
+        $alianza->q_hacer = $request['qhacer'];
+        $alianza->terminos = $request['terminos'];
+        
+        $alianza->save();
 
-       
-        $users = new User;
-        $users->name = $request->get('user');
-        $users->email = $request->get('email');
-        $users->password = Hash::make($request->get('password'));
-        $users->role = 'alianza'; // usuario Alianza
-        $users->save(); 
+        $listaAlianzas = DB::table('alianzas')->get();
 
-        $ali = DB::table('alianzas')->orderby('id', 'desc')->first();
-        return view('Okalianza')->with('alianzas', $ali);
-
-
+        return view('dashboard.alianzas')->with('alianzas', $listaCursos);
 
     }
 
@@ -72,36 +81,10 @@ class AlianzaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        $usuario = Auth::user();
-        $r = $usuario->role;
+    {   
 
-        if($r == 'alianza'){
-
-            $ali = DB::table('alianzas')->where('id','=', $id)->get();
-            $alianza = $ali[0];
-            return view('perfilAlianza')->with('alianza',$alianza)->with('user', $usuario);
-
-        }else{
-
-            $usuario = Auth::user();
-            $user = $usuario->name;
-            $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
-            $minero = $min[0];
-        
-            /* Notificaciones */
-            $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
-            $qnot = $not->count();
-            
-            $minerales = db::table('alianzas')->where('id', '=', $id)->get();
-            $mineral = $minerales[0];
-
-           
-            return view('formularios.verAlianza')->with('mineros', $minero)->with('user', $usuario)->with('mineral', $mineral)->with('not', $not)->with('qnot', $qnot);
-
-        }
-        
-
+        $alianza = Alianza::find($id);       
+        return view('formularios.verAlianzaAdmin')->with('alianza', $alianza);
         
     }
 
@@ -113,7 +96,10 @@ class AlianzaController extends Controller
      */
     public function edit($id)
     {
-        
+    
+        $alianza = Alianza::find($id);
+        return view('formularios.editAlianzaAdmin')->with('alianza', $alianza);
+
     }
 
     /**
@@ -149,21 +135,25 @@ class AlianzaController extends Controller
 
             
         $alianza->avatar = $name;
-        $alianza->razonSocial = $request->get('razonSocial');
+        $alianza->nombre_fantasia = $request->get('nombrefantasia');
+        $alianza->razonSocial = $request->get('razonsocial');
         $alianza->cuit = $request->get('cuit');
+        $alianza->email = $request->get('email');
+        $alianza->celular = $request->get('celular');
+        $alianza->comision = $request->get('comision');
+        $alianza->hash = $request->get('hash');
+        $alianza->link_cat = $request->get('linkcat');
+        $alianza->link_promo = $request->get('linkpromo');
         $alianza->shipping = $request->get('shipping');
-        $alianza->medios_pago = $request->get('medios_pago');
-        $alianza->link_saber_mas = $request->get('link_saber_mas');
-        $alianza->pagina_web = $request->get('pagina_web');
+        $alianza->medios_pago = $request->get('mediosdepago');
+        $alianza->link_saber_mas = $request->get('linksabermas');
         $alianza->descripcion= $request->get('descripcion');
         $alianza->rubro = $request->get('rubro');
-        $alianza->video = $request->get('video');
+        $alianza->q_hacer = $request->get('qhacer');
+        $alianza->terminos = $request->get('terminos');
         $alianza->save();
 
-        $ali = DB::table('alianzas')->where('id', '=', $id)->get();
-        $alianza= $ali[0];
-
-        return back()->withInput(); 
+        return redirect('/alianzas'); 
     }
 
     /**
@@ -174,6 +164,8 @@ class AlianzaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $alianza = Alianza::find($id);
+        $alianza->delete();
+        return redirect('/alianza');
     }
 }

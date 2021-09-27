@@ -310,7 +310,7 @@ Route::get('/alianzas', function () {
 });
 Route::get('/alianzasAdmin', function () {
 
-    return view('dashboard.alianzas');
+    return redirect('/alianzas');
 
 });
 Route::get('/mensajes', function () {
@@ -459,7 +459,7 @@ Route::resource('detalle', 'App\Http\Controllers\DetalleBilletera');
 
 /* Routes andres jimmy */
 
-
+Route::resource('alianzas', 'App\Http\Controllers\AlianzaAdminController');
 
 
 route::get('/acobrar', function () {
