@@ -15,7 +15,7 @@
         <div class="mt-1"></div>
         <a href="../dashboard/minero" class="d-block text-info">Mineros</a>
         <div class="mt-1"></div>
-        <a href="../dashboard/notificaciones" class="d-block text-info">Notificaciones</a>
+        <a href="/notificacionesAdmin" class="d-block text-info">Notificaciones</a>
         <div class="mt-1"></div>
         <a href="../dashboard/billetera" class="d-block text-info">Billetera/Minados</a>
         <div class="mt-1"></div>

@@ -70,7 +70,7 @@ class AlianzaAdminController extends Controller
 
         $listaAlianzas = DB::table('alianzas')->get();
 
-        return view('dashboard.alianzas')->with('alianzas', $listaCursos);
+        return view('dashboard.alianzas')->with('alianzas', $listaAlianzas);
 
     }
 
@@ -151,6 +151,7 @@ class AlianzaAdminController extends Controller
         $alianza->rubro = $request->get('rubro');
         $alianza->q_hacer = $request->get('qhacer');
         $alianza->terminos = $request->get('terminos');
+
         $alianza->save();
 
         return redirect('/alianzas'); 
@@ -166,6 +167,6 @@ class AlianzaAdminController extends Controller
     {
         $alianza = Alianza::find($id);
         $alianza->delete();
-        return redirect('/alianza');
+        return redirect('/alianzas');
     }
 }

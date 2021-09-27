@@ -308,11 +308,6 @@ Route::get('/alianzas', function () {
 
     return view('alianzas')->with('mineros', $minero)->with('user', $usuario);
 });
-Route::get('/alianzasAdmin', function () {
-
-    return redirect('/alianzas');
-
-});
 Route::get('/mensajes', function () {
     /* controlador mensajes */
     $usuario = Auth::user();
@@ -419,6 +414,16 @@ Route::post('/agregar/store', function (Request $request){
     
 
 });
+Route::get('/alianzasAdmin', function () {
+
+    return redirect('/alianzas');
+
+});
+Route::get('/notificacionesAdmin', function () {
+
+    return redirect('/notificaciones');
+
+});
 
 Route::resource('configAlianza', 'App\Http\Controllers\configAlianzaController');
 
@@ -460,6 +465,8 @@ Route::resource('detalle', 'App\Http\Controllers\DetalleBilletera');
 /* Routes andres jimmy */
 
 Route::resource('alianzas', 'App\Http\Controllers\AlianzaAdminController');
+Route::resource('notificaciones', 'App\Http\Controllers\NotificacionesAdminController');
+
 
 
 route::get('/acobrar', function () {

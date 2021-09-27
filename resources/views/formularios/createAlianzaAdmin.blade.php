@@ -4,7 +4,7 @@
     <h1 class="text-dark">Formulario nueva alianza</h1>
 
     <div class="row">
-        <form action="/alianza" method="POST" enctype="multipart/form-data" class="row g-3">
+        <form action="/alianzas" method="POST" enctype="multipart/form-data" class="row g-3">
             @csrf
 
             <label for="validationDefault03" class="form-label">Nombre fantasia: </label>
