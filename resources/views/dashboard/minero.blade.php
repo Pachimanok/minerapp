@@ -4,41 +4,66 @@
 <div class="container">
     <h1>Administrador</h1>
 </div>
-<div class="fixed-top">
+
+<div class="table-responsive">
     <div>
-        <div class="mt-1"></div>
-        <button class="btn btn-default col-sm-1" onclick="sidebar();"><i class="ni ni-bullet-list-67"></i></button>
-    </div>
-    <div class="bg-default col-sm-1 fixed-top" id="sidebarbody" onclick="sidebar();" style="display:none; height: 100vh">
-        <button class="ml-6 btn btn-default"><i class="ni ni-fat-remove"></i></button>
-        <a href="/dashboard/alianzas" class="d-block text-info">Alianzas</a>
-        <div class="mt-1"></div>
-        <a href="/dashboard/minero" class="d-block text-primary">Mineros</a>
-        <div class="mt-1"></div>
-        <a href="/dashboard/notificaciones" class="d-block text-info">Notificaciones</a>
-        <div class="mt-1"></div>
-        <a href="/dashboard/billetera" class="d-block text-info">Billetera/Minados</a>
-        <div class="mt-1"></div>
-        <a href="/dashboard/usuario" class="d-block text-info">Usuarios</a>
-        <div class="mt-1"></div>
+        <table class="table align-items-center table-dark">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" class="sort" data-sort="name">Nombre de Usuario</th>
+                    <th scope="col" class="sort">Celular</th>
+                    <th scope="col" class="sort">CBU</th>
+                    <th scope="col" class="sort">Localizacion</th>
+                    <th scope="col" class="sort">Avatar</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody class="list">
+                @foreach ($mineros as $minero)
+                <tr>
+                    <th scope="row">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <span class="name mb-0 text-sm">$username</span>
+                            </div>
+                        </div>
+                    </th>
+                    <td>
+                        $celular
+                    </td>
+                    <td>
+                        $cbu
+                    </td>
+                    <td>
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <span class="name mb-0 text-sm">$localizacion</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        $avatar
+                    </td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                <a class="dropdown-item" href="#">Editar</a>
+                                <a class="dropdown-item" href="#">Ver</a>
+                                <a class="dropdown-item" href="#">Eliminar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+                </tbody>
+        </table>
     </div>
 </div>
-<div class="ml-3">
-    <h1>Minero</h1>
-</div>
-
-
 
     <!-- Scripts -->
-    <script>
-        function sidebar(){
-            if(document.getElementById("sidebarbody").style.display == "none"){
-                document.getElementById("sidebarbody").style.display = "block"; //show
-            } else{
-                document.getElementById("sidebarbody").style.display = "none"; //hide
-            }
-        }
-    </script>
     <!-- Core -->
     <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
