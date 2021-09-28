@@ -53,7 +53,7 @@
         </div>
 
         <!-- Footer -->
-
+@include('layouts.navegacion2')
     </div>
     </div>
     {{-- bootstrap script --}}

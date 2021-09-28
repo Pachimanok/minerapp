@@ -2,6 +2,7 @@
     div.sticky {
       position: sticky;
       bottom: 0;
+      z-index: 5;
 
     }
     </style>
