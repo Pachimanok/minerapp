@@ -13,13 +13,13 @@
         <button class="ml-6 btn btn-default"><i class="ni ni-fat-remove"></i></button>
         <a href="/alianzasAdmin" class="d-block text-info">Alianzas</a>
         <div class="mt-1"></div>
-        <a href="../dashboard/minero" class="d-block text-info">Mineros</a>
+        <a href="/dashboardminero" class="d-block text-info">Mineros</a>
         <div class="mt-1"></div>
         <a href="/notificacionesAdmin" class="d-block text-info">Notificaciones</a>
         <div class="mt-1"></div>
-        <a href="../dashboard/billetera" class="d-block text-info">Billetera/Minados</a>
+        <a href="/dashboardbilletera" class="d-block text-info">Billetera/Minados</a>
         <div class="mt-1"></div>
-        <a href="../dashboard/usuario" class="d-block text-info">Usuarios</a>
+        <a href="/dashboardusuarios" class="d-block text-info">Usuarios</a>
         <div class="mt-1"></div>
     </div>
 </div>

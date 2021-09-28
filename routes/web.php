@@ -424,6 +424,21 @@ Route::get('/notificacionesAdmin', function () {
     return redirect('/notificaciones');
 
 });
+Route::get('/dashboardminero', function () {
+
+    return redirect('/dashboard/minero');
+
+});
+Route::get('/dashboardbilletera', function () {
+
+    return redirect('/dashboard/billetera');
+
+});
+Route::get('/dashboardusuarios', function () {
+
+    return redirect('/dashboard/usuarios');
+
+});
 
 Route::resource('configAlianza', 'App\Http\Controllers\configAlianzaController');
 
@@ -466,6 +481,9 @@ Route::resource('detalle', 'App\Http\Controllers\DetalleBilletera');
 
 Route::resource('alianzas', 'App\Http\Controllers\AlianzaAdminController');
 Route::resource('notificaciones', 'App\Http\Controllers\NotificacionesAdminController');
+Route::resource('dashboard/minero', 'App\Http\Controllers\dashboardmineroController');
+Route::resource('dashboard/billetera', 'App\Http\Controllers\dashboardbilleteraController');
+Route::resource('dashboard/usuarios', 'App\Http\Controllers\dashboardusuariosController');
 
 
 

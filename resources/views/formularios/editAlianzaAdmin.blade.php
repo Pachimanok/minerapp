@@ -4,7 +4,7 @@
     <h1 class="text-dark">Formulario nueva alianza</h1>
 
     <div class="row">
-        <form action="/alianza/{{ $alianza->id }}" method="POST" enctype="multipart/form-data" class="row g-3">
+        <form action="/alianzas/{{ $alianza->id }}" method="POST" enctype="multipart/form-data" class="row g-3">
             @csrf
             {{ method_field('PATCH') }}
 
