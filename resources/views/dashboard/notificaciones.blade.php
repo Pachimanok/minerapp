@@ -65,7 +65,7 @@
                             @csrf
                             {{ method_field('DELETE') }}
                             <a href="/notificaciones/{{ $notificacion->id }}" class="btn btn-primary"><i class="far fa-eye"></i></a>
-                            <button href="/notificaciones/{{ $notificacion->id }}" onclick="return confirm('¿Quieres eliminar esta alianza?')" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                            <button href="/notificaciones/{{ $notificacion->id }}" onclick="return confirm('¿Quieres eliminar esta notificacion?')" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>

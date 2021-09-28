@@ -32,7 +32,8 @@ class NotificacionesAdminController extends Controller
      */
     public function create()
     {
-        return view('formularios.createNotificacionAdmin');
+        $usuarios = DB::table('users')->get();
+        return view('formularios.createNotificacionAdmin')->with('usuarios', $usuarios);
     }
 
     /**

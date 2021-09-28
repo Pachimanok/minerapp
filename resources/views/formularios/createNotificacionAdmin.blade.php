@@ -8,7 +8,12 @@
             @csrf
 
             <label for="validationDefault03" class="form-label">Destinatario: </label>
-            <input type="text" name="destinatario" class="form-control" id="validationDefault03" required>
+            <select class="form-select"  name="destinatario" aria-label="Default select example">
+                <option selected value="Todos">Todos</option>
+                @foreach ($usuarios as $usuario)
+                    <option value="{{ $usuario->name }}">{{ $usuario->name }}</option>
+                @endforeach
+            </select>
 
             <label for="validationDefault04" class="form-label">Titulo: </label>
             <input type="text" name="titulo" class="form-control" id="validationDefault04" required>
