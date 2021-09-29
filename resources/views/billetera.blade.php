@@ -1,10 +1,10 @@
 @include('layouts.header')
-
 <body>
-    @include('layouts.nav2')
-
-    <div class="header mt-5 pb-6">
-        <div class="container-fluid" style="margin-top:20% !important;">
+    @include('layouts.barralateral')
+    @include('layouts.user3')
+    <div class="container-fluid" style="margin-top: 8rem !important;">
+        <div class="header bg-white pb-6">
+            <div class="header-body" style="height: 38rem;"> 
             <p class="text-center mt-5"
                 style="font-size: smaller; margin: 2rem 1rem; line-height: initial; color: #3c3c43b3; margin-top: 31% !important;">
                 Para recibir tu dinero, recuerda que debes completar tus desafíos educativos.</p>
@@ -109,34 +109,38 @@
     </div>
 </div>
             
+@include('layouts.navegacion3')
+<!-- Core -->
+<script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<!-- Optional JS -->
+<script src="../assets/vendor/chart.js/dist/Chart.min.js"></script>
+<script src="../assets/vendor/chart.js/dist/Chart.extension.js"></script>
+<!-- Argon JS -->
+<script src="../assets/js/argon.js?v=1.2.0"></script>
 
+<script src="../jquery-ui-1.12.1/jquery-ui.min.js'"></script>
+<script type="module">
+    import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
 
-
-            <!-- Footer -->
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-                        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
-            </script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
-                        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous">
-            </script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
-                        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
-            </script>
-
-            <!-- Argon Scripts -->
-            <!-- Core -->
-            <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-            <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
-            <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-            <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-            <!-- Optional JS -->
-            <script src="../assets/vendor/chart.js/dist/Chart.min.js"></script>
-            <script src="../assets/vendor/chart.js/dist/Chart.extension.js"></script>
-            <!-- Argon JS -->
-            <script src="../assets/js/argon.js?v=1.2.0"></script>
-            @include('layouts.navegacion2')
+    const el = document.createElement('pwa-update');
+    document.body.appendChild(el);
+</script>
+<script>
+    var cursos = ['html', 'css', 'php']
+    $('search').autocomplete({
+        source: cursos
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 </body>
 
 </html>

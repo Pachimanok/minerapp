@@ -1,7 +1,5 @@
-<!-- Main content -->
 <div class="main-content" id="panel">
-    <!-- Topnav -->
-    <nav class="navbar navbar-top navbar-expand navbar-dark border-bottom" >
+    <nav class="navbar navbar-top navbar-expand fixed-top border-bottom bg-white" style="height: 6rem;">
         <div class="container-fluid">
             @if ($user->role == 'minero')
                 @include('user.userMinero')
@@ -11,4 +9,5 @@
                 <h1>Administrador</h1>
             @endif
         </div>
-</nav>
+    </nav>
+</div>

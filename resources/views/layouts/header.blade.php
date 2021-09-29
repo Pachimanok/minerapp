@@ -28,6 +28,8 @@
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
 
+  <link href="{{asset('swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
   {{-- para mobile --}}
 
 
