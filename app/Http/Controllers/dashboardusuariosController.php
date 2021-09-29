@@ -63,7 +63,7 @@ class dashboardusuariosController extends Controller
     {
     
         $user = User::find($id);       
-        return view('formularios.editardashboardUsuarios')->with('user', $user);
+        return view('formularios.editdashboardUsuarios')->with('user', $user);
         
     }
 

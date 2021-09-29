@@ -32,7 +32,6 @@ class dashboardmineroController extends Controller
      */
     public function create()
     {
-        return view('formularios.createdashboardMinero');
     }
 
     /**
@@ -97,7 +96,7 @@ class dashboardmineroController extends Controller
     {
     
         $minero = Minero::find($id);       
-        return view('formularios.editardashboardMinero')->with('minero', $minero);
+        return view('formularios.editdashboardMinero')->with('minero', $minero);
         
     }
 
@@ -115,7 +114,7 @@ class dashboardmineroController extends Controller
         $id=$minero->id;
 
             
-        $minero->username = $request['username'];
+        $minero->user_name = $request['user_name'];
         $minero->name = $request['name'];
         $minero->lastName = $request['lastName'];
         $minero->celular = $request['celular'];
