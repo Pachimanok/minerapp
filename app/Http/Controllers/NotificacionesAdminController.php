@@ -20,7 +20,7 @@ class NotificacionesAdminController extends Controller
     public function index()
     {
 
-        $notificaciones['notificaciones'] = notification::paginate(8);
+        $notificaciones['notificaciones'] = notification::All();
         return view('dashboard.notificaciones', $notificaciones);
         
     }
@@ -45,16 +45,44 @@ class NotificacionesAdminController extends Controller
     public function store(Request $request)
     {
 
-        $notificacion = new notification();
-        $notificacion->destinatario = $request['destinatario'];
-        $notificacion->titulo = $request['titulo'];
-        $notificacion->descripcion = $request['descripcion'];
-        $notificacion->link = $request['link'];
-        $notificacion->estado = $request['estado'];
-        $notificacion->tipo = $request['tipo'];
-        $notificacion->imagen = $request['imagen'];
+        $desti = $request['destinatario'];
+        
+        if($desti == '0'){
 
-        $notificacion->save();
+            $usuarios = DB::table('users')->get();
+
+            foreach($usuarios as $usuario){
+
+                if($usuario->role == "admin"){
+
+                    $notificacion = new notification();
+                    $notificacion->destinatario = $usuario->name;
+                    $notificacion->titulo = $request['titulo'];
+                    $notificacion->descripcion = $request['descripcion'];
+                    $notificacion->link = $request['link'];
+                    $notificacion->estado = $request['estado'];
+                    $notificacion->tipo = $request['tipo'];
+                    $notificacion->imagen = $request['imagen'];
+                    $notificacion->save();
+
+                } 
+
+            }
+
+        } else {
+            
+            $notificacion = new notification();
+            $notificacion->destinatario = $desti;
+            $notificacion->titulo = $request['titulo'];
+            $notificacion->descripcion = $request['descripcion'];
+            $notificacion->link = $request['link'];
+            $notificacion->estado = $request['estado'];
+            $notificacion->tipo = $request['tipo'];
+            $notificacion->imagen = $request['imagen'];
+            $notificacion->save();
+            
+        }
+        
 
         $listaNotificaciones = DB::table('notifications')->get();
 

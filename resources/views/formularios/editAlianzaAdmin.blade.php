@@ -1,5 +1,5 @@
-@include('layouts.headerAlianza');
-<div class="bg-secondary">
+@include('layouts.headerAlianza')
+<div class="bg-info">
 <div class="container pb-5">
     <h1 class="text-dark">Formulario nueva alianza</h1>
 

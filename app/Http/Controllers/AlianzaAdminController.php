@@ -20,7 +20,7 @@ class AlianzaAdminController extends Controller
     public function index()
     {
 
-        $alianzas['alianzas'] = Alianza::paginate(22);
+        $alianzas['alianzas'] = Alianza::All();
         return view('dashboard.alianzas', $alianzas);
         
     }
@@ -48,8 +48,36 @@ class AlianzaAdminController extends Controller
         $alianza = new Alianza();
         $alianza->user = $user;
         $alianza->nombre_fantasia = $request['nombrefantasia'];
-        $alianza->avatar = $request['avatar'];
-        $alianza->fondo = $request['alianzafondo'];
+
+        $imagen = $request['avatar'];
+
+        if($imagen != null){
+            $extencion = $imagen->getClientOriginalExtension();
+            $name = $imagen->getClientOriginalName();
+            $imagen = Image::make($imagen);
+            $imagen->resize(300, 300);
+            $imagen->encode($extencion);
+            $path = public_path('img/avatar/' . $name);
+            $imagen->save($path);
+            $alianza->avatar = $name;
+        } else {
+            $alianza->avatar = 'alianzaAvatar.png';
+        }
+
+        $imagen = $request['alianzafondo'];
+
+        if($imagen != null){
+            $extencion = $imagen->getClientOriginalExtension();
+            $name = $imagen->getClientOriginalName();
+            $imagen = Image::make($imagen);
+            $imagen->encode($extencion);
+            $path = public_path('img/fondo/' . $name);
+            $imagen->save($path);
+            $alianza->fondo = $name;
+        } else {
+            $alianza->fondo = 'alianzaFondo.png';
+        }
+        
         $alianza->cuit = $request['cuit'];
         $alianza->razonSocial = $request['razonsocial'];
         $alianza->email = $request['email'];
@@ -115,26 +143,31 @@ class AlianzaAdminController extends Controller
         $alianza = Alianza::find($id);
         $id = $alianza->id;
 
-        $archivo = $request->File('avatar');
+        $imagen = $request->File('avatar');
 
-        if ($archivo != null) {
-            
-            $extencion = $archivo->getClientOriginalExtension();
-            $name = $archivo->getClientOriginalName();
-            $imagen = Image::make($archivo);
+        if($imagen != null ){
+            $extencion = $imagen->getClientOriginalExtension();
+            $name = $imagen->getClientOriginalName();
+            $imagen = Image::make($imagen);
             $imagen->resize(300, 300);
             $imagen->encode($extencion);
             $path = public_path('img/avatar/' . $name);
             $imagen->save($path);
-            
-            } else {
-                
-                $q = DB::table('alianzas')->where('id', '=', $id)->first();
-                $name = $q->avatar;
-            }
+            $alianza->avatar = $name;
+        }
 
-            
-        $alianza->avatar = $name;
+        $imagen = $request->File('alianzafondo');
+
+        if($imagen != null){
+            $extencion = $imagen->getClientOriginalExtension();
+            $name = $imagen->getClientOriginalName();
+            $imagen = Image::make($imagen);
+            $imagen->encode($extencion);
+            $path = public_path('img/fondo/' . $name);
+            $imagen->save($path);
+            $alianza->fondo = $name;
+        }
+
         $alianza->nombre_fantasia = $request->get('nombrefantasia');
         $alianza->razonSocial = $request->get('razonsocial');
         $alianza->cuit = $request->get('cuit');
