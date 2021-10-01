@@ -47,14 +47,26 @@ input[type="date"]:focus:before {
                 <input type="hidden" name="alianza" value="{{ $alianza->id }}">
                 <input type="date" class="form-control" name="fecha_pago"  placeholder="Fecha del Pago *" onchange="this.className=(this.value!=''?'has-value':'')" required>
                 <input type="number" name="monto" style="padding-left: 1.4rem;"class="form-control" placeholder="Monto de compra*" required>
-                <select name="mina[]" id="producto" class="form-control" onchange="ShowSelected()" required>
+                <select name="mina[]" id="producto" class="form-control" onchange="ShowSelected()">
                     <option value="">Seleccionar Mina*</option>
                     @foreach ($minas as $mina)
                         <option value="{{ $mina->id }}">{{ $mina->titulo }}</option>
                     @endforeach
                     <option value="/mina/create">+ Agregar Mina</option>
                 </select>
-                
+                <select name="parentezco[]" id="" class="form-control" required>
+                    <option value="">Parentesco*</option>
+                    <option value="Pago Único">Padre</option>
+                    <option value="Suscripción">Madre</option>
+                    <option value="Suscripción">Hemano</option>
+                    <option value="Suscripción">Tío</option>
+                    <option value="Suscripción">Tía</option>
+                    <option value="Suscripción">Abuelo</option>
+                    <option value="Suscripción">Abuela</option>
+                    <option value="Suscripción">Otro</option>
+                </select>
+                <input type="email" name="email" style="padding-left: 1.4rem;"class="form-control" placeholder="email del comprador*" required>
+
                 <select name="tipo_pago[]" id="" class="form-control" required>
                     <option value="">Tipo de Pago*</option>
                     <option value="Pago Único">Pago Único</option>
