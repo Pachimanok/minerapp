@@ -32,14 +32,17 @@
                                 <a href="/dashboard/alianza/{{ $alianza->id }}/edit" class="btn btn-success"><i
                                         class="fas fa-pencil-alt"></i></a>
                                 <button href="/dashboard/alianza/{{ $alianza->id }}"
+
                                     onclick="return confirm('¿Quieres eliminar esta alianza?')"
                                     class="btn btn-danger"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
     </div>
 </div>
 <script>
