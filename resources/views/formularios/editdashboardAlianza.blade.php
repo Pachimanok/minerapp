@@ -1,10 +1,10 @@
-@include('layouts.headerAlianza');
-<div class="bg-secondary">
+@include('layouts.headerAlianza')
+<div class="bg-info">
 <div class="container pb-5">
     <h1 class="text-dark">Formulario nueva alianza</h1>
 
     <div class="row">
-        <form action="/alianzas/{{ $alianza->id }}" method="POST" enctype="multipart/form-data" class="row g-3">
+        <form action="/dashboard/alianza/{{ $alianza->id }}" method="POST" enctype="multipart/form-data" class="row g-3">
             @csrf
             {{ method_field('PATCH') }}
 
@@ -64,7 +64,7 @@
             
             <div class="col">
             <button class="btn btn-primary" type="submit">Modificar</button>
-            <a href="/alianzas" class="btn btn-primary">Cancelar</a>
+            <a href="/dashboard/alianza" class="btn btn-primary">Cancelar</a>
             </div>
         </form>
     </div>

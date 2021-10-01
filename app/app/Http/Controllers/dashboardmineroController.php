@@ -20,7 +20,7 @@ class dashboardmineroController extends Controller
     public function index()
     {
 
-        $mineros['mineros'] = Minero::All();
+        $mineros['mineros'] = Minero::paginate();
         return view('dashboard.minero', $mineros);
         
     }

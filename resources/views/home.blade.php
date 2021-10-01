@@ -15,8 +15,6 @@
 
 @else
 
-  @include('home.homeAdmin')
-
 @endif
     
 </div>

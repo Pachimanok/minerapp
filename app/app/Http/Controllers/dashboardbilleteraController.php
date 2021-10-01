@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
+use App\Models\Billetera;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 
 
-class dashboardusuariosController extends Controller
+class dashboardbilleteraController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +20,8 @@ class dashboardusuariosController extends Controller
     public function index()
     {
 
-        $users['users'] = User::paginate(1000);
-        return view('dashboard.usuarios', $users);
+        $billeteras['billeteras'] = Billetera::paginate();
+        return view('dashboard.billetera', $billeteras);
         
     }
 
@@ -50,7 +51,7 @@ class dashboardusuariosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
     }
 
     /**
@@ -61,10 +62,6 @@ class dashboardusuariosController extends Controller
      */
     public function edit($id)
     {
-    
-        $user = User::find($id);       
-        return view('formularios.editdashboardUsuarios')->with('user', $user);
-        
     }
 
     /**
@@ -76,18 +73,6 @@ class dashboardusuariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $user = User::find($id);
-        $id=$user->id;
-
-            
-        $user->name = $request['name'];
-        $user->email = $request['email'];
-        $user->role = $request['role'];
-
-        $user->save();
-
-        return redirect('/dashboard/usuarios'); 
     }
 
     /**
@@ -98,8 +83,5 @@ class dashboardusuariosController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-        return redirect('/dashboard/usuarios');
     }
 }

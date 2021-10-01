@@ -1,15 +1,15 @@
-@include('layouts.headerAlianza');
-<div class="bg-secondary">
+@include('layouts.headerAlianza')
+<div class="bg-info">
 <div class="container pb-5">
     <h1 class="text-dark">Formulario nueva alianza</h1>
 
     <div class="row">
-        <form action="/notificaciones" method="POST" enctype="multipart/form-data" class="row g-3">
+        <form action="/dashboard/notificaciones" method="POST" enctype="multipart/form-data" class="row g-3">
             @csrf
 
             <label for="validationDefault03" class="form-label">Destinatario: </label>
             <select class="form-select"  name="destinatario" aria-label="Default select example">
-                <option selected value="Todos">Todos</option>
+                <option selected value="0">Todos</option>
                 @foreach ($usuarios as $usuario)
                     <option value="{{ $usuario->name }}">{{ $usuario->name }}</option>
                 @endforeach
@@ -35,7 +35,7 @@
 
             <div class="col">
             <button class="btn btn-primary" type="submit">Crear</button>
-            <a href="/notificaciones" class="btn btn-primary">Cancelar</a>
+            <a href="/dashboard/notificaciones" class="btn btn-primary">Cancelar</a>
             </div>
         </form>
     </div>

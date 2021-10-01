@@ -1,33 +1,23 @@
-@include('layouts.headerAlianza')
-
-<!-- Sidebar -->
-<div class="container">
-    <h1>Administrador</h1>
-</div>
-<div class="fixed-top">
-    <div>
-        <div class="mt-1"></div>
-        <button class="btn btn-default col-sm-1" onclick="sidebar();"><i class="ni ni-bullet-list-67"></i></button>
+    <!-- Sidebar -->
+    <div class="fixed-top">
+        <div>
+            <div class="mt-1"></div>
+            <button class="btn btn-default col-sm-1" onclick="sidebar();"><i class="ni ni-bullet-list-67"></i></button>
+        </div>
+        <div class="bg-default col-sm-1 fixed-top" id="sidebarbody" onclick="sidebar();" style="display:none; height: 100vh">
+            <button class="ml-7 btn btn-default"><i class="ni ni-fat-remove"></i></button>
+            <a href="/dashboardalianza" class="d-block text-info">Alianzas</a>
+            <div class="mt-1"></div>
+            <a href="/dashboardminero" class="d-block text-info">Mineros</a>
+            <div class="mt-1"></div>
+            <a href="/dashboardnotificaciones" class="d-block text-info">Notificaciones</a>
+            <div class="mt-1"></div>
+            <a href="/dashboardbilletera" class="d-block text-info">Billetera/Minados</a>
+            <div class="mt-1"></div>
+            <a href="/dashboardusuarios" class="d-block text-info">Usuarios</a>
+            <div class="mt-1"></div>
+        </div>
     </div>
-    <div class="bg-default col-sm-1 fixed-top" id="sidebarbody" onclick="sidebar();" style="display:none; height: 100vh">
-        <button class="ml-6 btn btn-default"><i class="ni ni-fat-remove"></i></button>
-        <a href="/alianzasAdmin" class="d-block text-info">Alianzas</a>
-        <div class="mt-1"></div>
-        <a href="/dashboardminero" class="d-block text-info">Mineros</a>
-        <div class="mt-1"></div>
-        <a href="/notificacionesAdmin" class="d-block text-info">Notificaciones</a>
-        <div class="mt-1"></div>
-        <a href="/dashboardbilletera" class="d-block text-info">Billetera/Minados</a>
-        <div class="mt-1"></div>
-        <a href="/dashboardusuarios" class="d-block text-info">Usuarios</a>
-        <div class="mt-1"></div>
-    </div>
-</div>
-<div class="ml-3">
-    <h1>Administrador</h1>
-</div>
-
-
 
     <!-- Scripts -->
     <script>

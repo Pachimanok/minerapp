@@ -2,9 +2,6 @@
 
 <div class="container pb-5 pt-5">
     <h1 class="text-center text-dark  mb-5">Listado de alianzas</h1>
-    <div class="col ">
-        <a href="/dashboard/minero/create" class="btn btn-default">Nuevo Minero</a>
-    </div>
     <div class="row">
         <div class="table-responsive">
             <table class="table align-items-center table-dark table-striped">
@@ -68,19 +65,4 @@ if ( window.history.replaceState ) {
 }
 </script>
 
-    <!-- Scripts -->
-    <!-- Core -->
-    <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
-    <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-    <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-    <!-- Optional JS -->
-    <script src="../assets/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="../assets/vendor/chart.js/dist/Chart.extension.js"></script>
-    <!-- Argon JS -->
-    <script src="../assets/js/argon.js?v=1.2.0"></script>
-    <link href="/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-</body>
-
-</html>
+@include('layouts.sidebar')

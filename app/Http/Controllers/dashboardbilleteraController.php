@@ -20,7 +20,7 @@ class dashboardbilleteraController extends Controller
     public function index()
     {
 
-        $billeteras['billeteras'] = Billetera::paginate();
+        $billeteras['billeteras'] = Billetera::All();
         return view('dashboard.billetera', $billeteras);
         
     }

@@ -10,7 +10,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 
 
-class AlianzaAdminController extends Controller
+class dashboardalianzaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,7 +32,7 @@ class AlianzaAdminController extends Controller
      */
     public function create()
     {
-        return view('formularios.createAlianzaAdmin');
+        return view('formularios.createdashboardAlianza');
     }
 
     /**
@@ -84,7 +84,7 @@ class AlianzaAdminController extends Controller
     {   
 
         $alianza = Alianza::find($id);       
-        return view('formularios.verAlianzaAdmin')->with('alianza', $alianza);
+        return view('formularios.verdashboardAlianza')->with('alianza', $alianza);
         
     }
 
@@ -98,7 +98,7 @@ class AlianzaAdminController extends Controller
     {
     
         $alianza = Alianza::find($id);
-        return view('formularios.editAlianzaAdmin')->with('alianza', $alianza);
+        return view('formularios.editdashboardAlianza')->with('alianza', $alianza);
 
     }
 
@@ -154,7 +154,7 @@ class AlianzaAdminController extends Controller
 
         $alianza->save();
 
-        return redirect('/alianzas'); 
+        return redirect('/dashboard/alianza'); 
     }
 
     /**
@@ -167,6 +167,6 @@ class AlianzaAdminController extends Controller
     {
         $alianza = Alianza::find($id);
         $alianza->delete();
-        return redirect('/alianzas');
+        return redirect('/dashboard/alianza');
     }
 }

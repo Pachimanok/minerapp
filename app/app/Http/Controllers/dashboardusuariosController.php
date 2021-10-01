@@ -1,16 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\notification;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 
 
-class NotificacionesAdminController extends Controller
+class dashboardusuariosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +19,8 @@ class NotificacionesAdminController extends Controller
     public function index()
     {
 
-        $notificaciones['notificaciones'] = notification::paginate(8);
-        return view('dashboard.notificaciones', $notificaciones);
+        $users['users'] = User::paginate(1000);
+        return view('dashboard.usuarios', $users);
         
     }
 
@@ -32,8 +31,6 @@ class NotificacionesAdminController extends Controller
      */
     public function create()
     {
-        $usuarios = DB::table('users')->get();
-        return view('formularios.createNotificacionAdmin')->with('usuarios', $usuarios);
     }
 
     /**
@@ -44,22 +41,6 @@ class NotificacionesAdminController extends Controller
      */
     public function store(Request $request)
     {
-
-        $notificacion = new notification();
-        $notificacion->destinatario = $request['destinatario'];
-        $notificacion->titulo = $request['titulo'];
-        $notificacion->descripcion = $request['descripcion'];
-        $notificacion->link = $request['link'];
-        $notificacion->estado = $request['estado'];
-        $notificacion->tipo = $request['tipo'];
-        $notificacion->imagen = $request['imagen'];
-
-        $notificacion->save();
-
-        $listaNotificaciones = DB::table('notifications')->get();
-
-        return view('dashboard.notificaciones')->with('notificaciones', $listaNotificaciones);
-
     }
 
     /**
@@ -69,11 +50,7 @@ class NotificacionesAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   
-
-        $notificacion = notification::find($id);       
-        return view('formularios.verNotificacionAdmin')->with('notificacion', $notificacion);
-        
+    {
     }
 
     /**
@@ -85,7 +62,9 @@ class NotificacionesAdminController extends Controller
     public function edit($id)
     {
     
-
+        $user = User::find($id);       
+        return view('formularios.editdashboardUsuarios')->with('user', $user);
+        
     }
 
     /**
@@ -98,6 +77,17 @@ class NotificacionesAdminController extends Controller
     public function update(Request $request, $id)
     {
 
+        $user = User::find($id);
+        $id=$user->id;
+
+            
+        $user->username = $request['name'];
+        $user->name = $request['email'];
+        $user->lastName = $request['role'];
+
+        $user->save();
+
+        return redirect('/dashboard/usuarios'); 
     }
 
     /**
@@ -108,8 +98,8 @@ class NotificacionesAdminController extends Controller
      */
     public function destroy($id)
     {
-        $notificacion = notification::find($id);
-        $notificacion->delete();
-        return redirect('/notificaciones');
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/dashboard/usuarios');
     }
 }

@@ -1,11 +1,11 @@
-@include('layouts.headerAlianza');
+@include('layouts.headerAlianza')
 
-<div class="bg-secondary">
+<div class="bg-secondary" style="height: 100vh">
     <div class="container pb-5">
         <h1 class="text-dark">Formulario nueva alianza</h1>
 
         <div class="row">
-            <form action="/dashboard/usuarios/{{ $usuario->id }}" method="POST" enctype="multipart/form-data" class="row g-3">
+            <form action="/dashboard/usuarios/{{ $user->id }}" method="POST" enctype="multipart/form-data" class="row g-3">
                 @csrf
                 {{ method_field('PATCH') }}
 
