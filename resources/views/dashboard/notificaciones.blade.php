@@ -1,3 +1,5 @@
+@if($user->role == 'admin')
+
 @include('layouts.headerAlianza')
 <div class="bg-info w-100 h-100">
 <div class="container pt-5 pb-5">
@@ -48,3 +50,9 @@ if ( window.history.replaceState ) {
 </script>
 
 @include('layouts.sidebar')
+
+@else
+
+@include('home')
+
+@endif
