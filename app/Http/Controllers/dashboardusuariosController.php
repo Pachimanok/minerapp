@@ -20,7 +20,7 @@ class dashboardusuariosController extends Controller
     {
         $usuario = Auth::user();
         $users['users'] = User::paginate(1000);
-        return view('dashboard.usuarios', $users);
+        return view('dashboard.usuarios', $users)->with('usuario', $usuario);
         
     }
 

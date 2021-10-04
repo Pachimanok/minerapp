@@ -3,7 +3,7 @@
 @include('layouts.headerAlianza')
 
 <div class="container pb-5 pt-5">
-    <h1 class="text-center text-dark  mb-5">Listado de alianzas</h1>
+    <h1 class="text-center text-dark  mb-5">Listado de billeteras</h1>
     <div class="row">
         <div class="table-responsive">
             <table class="table align-items-center table-dark table-striped">
