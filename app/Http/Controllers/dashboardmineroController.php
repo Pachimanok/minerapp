@@ -19,9 +19,9 @@ class dashboardmineroController extends Controller
      */
     public function index()
     {
-
+        $usuario = Auth::user();
         $mineros['mineros'] = Minero::All();
-        return view('dashboard.minero', $mineros);
+        return view('dashboard.minero', $mineros)->with('user', $usuario);
         
     }
 
@@ -42,34 +42,6 @@ class dashboardmineroController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $user = Auth::user()->name;
-        $minero = new Minero();
-        $minero->user = $user;
-        $minero->user_name = $request['user_name'];
-        $minero->name = $request['name'];
-        $minero->lastName = $request['lastName'];
-        $minero->celular = $request['celular'];
-        $minero->cbu = $request['cbu'];
-        $minero->cuit = $request['cuit'];
-        $minero->subtitulo = $request['subtitulo'];
-        $minero->frase = $request['frase'];
-        $minero->acerca = $request['acerca'];
-        $minero->pts = $request['pts'];
-        $minero->edad = $request['edad'];
-        $minero->localizacion = $request['localizacion'];
-        $minero->grado = $request['grado'];
-        $minero->user_amigo = $request['user_amigo'];
-        $minero->avatar = $request['avatar'];
-        $minero->fondo = $request['fondo'];
-        $minero->estado = $request['estado'];
-        
-        $minero->save();
-
-        $listaMineros = DB::table('mineros')->get();
-
-        return view('dashboard.minero')->with('mineros', $listaMineros);
-
     }
 
     /**
@@ -113,6 +85,30 @@ class dashboardmineroController extends Controller
         $minero = Minero::find($id);
         $id=$minero->id;
 
+        $imagen = $request->File('avatar');
+
+        if($imagen != null ){
+            $extencion = $imagen->getClientOriginalExtension();
+            $name = $imagen->getClientOriginalName();
+            $imagen = Image::make($imagen);
+            $imagen->resize(300, 300);
+            $imagen->encode($extencion);
+            $path = public_path('img/avatar/' . $name);
+            $imagen->save($path);
+            
+        }
+        $imagen = $request->File('fondo');
+
+        if($imagen != null){
+        $extencion = $imagen->getClientOriginalExtension();
+        $name = $imagen->getClientOriginalName();
+        $imagen = Image::make($imagen);
+        $imagen->encode($extencion);
+        $path = public_path('img/fondo/' . $name);
+        $imagen->save($path);
+        $alianza->fondo = $name;
+        }
+
             
         $minero->user_name = $request['user_name'];
         $minero->name = $request['name'];
@@ -134,7 +130,7 @@ class dashboardmineroController extends Controller
 
         $minero->save();
 
-        return redirect('/dashboard/minero'); 
+        return redirect('/dashboardminero'); 
     }
 
     /**
@@ -147,6 +143,6 @@ class dashboardmineroController extends Controller
     {
         $minero = Minero::find($id);
         $minero->delete();
-        return redirect('/dashboard/minero');
+        return redirect('/dashboardminero');
     }
 }

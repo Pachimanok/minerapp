@@ -19,9 +19,9 @@ class dashboardbilleteraController extends Controller
      */
     public function index()
     {
-
+        $usuario = Auth::user();
         $billeteras['billeteras'] = Billetera::All();
-        return view('dashboard.billetera', $billeteras);
+        return view('dashboard.billetera', $billeteras)->with('user', $usuario);;
         
     }
 

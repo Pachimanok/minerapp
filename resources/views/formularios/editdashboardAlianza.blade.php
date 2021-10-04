@@ -64,7 +64,7 @@
             
             <div class="col">
             <button class="btn btn-primary" type="submit">Modificar</button>
-            <a href="/dashboard/alianza" class="btn btn-primary">Cancelar</a>
+            <a href="/dashboardalianza" class="btn btn-primary">Cancelar</a>
             </div>
         </form>
     </div>

@@ -19,9 +19,9 @@ class dashboardnotificacionesController extends Controller
      */
     public function index()
     {
-
+        $usuario = Auth::user();
         $notificaciones['notificaciones'] = notification::All();
-        return view('dashboard.notificaciones', $notificaciones);
+        return view('dashboard.notificaciones', $notificaciones)->with('user', $usuario);;
         
     }
 
@@ -137,6 +137,6 @@ class dashboardnotificacionesController extends Controller
     {
         $notificacion = notification::find($id);
         $notificacion->delete();
-        return redirect('/dashboard/notificaciones');
+        return redirect('/dashboardnotificaciones');
     }
 }

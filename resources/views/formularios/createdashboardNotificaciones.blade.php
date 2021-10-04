@@ -35,7 +35,7 @@
 
             <div class="col">
             <button class="btn btn-primary" type="submit">Crear</button>
-            <a href="/dashboard/notificaciones" class="btn btn-primary">Cancelar</a>
+            <a href="/dashboardnotificaciones" class="btn btn-primary">Cancelar</a>
             </div>
         </form>
     </div>

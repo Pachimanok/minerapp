@@ -19,9 +19,9 @@ class dashboardalianzaController extends Controller
      */
     public function index()
     {
-
+        $usuario = Auth::user();
         $alianzas['alianzas'] = Alianza::All();
-        return view('dashboard.alianzas', $alianzas);
+        return view('dashboard.alianzas', $alianzas)->with('user', $usuario);
         
     }
 
@@ -184,7 +184,7 @@ class dashboardalianzaController extends Controller
 
         $alianza->save();
 
-        return redirect('/dashboard/alianza'); 
+        return redirect('/dashboardalianza'); 
     }
 
     /**
@@ -197,6 +197,6 @@ class dashboardalianzaController extends Controller
     {
         $alianza = Alianza::find($id);
         $alianza->delete();
-        return redirect('/dashboard/alianza');
+        return redirect('/dashboardalianza');
     }
 }
