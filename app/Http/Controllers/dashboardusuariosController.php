@@ -18,7 +18,7 @@ class dashboardusuariosController extends Controller
      */
     public function index()
     {
-
+        $usuario = Auth::user();
         $users['users'] = User::paginate(1000);
         return view('dashboard.usuarios', $users);
         
