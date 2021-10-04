@@ -18,7 +18,7 @@
                             <div class="card text-center"
                                 style="height: 3rem; background: #e2f4f5; border-style: revert;">
                                 <h6>Total Recaudado</h6>
-                                <h5 class="pt-0"> ${{ $recaudado }} </h5>
+                                <h5 class="pt-0"> ${{ $cob }} </h5>
                             </div>
                         </a>
                     </div>
@@ -26,7 +26,7 @@
                         <a href="#">
                             <div class="card text-center"
                                 style="height: 3rem; background: #e2f4f5; border-style: revert;">
-                                <h6>Total Reetirado</h6>
+                                <h6>Total Retirado</h6>
                                 <h5 class="pt-0"> ${{ $recaudado }} </h5>
                             </div>
                         </a>

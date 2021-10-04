@@ -54,16 +54,16 @@ input[type="date"]:focus:before {
                     @endforeach
                     <option value="/mina/create">+ Agregar Mina</option>
                 </select>
-                <select name="parentezco[]" id="" class="form-control" required>
+                <select name="parentesco[]" id="" class="form-control" required>
                     <option value="">Parentesco*</option>
-                    <option value="Pago Único">Padre</option>
-                    <option value="Suscripción">Madre</option>
-                    <option value="Suscripción">Hemano</option>
-                    <option value="Suscripción">Tío</option>
-                    <option value="Suscripción">Tía</option>
-                    <option value="Suscripción">Abuelo</option>
-                    <option value="Suscripción">Abuela</option>
-                    <option value="Suscripción">Otro</option>
+                    <option value="Padre">Padre</option>
+                    <option value="Madre">Madre</option>
+                    <option value="Hermano">Hermano</option>
+                    <option value="Tio">Tío</option>
+                    <option value="Tia">Tía</option>
+                    <option value="Abuelo">Abuelo</option>
+                    <option value="Abuela">Abuela</option>
+                    <option value="Otro">Otro</option>
                 </select>
                 <input type="email" name="email" style="padding-left: 1.4rem;"class="form-control" placeholder="email del comprador*" required>
 
