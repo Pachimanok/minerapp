@@ -19,7 +19,7 @@ class dashboardusuariosController extends Controller
     public function index()
     {
         $usuario = Auth::user();
-        $users['users'] = User::paginate(1000);
+        $users['users'] = User::All();
         return view('dashboard.usuarios', $users)->with('usuario', $usuario);
         
     }

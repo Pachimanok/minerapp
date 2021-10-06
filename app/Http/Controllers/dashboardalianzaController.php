@@ -32,7 +32,9 @@ class dashboardalianzaController extends Controller
      */
     public function create()
     {
-        return view('formularios.createdashboardAlianza');
+
+        return view('formularios.createdashboardAlianza', $user);
+
     }
 
     /**
@@ -106,9 +108,9 @@ class dashboardalianzaController extends Controller
      */
     public function show($id)
     {   
-
-        $alianza = Alianza::find($id);       
-        return view('formularios.verdashboardAlianza')->with('alianza', $alianza);
+        $usuario = Auth::user();
+        $alianza = Alianza::find($id);      
+        return view('formularios.verdashboardAlianza')->with('alianza', $alianza)->with('user', $usuario);
         
     }
 

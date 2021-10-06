@@ -93,7 +93,7 @@ Route::get('/home', function () {
         return view('home')->with('user', $usuario)->with('educacion', $educacion);
 
     } elseif ($user_role == 'admin') {
-        return redirect('/dashboard/minero');
+        return view('dashboard.homeAdmin')->with('user', $usuario);
     } else {
 
         /* Datos dela Alianza */
@@ -479,8 +479,8 @@ Route::resource('detalle', 'App\Http\Controllers\DetalleBilletera');
 
 /* Routes andres jimmy */
 
-Route::resource('/dashboard/alianza', 'App\Http\Controllers\dashboardalianzaController');
-Route::resource('/dashboard/notificaciones', 'App\Http\Controllers\dashboardnotificacionesController');
+Route::resource('dashboard/alianza', 'App\Http\Controllers\dashboardalianzaController');
+Route::resource('dashboard/notificaciones', 'App\Http\Controllers\dashboardnotificacionesController');
 Route::resource('dashboard/minero', 'App\Http\Controllers\dashboardmineroController');
 Route::resource('dashboard/billetera', 'App\Http\Controllers\dashboardbilleteraController');
 Route::resource('dashboard/usuarios', 'App\Http\Controllers\dashboardusuariosController');
