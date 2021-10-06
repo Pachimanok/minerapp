@@ -1,23 +1,28 @@
 
 @include('layouts.header')
-
 <body>
-{{-- @include('layouts.nav') --}}
-@include('layouts.user')
+    
+    <div class="header pb-6">
+        <div class="card-header d-flex fixed-top" style="background: #F5F5F5;
+        padding: 1rem;">
+            <div class="col-sm-1 text-left" style="max-width: 1rem; margin-top: 0.5rem; padding-left: 0;">
+                <a href="{{ url()->previous() }}"><i style="font-size: x-large;" class="fas fa-chevron-left"></i></a>
+            </div>
+            <div class="col-sm-10 text-center pl-0">
+                <h3 class="card-title mb-0">Minar Auto</h3>
+            </div>
+        </div>
     <div class="header pb-2">
       <div class="container-fluid">
-        <div class="card" style="border:none">
-          <div class="card-body text-center">
-                    <h2 class="text-center pb-0" style="color: #13538a !important;">Minar Auto</h2>
-                    <h6 class="text-center pt-0" style="color: #119da4">User:{{ $mineros->name }}</h6>
-                    <br>
+        <div class="card mt-5" style="border:none">
+          <div class="card-body text-center mt-5">
                     <form action="/autos" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="pl-lg-4">
+                        <div class="pl-lg-4"> 
                             <div class="col-sm-3 mx-auto">
                                 <div>
                                     <label class="dropimage">
-                                        <input id="perfil-upload" title="Drop image or click me" name="foto"
+                                        <input id="perfil-upload" title="Drop image or click me" name="photo"
                                         type="file" required>
                                     </label>
                                     <small class="text-dark">subir tarjeta verde</small>
@@ -37,57 +42,15 @@
                           });
                         });
                           </script>
-                        <div class="row mt-3">
-                            <div class="col-sm-5 mx-auto text-dark text-center" style="text-align:center;">
-                                <label class="mx-auto" for="text" >Año</label>
-                            </div>
-                            <div class="col-sm-5 mx-auto">
-                                <input type="name" class="form-control mx-auto" name="ano" placeholder="2021">
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-sm-5 mx-auto text-dark text-center" style="text-align:center;">
-                                <label class="mx-auto" for="text" >Ciudad</label>
-                            </div>
-                            <div class="col-sm-5 mx-auto">
-                                <input type="name" class="form-control mx-auto" name="ciudad" placeholder="Mendoza">
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-sm-5 mx-auto text-dark text-center" style="text-align:center;">
-                                <label class="mx-auto" for="text" >Nombre:</label>
-                            </div>
-                            <div class="col-sm-5 mx-auto text-light">
-                                <input type="name" class="form-control mx-auto" name="nombre" placeholder="Juan Díaz">
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-sm-5 mx-auto text-dark text-center">
-                                <label class="mx-auto" for="text">Documento:</label>
-                            </div>
-                            <div class="col-sm-5 mx-auto">
-                                <input type="number" class="form-control mx-auto" name="dni"  placeholder="28987453">
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-sm-5 mx-auto text-dark text-center">
-                                <label class="mx-auto" for="text" >WhatsApp:</label>
-                            </div>
-                            <div class="col-sm-5 mx-auto">
-                                <input type="number" class="form-control mx-auto" name="phone"  placeholder="5492612128105">
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-sm-5 mx-auto text-dark text-center">
-                                <label class="mx-auto" for="text" >E-mail:</label>
-                            </div>
-                            <div class="col-sm-5 mx-auto">
-                                <input type="email" class="form-control mx-auto" name="email"  placeholder="nombre@miner.app">
-                                <input hidden class="form-control mx-auto" name="user"  value="{{ $mineros->name }}">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
+                        <input type="number" name="ano" style="padding-left: 1.4rem; border-left:none; border-top:none; border-right:none;"class="form-control" placeholder="año [2021] * " required>
+                        <input type="text" name="ciudad" style="padding-left: 1.4rem; border-left:none; border-top:none; border-right:none;"class="form-control" placeholder="Ciudad* " required>
+                        <input type="text" name="nombre" style="padding-left: 1.4rem; border-left:none; border-top:none; border-right:none;"class="form-control" placeholder="Nombre y Apellido* " required>
+                        <input type="number" name="dni" style="padding-left: 1.4rem; border-left:none; border-top:none; border-right:none;"class="form-control" placeholder="DNI* " required>
+                        <input type="phone" name="phone" style="padding-left: 1.4rem; border-left:none; border-top:none; border-right:none;"class="form-control" placeholder="WhatsApp* " required>
+                        <input type="email" name="email" style="padding-left: 1.4rem; border-left:none; border-top:none; border-right:none;"class="form-control" placeholder="e-mail* " required>
+                        <input hidden class="form-control mx-auto" name="user"  value="{{ $mineros->name }}">
+
+                        <div class="row mt-5">
                             <div class="col-sm-5 mx-auto" style="text-align: center;">
                                 <button type="submit" class="btn btn-primary mx-auto pt-2 pb-2" style="width: 90%; border-radius: 50px; background: #13538a;"><i class="ni ni-diamond mr-2"></i>Minar</button>
                             </div>

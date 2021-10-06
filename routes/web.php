@@ -65,8 +65,11 @@ Route::get('/home', function () {
         $minas= DB::table('minas')->where('user', '=', $user)->take(4)->get();
         $qminas = $minas->count();
         /* Datos para billetera */
-        $aCobrar = DB::table('billeteras')->select('monto')->where('user_name', '=', $user)->where('estado', '=', 'a cobrar')->sum('monto');
-        $desbloq = DB::table('billeteras')->select('monto')->where('user_name', '=', $user)->where('estado', '=', 'desbloquear')->sum('monto');
+        
+        
+        $aCobrar = DB::table('minados')->select('comision')->where('user', '=', $user)->where('libre', '=', '1')->where('cobrado', '=', '0')->sum('comision');
+        $retirado = DB::table('minados')->select('comision')->where('user', '=', $user)->where('cobrado', '=', '1')->sum('comision');
+        
         
         $minerales = db::table('alianzas')->take(3)->get();
         /* enviamos a la vista */
@@ -79,7 +82,7 @@ Route::get('/home', function () {
         ->with('educacion', $educacion)
         ->with('cant_ed', $cant_ed)
         ->with('cob', $aCobrar)
-        ->with('des', $desbloq)
+        ->with('des', $retirado)
         ->with('id', $user_id)
         ->with('qminas', $qminas)
         ->with('minas', $minas)

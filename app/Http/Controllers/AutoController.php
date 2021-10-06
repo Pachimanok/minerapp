@@ -6,8 +6,14 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Auto;
 use App\Models\Billetera;
+use App\Mail\TerminoMinadoAuto;
+use App\Mail\TerminoMinadoAlianza;
+
+
+
 
 
 
@@ -38,7 +44,9 @@ class AutoController extends Controller
         $min = DB::table('mineros')->where('user_name', '=' ,$user)->get();
         $minero = $min[0];
         $usuario = Auth::user();
-        return view('formularios.createAuto')->with('mineros', $minero)->with('user', $usuario);
+        $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+        $qnot = $not->count();
+        return view('formularios.createAuto')->with('mineros', $minero)->with('user', $usuario)->with('qnot', $qnot)->with('not', $not);
     }
 
     /**
@@ -49,6 +57,7 @@ class AutoController extends Controller
      */
     public function store(Request $request)
     {   
+        
         $archivo = $request->File('photo');
         $extencion = $archivo->getClientOriginalExtension();
         $name = $archivo->getClientOriginalName();
@@ -97,7 +106,7 @@ class AutoController extends Controller
 
         $minero = $min[0];
         $usuario = Auth::user();
-
+        Mail::to('prio@minerapp.com.ar')->send(new TerminoMinadoAlianza);
         return view('Okauto')->with('mineros', $minero)->with('user', $usuario)->with('auto', $auto);
         
     }

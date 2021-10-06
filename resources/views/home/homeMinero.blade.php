@@ -10,14 +10,14 @@
                     <div class="col-sm-4 pl-3 pr-0 mt-3" style="max-width: 33%;">
                         <div class="card text-center" style="background: #e2f4f5; border-style: revert;">
                             <h6>Puntos Miner</h6>
-                            <h5 class="pt-0"> {{ $mineros->pts }}</h5>
+                            <h5 class="pt-0"> 0{{ $mineros->pts }}</h5>
                         </div>
                     </div>
                     <div class="col-sm-4 pl-1 pr-3 mt-3" style="max-width: 34%;">
                         <a href="/billetera">
                             <div class="card text-center"
                                 style="height: 3rem; background: #e2f4f5; border-style: revert;">
-                                <h6>Total Recaudado</h6>
+                                <h6>Total Recaudado:</h6>
                                 <h5 class="pt-0"> ${{ $cob }} </h5>
                             </div>
                         </a>
@@ -26,8 +26,8 @@
                         <a href="#">
                             <div class="card text-center"
                                 style="height: 3rem; background: #e2f4f5; border-style: revert;">
-                                <h6>Total Retirado</h6>
-                                <h5 class="pt-0"> ${{ $recaudado }} </h5>
+                                <h6>Total Retirado:</h6>
+                                <h5 class="pt-0"> ${{ $des }} </h5>
                             </div>
                         </a>
                     </div>

@@ -56,6 +56,7 @@ input[type="date"]:focus:before {
                 </select>
                 <select name="parentesco[]" id="" class="form-control" required>
                     <option value="">Parentesco*</option>
+                    <option value="Padre">Yo</option>
                     <option value="Padre">Padre</option>
                     <option value="Madre">Madre</option>
                     <option value="Hermano">Hermano</option>
@@ -65,8 +66,7 @@ input[type="date"]:focus:before {
                     <option value="Abuela">Abuela</option>
                     <option value="Otro">Otro</option>
                 </select>
-                <input type="email" name="email" style="padding-left: 1.4rem;"class="form-control" placeholder="email del comprador*" required>
-
+                <input type="email" name="email" style="padding-left: 1.4rem;"class="form-control" placeholder="email responsable de compra*" required>
                 <select name="tipo_pago[]" id="" class="form-control" required>
                     <option value="">Tipo de Pago*</option>
                     <option value="Pago Único">Pago Único</option>

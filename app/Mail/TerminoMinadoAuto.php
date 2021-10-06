@@ -7,20 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-
-
 class TerminoMinadoAlianza extends Mailable
 {
     use Queueable, SerializesModels;
-    public $lo_minado;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($lo_minado)
+    public function __construct()
     {
-        $this->lo_minado = $lo_minado;
+        //
     }
 
     /**
@@ -30,6 +28,6 @@ class TerminoMinadoAlianza extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.emailAlianzaMinado');
+        return $this->view('emails.emailAlianzaAuto');
     }
 }
