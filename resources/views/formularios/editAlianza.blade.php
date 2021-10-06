@@ -17,7 +17,7 @@
                         capture="camera">
                         <i class="fa fa-edit"></i> Cambiar Imagen
                     </label>
-                    <input id="file-upload" type="file" name="avatar" hidden>
+                    <input id="file-upload" type="file" name="avatar" value="{{ $minero->avatar }}" hidden>
                     <h4 class="text-light text-center mt-1">{{ $minero->name }}</h4>
             </div>
     </div>

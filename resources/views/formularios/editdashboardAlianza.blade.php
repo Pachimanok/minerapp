@@ -12,10 +12,10 @@
             <input type="text" name="nombrefantasia" class="form-control" id="validationDefault03" value="{{ $alianza->nombre_fantasia }}">
 
             <label for="validationDefault03" class="form-label">Avatar: </label>
-            <input type="file" name="avatar" class="form-control" id="validationDefault03">
+            <input type="file" name="avatar" class="form-control" value="{{ $alianza->avatar }} id="validationDefault03">
 
             <label for="validationDefault03" class="form-label">Alianza fondo: </label>
-            <input type="file" name="alianzafondo" class="form-control" id="validationDefault03">
+            <input type="file" name="alianzafondo" value="{{ $alianza->fondo }}"class="form-control" id="validationDefault03">
 
             <label for="validationDefault03" class="form-label">Cuit: </label>
             <input type="number" name="cuit" class="form-control" id="validationDefault03" value="{{ $alianza->cuit }}"required>

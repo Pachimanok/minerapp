@@ -140,8 +140,11 @@ class dashboardalianzaController extends Controller
         $id = $alianza->id;
 
         $imagen = $request->File('avatar');
+        
+       
 
         if($imagen != null ){
+
             $extencion = $imagen->getClientOriginalExtension();
             $name = $imagen->getClientOriginalName();
             $imagen = Image::make($imagen);
@@ -149,10 +152,11 @@ class dashboardalianzaController extends Controller
             $imagen->encode($extencion);
             $path = public_path('img/avatar/' . $name);
             $imagen->save($path);
+            $alianza->avatar = $name;
             
         }
+        
         $imagen = $request->File('alianzafondo');
-
         if($imagen != null){
         $extencion = $imagen->getClientOriginalExtension();
         $name = $imagen->getClientOriginalName();
@@ -163,8 +167,8 @@ class dashboardalianzaController extends Controller
         $alianza->fondo = $name;
         }
 
-            
-        $alianza->avatar = $name;
+        
+       
         $alianza->nombre_fantasia = $request->get('nombrefantasia');
         $alianza->razonSocial = $request->get('razonsocial');
         $alianza->cuit = $request->get('cuit');
