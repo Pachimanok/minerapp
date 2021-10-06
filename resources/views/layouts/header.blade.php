@@ -28,6 +28,8 @@
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
 
+  <link href="{{asset('swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
   {{-- para mobile --}}
 
 
@@ -52,6 +54,11 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="../assets/img/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+  <script type="module">
+    import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+    const el = document.createElement('pwa-update');
+    document.body.appendChild(el);
+ </script>
 
   {{-- fin para mobile --}}
  

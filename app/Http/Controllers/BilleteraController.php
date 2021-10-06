@@ -16,13 +16,7 @@ class BilleteraController extends Controller
      */
     public function index()
     {
-        $usuario = Auth::user();
-        $user = $usuario->name;
-
-        $billetera = DB::table('billeteras')->where('user_name', '=' ,$user)->get();
-       
-        return view('billetera')->with('user', $usuario)->with('billetera', $monto);
-    
+  
     }
 
     /**

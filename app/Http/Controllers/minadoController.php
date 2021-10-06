@@ -85,6 +85,8 @@ class minadoController extends Controller
         foreach($request['mina'] as $mina);
         foreach($request['tipo_pago'] as $tipo_pago);
         foreach($request['metodo_pago'] as $metodo_pago);
+        foreach($request['parentesco'] as $parentesco);
+
 
 
         $minado = new Minado();
@@ -92,6 +94,9 @@ class minadoController extends Controller
         $minado->monto = $request['monto'];
         $minado->comision =  $comision;
         $minado->mina = $mina;
+        $minado->parentesco = $parentesco;
+        $minado->email = $request['email'];
+
         $minado->tipo_pago =  $tipo_pago;
         $minado->metodo_pago =  $metodo_pago;
         $minado->fecha_entrega = $request['fecha_pago']; 
