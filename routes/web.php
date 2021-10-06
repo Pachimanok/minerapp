@@ -93,6 +93,9 @@ Route::get('/home', function () {
     } elseif ($user_role == 'educacion') {
         $educacion = DB::table('educacions')->get();
         return view('home')->with('user', $usuario)->with('educacion', $educacion);
+
+    } elseif ($user_role == 'admin') {
+        return redirect('/dashboard/minero');
     } else {
 
         /* Datos dela Alianza */
@@ -275,6 +278,31 @@ Route::post('/agregar/store', function (Request $request){
     
 
 });
+Route::get('/dashboardalianza', function () {
+
+    return redirect('/dashboard/alianza');
+
+});
+Route::get('/dashboardnotificaciones', function () {
+
+    return redirect('/dashboard/notificaciones');
+
+});
+Route::get('/dashboardminero', function () {
+
+    return redirect('/dashboard/minero');
+
+});
+Route::get('/dashboardbilletera', function () {
+
+    return redirect('/dashboard/billetera');
+
+});
+Route::get('/dashboardusuarios', function () {
+
+    return redirect('/dashboard/usuarios');
+
+});
 
 Route::resource('configAlianza', 'App\Http\Controllers\configAlianzaController');
 
@@ -312,6 +340,14 @@ Route::resource('notificacion', 'App\Http\Controllers\notificacionesController')
 Route::resource('editarPerfil', 'App\Http\Controllers\editarPerfil');
 
 Route::resource('detalle', 'App\Http\Controllers\DetalleBilletera');
+
+/* Routes andres jimmy */
+
+Route::resource('/dashboard/alianza', 'App\Http\Controllers\dashboardalianzaController');
+Route::resource('/dashboard/notificaciones', 'App\Http\Controllers\dashboardnotificacionesController');
+Route::resource('dashboard/minero', 'App\Http\Controllers\dashboardmineroController');
+Route::resource('dashboard/billetera', 'App\Http\Controllers\dashboardbilleteraController');
+Route::resource('dashboard/usuarios', 'App\Http\Controllers\dashboardusuariosController');
 
 
 
