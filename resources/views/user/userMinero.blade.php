@@ -1,7 +1,6 @@
 <!-- Navbar links -->
-<h2>Hola, Pachiman</h2>   
-<ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
-    
+<h1 class="ml-2" style="color:black;">Hola, {{ $mineros->name }}</h1>
+<ul class="navbar-nav align-items-center  ml-auto mr-2 ml-md-0 ">
     <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
         <div class="px-3 py-3">
             <h6 class="text-sm text-muted m-0">Tenes <strong class="text-primary">{{ $qnot }}</strong>
@@ -79,4 +78,3 @@
         </div>
     </li>
 </ul>
-

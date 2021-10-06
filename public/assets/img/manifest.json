@@ -4,10 +4,10 @@
     "name": "Miner App",
     "short_name": "MinerApp",
     "scope": "/",
-    "display": "browser",
-    "start_url": "https://minerapp.com.ar/",
+    "start_url": "/home",
+    "display": "fullscreen",
     "background_color": "#000000",
-    "theme_color": "transparent",
+    "theme_color": "white",
     "description": "MinerApp",
     "orientation": "any",
     "related_applications": [],
@@ -49,6 +49,17 @@
             "sizes": "192x192",
             "type": "image\/png",
             "density": "4.0"
+        }
+        ,{
+            "src": "android-icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image\/png",
+            "density": "5.0",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "android-icon-512x512.png",
+            "sizes": "512x512"
         }
     ]
 }

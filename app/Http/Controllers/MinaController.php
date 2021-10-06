@@ -61,16 +61,8 @@ class MinaController extends Controller
 
         $mina = new mina();
         $mina->titulo = $request->get('titulo');
-        $mina->calle = $request->get('calle');
-        $mina->numero = $request->get('nro');
-        $mina->piso = $request->get('piso');
-        $mina->dpto = $request->get('dpto');
-        $mina->referencia = $request->get('referencia');
-        $mina->telefono = $request->get('telefono');
-        $mina->contacto = $request->get('contacto');
+        $mina->codigo = $request->get('codigo');
         $mina->localidad = $localidad;
-        $mina->observaciones= $request->get('description');
-        $mina->mail= $request->get('mail');
         $mina->user= $user;
         $mina->save();
 
@@ -81,7 +73,7 @@ class MinaController extends Controller
         session()->flash('mensaje','Se creo mina correctamente');
         session()->flash('tipo','primary');
 
-        return redirect()->route('mina.index')->with('mineros', $minero)->with('minas', $qmina)->with('user', $usuario);
+        return redirect('home');
 
 
     }

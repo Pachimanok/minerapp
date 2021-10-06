@@ -2,10 +2,14 @@
 <body>
     
     <div class="header pb-6">
-        <div class="card-header" style="background: #F5F5F5;
-        text-align: center;
+        <div class="card-header d-flex" style="background: #F5F5F5;
         padding: 1rem;">
-            <h3 class="card-title mb-0">Minar</h3>
+            <div class="col-sm-1 text-left" style="max-width: 1rem; margin-top: 0.5rem; padding-left: 0;">
+                <a href="{{ url()->previous() }}"><i style="font-size: x-large;" class="fas fa-chevron-left"></i></a>
+            </div>
+            <div class="col-sm-10 text-center pl-0">
+                <h3 class="card-title mb-0">Minar</h3>
+            </div>
         </div>
         <div class="container">
             <p class="text-center" style="margin: 2rem 2rem 2rem;">¿Dónde hiciste tu compra?</p>

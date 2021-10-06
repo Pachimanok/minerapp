@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\TerminoMinadoAlianza;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Minado;
 use Intervention\Image\Facades\Image;
+use App\Mail\TerminoMinadoAlianza;
+
 
 
 
@@ -85,6 +86,8 @@ class minadoController extends Controller
         foreach($request['mina'] as $mina);
         foreach($request['tipo_pago'] as $tipo_pago);
         foreach($request['metodo_pago'] as $metodo_pago);
+        foreach($request['parentesco'] as $parentesco);
+
 
 
         $minado = new Minado();
@@ -92,6 +95,9 @@ class minadoController extends Controller
         $minado->monto = $request['monto'];
         $minado->comision =  $comision;
         $minado->mina = $mina;
+        $minado->parentesco = $parentesco;
+        $minado->email = $request['email'];
+
         $minado->tipo_pago =  $tipo_pago;
         $minado->metodo_pago =  $metodo_pago;
         $minado->fecha_entrega = $request['fecha_pago']; 
@@ -152,15 +158,20 @@ class minadoController extends Controller
         $minado->calificacion_compra = $request['valuacion'];
         $minado->save();
 
-        $minado = DB::table('minados')->select('alianza')->where('id', '=', $id)->get();
+        $minados = DB::table('minados')->select('alianza')->where('id', '=', $id)->get();
+
         $al = $minado[0];
+        $id_pedido = Minado::latest('id')->first();
+        
+        $qm = DB::table('minados')->where('id', '=',  $id_pedido['id'])->get();
+        $lo_minado = $qm[0];
 
         /*  $ali = DB::table('alianzas')->where('nombre_fantasia', '=', $al)->get();
             /* $alianza = $ali[0] */
         /*  dd($ali[0]); */
         /*   $mail = $alianza->email ; */
 
-        Mail::to('prio@minerapp.com.ar')->send(new TerminoMinadoAlianza);
+        Mail::to('prio@minerapp.com.ar','luisa.albino@minerapp.com.ar')->send(new TerminoMinadoAlianza($lo_minado));
 
         return redirect('/home');
     }
