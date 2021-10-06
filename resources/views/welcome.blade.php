@@ -81,15 +81,10 @@
   <script src="aslnd/vendor/php-email-form/validate.js"></script>
   <script src="aslnd/vendor/swiper/swiper-bundle.min.js"></script>
   <script type="module">
-
-
-
-  import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
-  
-  const el = document.createElement('pwa-update');
-  document.body.appendChild(el);
-  
-    </script>
+    import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+    const el = document.createElement('pwa-update');
+    document.body.appendChild(el);
+ </script>
   <!-- Template Main JS File -->
   <script src="aslnd/js/main.js"></script>
 
