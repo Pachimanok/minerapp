@@ -62,12 +62,16 @@ Route::get('/home', function () {
         $educacion = DB::table('educacions')->where('estado', '=', 'activo')->get();
         $cant_ed = $educacion->count();
         /* temas de educacion */
-        $minas= DB::table('minas')->where('user', '=', $user)->get();
+        $minas= DB::table('minas')->where('user', '=', $user)->take(4)->get();
         $qminas = $minas->count();
         /* Datos para billetera */
-        $aCobrar = DB::table('billeteras')->select('monto')->where('user_name', '=', $user)->where('estado', '=', 'a cobrar')->sum('monto');
-        $desbloq = DB::table('billeteras')->select('monto')->where('user_name', '=', $user)->where('estado', '=', 'desbloquear')->sum('monto');
         
+        
+        $aCobrar = DB::table('minados')->select('comision')->where('user', '=', $user)->where('libre', '=', '1')->where('cobrado', '=', '0')->sum('comision');
+        $retirado = DB::table('minados')->select('comision')->where('user', '=', $user)->where('cobrado', '=', '1')->sum('comision');
+        
+        
+        $minerales = db::table('alianzas')->take(3)->get();
         /* enviamos a la vista */
         return view('home')
         ->with('user', $usuario)
@@ -78,15 +82,13 @@ Route::get('/home', function () {
         ->with('educacion', $educacion)
         ->with('cant_ed', $cant_ed)
         ->with('cob', $aCobrar)
-        ->with('des', $desbloq)
+        ->with('des', $retirado)
         ->with('id', $user_id)
         ->with('qminas', $qminas)
         ->with('minas', $minas)
         ->with('not', $not)
+        ->with('alianza', $minerales)
         ->with('qnot', $qnot);
-
-
-
    
     } elseif ($user_role == 'educacion') {
         $educacion = DB::table('educacions')->get();
@@ -141,151 +143,10 @@ Route::get('/home', function () {
 
             return view('home.homeDemo')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
 
-        }elseif($ali->user == 'foc'){
-
-            $pedidos = DB::table('pedidofocs')
-            ->select(
-                'pedidofocs.id',
-                'pedidofocs.minero',
-                'pedidofocs.total',
-                'pedidofocs.estado',
-                'pedidofocs.observaciones',
-                'pedidofocs.modo_pago',
-                'pedidofocs.horario_envio',
-                'pedidofocs.updated_at',
-                'minas.titulo',
-                'minas.telefono',
-                'minas.contacto',
-                'minas.localidad'
-            )
-            ->join('minas', 'pedidofocs.minaid', '=', 'minas.id')->get();
-
-            return view('home.homeFoc')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
-
-        } elseif($ali->user == 'DIOLIVA'){
-            $pedidos = DB::table('pedidodolivas')
-            ->select(
-                'pedidodolivas.id',
-                'pedidodolivas.minero',
-                'pedidodolivas.total',
-                'pedidodolivas.estado',
-                'pedidodolivas.observaciones',
-                'pedidodolivas.modo_pago',
-                'pedidodolivas.horario_envio',
-                'pedidodolivas.updated_at',
-                'minas.titulo',
-                'minas.telefono',
-                'minas.contacto',
-                'minas.localidad'
-            )
-            ->join('minas', 'pedidodolivas.minaid', '=', 'minas.id')->get();
-
-            return view('home.homeDoliva')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
-
-        } elseif($ali->user == 'bluesea'){
-            $pedidos = DB::table('pedidodolivas')
-            ->select(
-                'pedidodoblueseas.id',
-                'pedidodoblueseas.minero',
-                'pedidodoblueseas.total',
-                'pedidodoblueseas.estado',
-                'pedidodoblueseas.observaciones',
-                'pedidodoblueseas.modo_pago',
-                'pedidodoblueseas.horario_envio',
-                'pedidodoblueseas.updated_at',
-                'minas.titulo',
-                'minas.telefono',
-                'minas.contacto',
-                'minas.localidad'
-            )
-            ->join('minas', 'pedidoblueseas.minaid', '=', 'minas.id')->get();
-
-            return view('home.homeBluesea')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
-
-        }  elseif($ali->user == 'laderas'){
-            $pedidos = DB::table('pedidoladeras')
-            ->select(
-                'pedidodoladeras.id',
-                'pedidodoladeras.minero',
-                'pedidodoladeras.total',
-                'pedidodoladeras.estado',
-                'pedidodoladeras.observaciones',
-                'pedidodoladeras.modo_pago',
-                'pedidodoladeras.horario_envio',
-                'pedidodoladeras.updated_at',
-                'minas.titulo',
-                'minas.telefono',
-                'minas.contacto',
-                'minas.localidad'
-            )
-            ->join('minas', 'pedidoladeras.minaid', '=', 'minas.id')->get();
-
-            return view('home.homeLaderas')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
-
-        } elseif($ali->user == 'huertaonline'){
-            $pedidos = DB::table('pedidohuertas')
-            ->select(
-                'pedidohuertas.id',
-                'pedidohuertas.minero',
-                'pedidohuertas.total',
-                'pedidohuertas.estado',
-                'pedidohuertas.observaciones',
-                'pedidohuertas.modo_pago',
-                'pedidohuertas.horario_envio',
-                'pedidohuertas.updated_at',
-                'minas.titulo',
-                'minas.telefono',
-                'minas.contacto',
-                'minas.localidad'
-            )
-            ->join('minas', 'pedidohuertas.minaid', '=', 'minas.id')->get();
-
-            return view('home.homeHuerta')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
-        } elseif($ali->user == 'LauraPañalera'){
-            $pedidos = DB::table('pedidoplimplims')
-            ->select(
-                'pedidoplimplims.id',
-                'pedidoplimplims.minero',
-                'pedidoplimplims.total',
-                'pedidoplimplims.estado',
-                'pedidoplimplims.observaciones',
-                'pedidoplimplims.modo_pago',
-                'pedidoplimplims.horario_envio',
-                'pedidoplimplims.updated_at',
-                'minas.titulo',
-                'minas.telefono',
-                'minas.contacto',
-                'minas.localidad'
-                /* $2y$10$aIvivVN270Dg6HIMSi4RR.z5LiTKAs971ql3Nq/TpcH6rqMvlIqG. */
-            )
-            ->join('minas', 'pedidoplimplims.minaid', '=', 'minas.id')->get();
-
-            return view('home.homePlimplim')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
-        } elseif($ali->user == 'FranJuegos'){
-            $pedidos = DB::table('pedidopiedralibres')
-            ->select(
-            'pedidopiedralibres.id',
-            'pedidopiedralibres.minero',
-            'pedidopiedralibres.total',
-            'pedidopiedralibres.estado',
-            'pedidopiedralibres.observaciones',
-            'pedidopiedralibres.modo_pago',
-            'pedidopiedralibres.horario_envio',
-            'pedidopiedralibres.updated_at',
-            'minas.titulo',
-            'minas.telefono',
-            'minas.contacto',
-            'minas.localidad'
-            
-            )
-            ->join('minas', 'pedidopiedralibres.minaid', '=', 'minas.id')->get();
-            
-            return view('home.homepiedralibre')->with('user', $usuario)->with('alianza', $ali)->with('pedidos', $pedidos);
-            }
-            /* $2y$10$d87.OdY2c2y.exOpGaNZq.R3piTOhUrBBRz3Y4ob39fpOpbRM0ksS */
-
+            }else{
         return view('home.homeAlianza')->with('user', $usuario)->with('alianza', $ali);
     }
+}
 })->middleware('auth');
 
 
@@ -338,13 +199,16 @@ Route::get('/billetera', function () {
     $user = $usuario->name;
     $min = DB::table('mineros')->where('user_name', '=', $user)->get();
     $minero = $min[0];
+    $not = DB::table('notifications')->where('destinatario', '=', $user)->get();
+    $qnot = $not->count();
 
-    $aCobrar = DB::table('billeteras')->select('monto')->where('user_name', '=', $user)->where('estado', '=', 'a cobrar')->sum('monto');
-    $desbloq = DB::table('billeteras')->select('monto')->where('user_name', '=', $user)->where('estado', '=', 'desbloquear')->sum('monto');
+    $aCobrar = DB::table('minados')->select('comision')->where('user', '=', $user)->where('libre', '=', '1')->where('cobrado', '=', '0')->sum('comision');
+    $desbloq = DB::table('minados')->select('comision')->where('user', '=', $user)->where('cobrado', '=', '1')->sum('comision');
     
-    $ultimos = db::table('billeteras')->where('user_name', '=', $user)->take(5)->get();
-
-    return view('billetera')->with('mineros', $minero)->with('user', $usuario)->with('aCobrar', $aCobrar)->with('desbloq', $desbloq)->with('ultimos', $ultimos);
+    $ultimos = db::table('minados')->join('minas','minados.mina','=','minas.id')->where('minados.user', '=', $user)->take(5)->get();
+    
+    return view('billetera')->with('mineros', $minero)->with('user', $usuario)->with('aCobrar', $aCobrar)->with('desbloq', $desbloq)->with('ultimos', $ultimos)->with('not', $not)
+    ->with('qnot', $qnot);
 });
 Route::get('/educacion', function () {
 });

@@ -1,7 +1,5 @@
 @include('layouts.header')
 <body>
-@include('layouts.user')
-
 <div class="header pb-3">
   <div class="container mt-6">
     <br>
