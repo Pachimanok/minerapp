@@ -32,8 +32,8 @@ class dashboardalianzaController extends Controller
      */
     public function create()
     {
-
-        return view('formularios.createdashboardAlianza', $user);
+        $usuario = Auth::user();
+        return view('formularios.createdashboardAlianza')->with('user', $usuario);
 
     }
 

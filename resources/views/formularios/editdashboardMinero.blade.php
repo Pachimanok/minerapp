@@ -1,5 +1,8 @@
-@include('layouts.headerAlianza')
+@if($user->role == 'admin')
 
+@extends('dashboard.homeAdmin')
+
+@section('contenido')
 <div class="bg-secondary">
     <div class="container pb-5">
         <h1 class="text-dark">Edición de Minero  </h1>
@@ -68,3 +71,10 @@
         </div>
     </div> 
 </div>
+@endsection
+
+@else
+
+@include('home')
+
+@endif

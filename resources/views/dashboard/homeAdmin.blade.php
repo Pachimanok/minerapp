@@ -1,3 +1,5 @@
+@if($user->role == 'admin')
+
 <!DOCTYPE html>
 
 <html>
@@ -93,4 +95,8 @@
 </body>
 
 </html>
+@else
 
+@include('home')
+
+@endif
