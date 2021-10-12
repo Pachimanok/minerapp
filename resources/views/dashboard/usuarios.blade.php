@@ -66,4 +66,6 @@
 
 @else
 
+@include('home')
+
 @endif

@@ -16,7 +16,6 @@
                             <th scope="col" class="sort">Celular</th>
                             <th scope="col" class="sort">CBU</th>
                             <th scope="col" class="sort">Localizacion</th>
-                            <th scope="col" class="sort">Avatar</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -43,9 +42,6 @@
                                         <span class="name mb-0 text-sm">{{ $minero->localizacion}}</span>
                                     </div>
                                 </div>
-                            </td>
-                            <td>
-                                avatar
                             </td>
                             <td>
                                 <form action="/dashboard/minero/{{ $minero->id }}" method="POST">

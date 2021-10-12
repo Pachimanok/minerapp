@@ -52,9 +52,9 @@ class dashboardmineroController extends Controller
      */
     public function show($id)
     {   
-
+        $usuario = Auth::user();
         $minero = Minero::find($id);       
-        return view('formularios.verdashboardMinero')->with('minero', $minero);
+        return view('formularios.verdashboardMinero')->with('minero', $minero)->with('user', $usuario);
         
     }
 
@@ -95,7 +95,7 @@ class dashboardmineroController extends Controller
             $imagen->encode($extencion);
             $path = public_path('img/avatar/' . $name);
             $imagen->save($path);
-            
+            $minero->avatar = $name;
         }
         $imagen = $request->File('fondo');
 
@@ -106,7 +106,7 @@ class dashboardmineroController extends Controller
         $imagen->encode($extencion);
         $path = public_path('img/fondo/' . $name);
         $imagen->save($path);
-        $alianza->fondo = $name;
+        $minero->fondo = $name;
         }
 
             

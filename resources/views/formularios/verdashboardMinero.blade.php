@@ -21,8 +21,8 @@
         <p class="fs-3 fw-bold">Localización: {{ $minero->localizacion }}</p>
         <p class="fs-3 fw-bold">Grado: {{ $minero->grado }}</p>
         <p class="fs-3 fw-bold">Nombre de Usuario del Amigo: {{ $minero->user_amigo }}</p>
-        <p class="fs-3 fw-bold">Avatar: {{ $minero->avatar }}</p>
-        <p class="fs-3 fw-bold">Fondo: {{ $minero->fondo }}</p>
+        <img src="../../img/avatar/{{ $minero->avatar }}" alt="">
+        <img src="../../img/fondo/{{ $minero->fondo }}" alt="">
         <p class="fs-3 fw-bold">Estado: {{ $minero->estado }}</p>
         
         <div class="col mt-3">
