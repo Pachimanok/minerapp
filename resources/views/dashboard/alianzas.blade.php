@@ -1,6 +1,8 @@
 @if($user->role == 'admin')
 
-@include('layouts.headerAlianza')
+@extends('dashboard.homeAdmin')
+
+@section('contenido')
 <div class="bg-info">
     <div class="container pt-5 pb-5">
         <h1 class="text-center text-dark  mb-5">Listado de alianzas</h1>
@@ -10,51 +12,53 @@
             </div>
         </div>
         <div class="row">
-            <table class="table table-dark table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nombre fantasia</th>
-                        <th scope="col">User</th>
-                        <th scope="col">Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ( $alianzas as $alianza)
-                    <tr>
-                        <td class="align-middle">{{ $alianza->id }}</td>
-                        <td class="align-middle">{{ $alianza->nombre_fantasia }}</td>
-                        <td class="align-middle">{{ $alianza->user }}</td>
-                        <td>
-                            <form action="/dashboard/alianza/{{ $alianza->id }}" method="POST">
-                            @csrf
-                                {{ method_field('DELETE') }}
-                                <a href="/dashboard/alianza/{{ $alianza->id }}" class="btn btn-primary"><i
-                                        class="far fa-eye"></i></a>
-                                <a href="/dashboard/alianza/{{ $alianza->id }}/edit" class="btn btn-success"><i
-                                        class="fas fa-pencil-alt"></i></a>
-                                <button href="/dashboard/alianza/{{ $alianza->id }}"
-
-                                    onclick="return confirm('¿Quieres eliminar esta alianza?')"
-                                    class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <div>
+                    <table class="table align-items-center table-dark">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="sort" data-sort="id">#Id</th>
+                                <th scope="col" class="sort" data-sort="nombre">Nombre fantasia</th>
+                                <th scope="col" class="sort" data-sort="usuario">Usuario</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                            @foreach ( $alianzas as $alianza)
+                            <tr>
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <span class="id mb-0 text-sm">{{ $alianza->id }}</span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td class="nombre">{{ $alianza->nombre_fantasia }}</td>
+                                <td class="usuario">{{ $alianza->user }}</td>
+                                <td>
+                                    <form action="/dashboard/alianza/{{ $alianza->id }}" method="POST">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                        <a href="/dashboard/alianza/{{ $alianza->id }}" class="btn btn-primary"><i
+                                                class="far fa-eye"></i></a>
+                                        <a href="/dashboard/alianza/{{ $alianza->id }}/edit" class="btn btn-success"><i
+                                                class="fas fa-pencil-alt"></i></a>
+                                        <button href="/dashboard/alianza/{{ $alianza->id }}"
+                                            onclick="return confirm('¿Quieres eliminar esta alianza?')"
+                                            class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
 </div>
-<script>
-if ( window.history.replaceState ) {
-  window.history.replaceState( null, null, window.location.href );
-}
-</script>
-
-@include('layouts.sidebar')
-
+</div>
+@endsection
 
 @else
 

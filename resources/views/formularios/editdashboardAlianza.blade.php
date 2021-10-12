@@ -1,7 +1,7 @@
 @include('layouts.headerAlianza')
 <div class="bg-info">
 <div class="container pb-5">
-    <h1 class="text-dark">Formulario nueva alianza</h1>
+    <h1 class="text-dark">Formulario editar alianza</h1>
 
     <div class="row">
         <form action="/dashboard/alianza/{{ $alianza->id }}" method="POST" enctype="multipart/form-data" class="row g-3">

@@ -1,4 +1,8 @@
-@include('layouts.headerAlianza');
+@if($user->role == 'admin')
+
+@extends('dashboard.homeAdmin')
+
+@section('contenido')
 <div class="container pt-5 pb-5">
     <h1 class="text-center pb-5">Informacion sobre el Minero {{ $minero->user_name }}</h1>
     <div class="row">
@@ -25,3 +29,11 @@
         <a href="/dashboard/minero" class="btn btn-primary">Volver</a>
         </div>
     </div>
+</div>
+@endsection
+
+@else
+
+@include('home')
+
+@endif
