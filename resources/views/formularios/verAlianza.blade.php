@@ -118,25 +118,8 @@
                         data-parent="#accordionExample">
                         <div class="accordion-body">
                             <p class="text-center mt-3"
-                                style="font-size: smaller; line-height: initial; color: #3c3c43b3;">Lorem ipsum dolor
-                                sit amet consectetur adipisicing elit. Id voluptates rem, atque aut eveniet ipsum
-                                reprehenderit quos laborum fuga, sunt deserunt. Facilis ducimus similique quas? Minus
-                                deserunt ipsam praesentium necessitatibus!</p>
-                            <p class="text-center mt-3"
-                                style="font-size: smaller; line-height: initial; color: #3c3c43b3;">Lorem ipsum dolor
-                                sit amet consectetur adipisicing elit. Id voluptates rem, atque aut eveniet ipsum
-                                reprehenderit quos laborum fuga, sunt deserunt. Facilis ducimus similique quas? Minus
-                                deserunt ipsam praesentium necessitatibus!</p>
-                            <p class="text-center mt-3"
-                                style="font-size: smaller; line-height: initial; color: #3c3c43b3;">Lorem ipsum dolor
-                                sit amet consectetur adipisicing elit. Id voluptates rem, atque aut eveniet ipsum
-                                reprehenderit quos laborum fuga, sunt deserunt. Facilis ducimus similique quas? Minus
-                                deserunt ipsam praesentium necessitatibus!</p>
-                            <p class="text-center mt-3"
-                                style="font-size: smaller; line-height: initial; color: #3c3c43b3;">Lorem ipsum dolor
-                                sit amet consectetur adipisicing elit. Id voluptates rem, atque aut eveniet ipsum
-                                reprehenderit quos laborum fuga, sunt deserunt. Facilis ducimus similique quas? Minus
-                                deserunt ipsam praesentium necessitatibus!</p>
+                                style="font-size: smaller; line-height: initial; color: #3c3c43b3;">
+                                {{ $mineral->terminos }}</p>
                         </div>
                     </div>
                 </div>
